@@ -1,0 +1,714 @@
+Command: C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\sensor_esp32c3.elf C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\bootloader\bootloader.elf --force-color -m 'C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe' 'C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py'
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xb (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40383e80
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5830,len:0xdb0
+load:0x403cbf10,len:0x948
+load:0x403ce710,len:0x2c5c
+entry 0x403cbf10
+[0;32mI (193) main_task: Started on CPU0[0m
+[0;32mI (193) main_task: Calling app_main()[0m
+[0;32mI (193) MAIN: ========================================[0m
+[0;32mI (193) MAIN: === ONG SENSOR APPLICATION v1.0 ===[0m
+[0;32mI (193) MAIN: ========================================[0m
+[0;32mI (193) MAIN: ESP32-C3 - Dual sensor monitoring[0m
+[0;32mI (193) MAIN: Free heap: 279212 bytes[0m
+[0;32mI (193) MAIN: ========================================[0m
+[0;32mI (193) MAIN: Creando colas de comunicación...[0m
+[0;32mI (193) MAIN: ✓ Colas creadas correctamente[0m
+[0;32mI (193) MAIN: ========================================[0m
+[0;32mI (193) MAIN: === INICIANDO SUPERVISOR DEL SISTEMA ===[0m
+[0;32mI (193) MAIN: ========================================[0m
+[0;32mI (193) MAIN: Creando tarea supervisor...[0m
+[0;32mI (193) TASK_MAIN: === INICIANDO SUPERVISOR PRINCIPAL ===[0m
+[0;32mI (193) TASK_MAIN: Inicializando LED de estado (WS2812)...[0m
+[0;32mI (193) MAIN: ✓ Tarea supervisor creada correctamente[0m
+[0;32mI (193) MAIN: ========================================[0m
+[0;32mI (193) TASK_MAIN: ✓ LED de estado inicializado correctamente[0m
+[0;32mI (193) TASK_LED_STATUS: ✓ Queue del LED de estado creada[0m
+[0;32mI (193) TASK_MAIN: Creando tarea LED de estado...[0m
+[0;32mI (193) TASK_MAIN: Creando tarea de configuración inicial...[0m
+[0;32mI (193) TASK_MAIN: Esperando finalización de configuración inicial...[0m
+[0;32mI (193) TASK_LED_STATUS: === INICIANDO TAREA LED DE ESTADO ===[0m
+[0;32mI (193) TASK_LED_STATUS: ✓ LED de estado listo - GPIO4 (D2)[0m
+[0;32mI (193) INIT_CONFIG: === INICIANDO CONFIGURACION INICIAL ESP32-C3 ===[0m
+[0;32mI (193) INIT_CONFIG: Inicializando NVS Flash...[0m
+[0;32mI (203) INIT_CONFIG: ✓ NVS Flash inicializado correctamente[0m
+[0;32mI (203) INIT_CONFIG: Verificando sistema...[0m
+[0;32mI (203) INIT_CONFIG: Verificando sistema...[0m
+[0;32mI (203) INIT_CONFIG: Memoria libre: 262544 bytes[0m
+[0;32mI (203) INIT_CONFIG: ESP32-C3 - 1 núcleos, rev 4[0m
+[0;32mI (203) INIT_CONFIG: ✓ Verificación del sistema exitosa[0m
+[0;32mI (203) MAIN: ✓ SISTEMA SUPERVISADO EN FUNCIONAMIENTO[0m
+[0;32mI (203) MAIN: ========================================[0m
+[0;32mI (303) INIT_CONFIG: Verificando configuración ADC...[0m
+[0;32mI (303) INIT_CONFIG: Inicializando ADC compartido...[0m
+[0;32mI (303) ADC_SHARED: === INICIALIZANDO ADC COMPARTIDO ===[0m
+[0;32mI (303) ADC_SHARED: ✓ ADC unit inicializado correctamente[0m
+[0;32mI (303) ADC_SHARED: Inicializando calibración ADC...[0m
+[0;32mI (303) ADC_SHARED: ✓ Calibración ADC habilitada[0m
+[0;32mI (303) ADC_SHARED: ✓ ADC compartido inicializado correctamente[0m
+[0;32mI (303) ADC_SHARED: ✓ Canal ADC 2 configurado correctamente[0m
+[0;32mI (303) ADC_SHARED: ✓ Canal ADC 3 configurado correctamente[0m
+[0;32mI (303) INIT_CONFIG: ✓ ADC compartido inicializado correctamente[0m
+[0;32mI (303) INIT_CONFIG: Sensor Humedad - GPIO2 (D0) - ADC_CHANNEL_2[0m
+[0;32mI (303) INIT_CONFIG: Sensor Luz - GPIO3 (D1) - ADC_CHANNEL_3[0m
+[0;32mI (303) INIT_CONFIG: === DIAGNÓSTICO DE SENSORES ADC ===[0m
+[0;32mI (303) INIT_CONFIG: Probando sensor de humedad (GPIO2)...[0m
+[0;32mI (303) INIT_CONFIG: Humedad - Raw: 4095, Voltaje: 2792 mV[0m
+[0;32mI (303) INIT_CONFIG: Probando sensor de luz (GPIO3)...[0m
+[0;32mI (303) INIT_CONFIG: Luz - Raw: 2554, Voltaje: 1786 mV[0m
+[0;32mI (303) INIT_CONFIG: === FIN DIAGNÓSTICO ===[0m
+[0;32mI (303) INIT_CONFIG: ✓ Configuración ADC verificada[0m
+[0;32mI (303) INIT_CONFIG: Aplicando configuración específica ESP32-C3...[0m
+[0;32mI (303) INIT_CONFIG: ✓ Configuración específica aplicada[0m
+[0;32mI (303) INIT_CONFIG: === CONFIGURACION INICIAL COMPLETADA ===[0m
+[0;32mI (303) INIT_CONFIG: Sistema: ESP32-C3[0m
+[0;32mI (303) INIT_CONFIG: Sensor Humedad: GPIO2 (D0)[0m
+[0;32mI (303) INIT_CONFIG: Sensor Luz: GPIO3 (D1)[0m
+[0;32mI (303) INIT_CONFIG: LED: GPIO4 (D2)[0m
+[0;32mI (303) INIT_CONFIG: Memoria libre: 266640 bytes[0m
+[0;32mI (303) TASK_MAIN: ✓ Configuración inicial completada[0m
+[0;32mI (303) TASK_MAIN: Creando tarea WiFi...[0m
+[0;32mI (303) TASK_MAIN: Esperando conexión WiFi...[0m
+[0;32mI (303) WIFI_TASK: === INICIANDO CONEXIÓN WIFI ===[0m
+[0;32mI (303) INIT_CONFIG: ✓ Tarea de configuración inicial finalizada[0m
+[0;32mI (303) pp: pp rom version: 9387209[0m
+[0;32mI (303) net80211: net80211 rom version: 9387209[0m
+[0;32mI (313) wifi_init: rx ba win: 6[0m
+[0;32mI (313) wifi_init: accept mbox: 6[0m
+[0;32mI (313) wifi_init: tcpip mbox: 32[0m
+[0;32mI (313) wifi_init: udp mbox: 6[0m
+[0;32mI (313) wifi_init: tcp mbox: 6[0m
+[0;32mI (313) wifi_init: tcp tx win: 5760[0m
+[0;32mI (313) wifi_init: tcp rx win: 5760[0m
+[0;32mI (313) wifi_init: tcp mss: 1440[0m
+[0;32mI (313) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (313) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (313) WIFI_TASK: No se pudo abrir NVS para WiFi, usando defaults[0m
+[0;32mI (353) WIFI_TASK: WiFi inicializado. Conectando a TeleCentro-5950...[0m
+[0;32mI (1453) esp_netif_handlers: sta ip: 192.168.0.151, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (1453) WIFI_TASK: Dirección IP obtenida:192.168.0.151[0m
+[0;32mI (1453) WIFI_TASK: ✓ Conectado exitosamente a WiFi SSID: TeleCentro-5950[0m
+[0;32mI (1453) WIFI_TASK:   - RSSI: -49 dBm[0m
+[0;32mI (1453) WIFI_TASK:   - Canal: 1[0m
+[0;32mI (1453) WIFI_TASK:   - IP: 192.168.0.151[0m
+[0;32mI (1453) WIFI_TASK:   - Máscara: 255.255.255.0[0m
+[0;32mI (1453) WIFI_TASK:   - Gateway: 192.168.0.1[0m
+[0;32mI (1453) TASK_MAIN: ✓ WiFi conectado exitosamente[0m
+[0;32mI (1453) TASK_MAIN: Creando tarea de configuración de sensores...[0m
+[0;32mI (1453) TASK_MAIN: Esperando configuración de sensores...[0m
+[0;32mI (1453) SENSOR_CONFIG: === INICIANDO CONFIGURACIÓN DE SENSORES ===[0m
+[0;32mI (1453) SENSOR_CONFIG: Cargando configuración del sensor de humedad...[0m
+[0;32mI (1453) NVS_TASK: Sensor ID leído: humidity_id = 8[0m
+[0;33mW (1453) NVS_TASK: Flag no encontrado: humidity_registered[0m
+[0;32mI (1453) SENSOR_CONFIG: No hay configuración de humedad en NVS, obteniendo del servidor...[0m
+[0;32mI (1453) SENSOR_CONFIG: === OBTENIENDO CONFIGURACIÓN SENSOR HUMEDAD ===[0m
+[0;32mI (1453) SENSOR_CONFIG: Número de serie: 0x001C[0m
+[0;32mI (1453) SENSOR_CONFIG: URL: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001C[0m
+[0;32mI (1873) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (2713) SENSOR_CONFIG: HTTP Status: 200, Content-Length: 476[0m
+[0;32mI (2723) SENSOR_CONFIG: Respuesta recibida (476 bytes): {"id_sensor":8,"id_room_location":3,"id_controller_station":2,"id_user_created":3,"serial_number":"0x001C","description":"SENSOR DE HUMEDAD SUELO","type":"SENSOR","model":"ANALOGICO","created_at":"2025-11-01T03:02:37.650Z","ip_address":null,"ip_mode":null,"unit":"HS%","interval_seconds":2000,"max_value":null,"min_value":null,"config_state":"synced","config_user_created":3,"config_created_at":"2025-11-01T03:06:35.213Z","config_user_modified":null,"config_modified_at":null}[0m
+[0;32mI (2723) SENSOR_CONFIG: ID Sensor: 8[0m
+[0;32mI (2723) SENSOR_CONFIG: Descripción: SENSOR DE HUMEDAD SUELO[0m
+[0;32mI (2723) SENSOR_CONFIG: ✅ Configuración de HUMEDAD cargada exitosamente[0m
+[0;32mI (2723) NVS_TASK: Sensor ID guardado: humidity_id = 8[0m
+[1;31mE (2723) NVS_TASK: Error guardando flag: ESP_ERR_NVS_KEY_TOO_LONG[0m
+[0;32mI (2723) SENSOR_CONFIG: Cargando configuración del sensor de luz...[0m
+[0;33mW (2723) NVS_TASK: Sensor ID no encontrado: light_id[0m
+[0;33mW (2723) NVS_TASK: Flag no encontrado: light_registered[0m
+[0;32mI (2723) SENSOR_CONFIG: No hay configuración de luz en NVS, obteniendo del servidor...[0m
+[0;32mI (2723) SENSOR_CONFIG: === OBTENIENDO CONFIGURACIÓN SENSOR LUZ ===[0m
+[0;32mI (2723) SENSOR_CONFIG: Número de serie: 0x001D[0m
+[0;32mI (2723) SENSOR_CONFIG: URL: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001D[0m
+[0;32mI (3113) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (3903) SENSOR_CONFIG: HTTP Status: 404, Content-Length: 28[0m
+[1;31mE (3903) SENSOR_CONFIG: Error HTTP: 404[0m
+[0;33mW (3903) SENSOR_CONFIG: ⚠ Error obteniendo configuración, usando valores por defecto[0m
+[0;32mI (3913) SENSOR_CONFIG: === CONFIGURACIÓN FINAL SENSORES ===[0m
+[0;32mI (3913) SENSOR_CONFIG: Sensor Humedad:[0m
+[0;32mI (3913) SENSOR_CONFIG:   ID: 8[0m
+[0;32mI (3913) SENSOR_CONFIG:   Descripción: SENSOR DE HUMEDAD SUELO[0m
+[0;32mI (3913) SENSOR_CONFIG:   Intervalo: 5 segundos[0m
+[0;32mI (3913) SENSOR_CONFIG:   Estado: activo[0m
+[0;32mI (3913) SENSOR_CONFIG:   Cargado: servidor[0m
+[0;32mI (3913) SENSOR_CONFIG: Sensor Luz:[0m
+[0;32mI (3913) SENSOR_CONFIG:   ID: 1[0m
+[0;32mI (3913) SENSOR_CONFIG:   Descripción: LUZ Default[0m
+[0;32mI (3913) SENSOR_CONFIG:   Intervalo: 5 segundos[0m
+[0;32mI (3913) SENSOR_CONFIG:   Estado: activo[0m
+[0;32mI (3913) SENSOR_CONFIG:   Cargado: por defecto[0m
+[0;32mI (3913) SENSOR_CONFIG: ✅ Configuración de sensores completada[0m
+[0;32mI (3913) TASK_MAIN: ✓ Sensores configurados exitosamente[0m
+[0;32mI (3913) TASK_MAIN: Creando tareas de sensores...[0m
+[0;32mI (3913) TASK_MAIN: Creando tarea HTTP...[0m
+[0;32mI (3913) TASK_MAIN: Creando tarea NVS...[0m
+[0;32mI (3913) TASK_MAIN: ✓ Sistema completamente inicializado[0m
+[0;32mI (3913) TASK_MAIN: Status de tarea 0: Configuración inicial completa[0m
+[0;32mI (3913) SOIL_HUMIDITY: === INICIANDO SENSOR HUMEDAD SUELO ===[0m
+[0;32mI (3913) SOIL_HUMIDITY: ✓ Sensor inicializado - Lectura cada 5 segundos[0m
+[0;32mI (3913) SOIL_HUMIDITY: ✓ Configuración cargada - Intervalo de envío: 5 segundos[0m
+[0;32mI (3913) SOIL_HUMIDITY: 💧 Lectura #1: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (3913) SOIL_HUMIDITY: 📤 Enviando datos #1 al servidor (cada 5 segundos)[0m
+[0;32mI (3913) LIGHT_SENSOR: === INICIANDO SENSOR DE LUZ ===[0m
+[0;32mI (3913) LIGHT_SENSOR: ✓ Sensor inicializado - Lectura cada 5 segundos[0m
+[0;32mI (3913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (3913) HTTP_TASK: === INICIANDO TAREA HTTP CLIENT ===[0m
+[0;32mI (3913) HTTP_TASK: 🔍 Validando sensores...[0m
+[0;32mI (3913) HTTP_TASK: 🔍 Validando dispositivo con serial: 0x001C[0m
+[0;32mI (3913) HTTP_TASK: URL de validación: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001C[0m
+[0;32mI (3913) NVS_TASK: === INICIANDO TAREA NVS ===[0m
+[0;32mI (3913) NVS_TASK: ✓ NVS storage inicializado[0m
+[0;32mI (3913) NVS_TASK: ✓ NVS storage para password inicializado[0m
+[0;32mI (4013) TASK_MAIN: Status de tarea 1: WiFi conectado exitosamente[0m
+[0;32mI (4113) TASK_MAIN: Status de tarea 2: Configuración completa[0m
+[0;32mI (4303) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (4913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (5043) HTTP_TASK: 📥 Respuesta validación [0x001C]: HTTP 200, Error: ESP_OK[0m
+[0;32mI (5043) HTTP_TASK: 📄 Contenido respuesta: {"id_sensor":8,"id_room_location":3,"id_controller_station":2,"id_user_created":3,"serial_number":"0x001C","description":"SENSOR DE HUMEDAD SUELO","type":"SENSOR","model":"ANALOGICO","created_at":"2025-11-01T03:02:37.650Z","ip_address":null,"ip_mode":null,"unit":"HS%","interval_seconds":2000,"max_value":null,"min_value":null,"config_state":"synced","config_user_created":3,"config_created_at":"2025-11-01T03:06:35.213Z","config_user_modified":null,"config_modified_at":null}[0m
+[0;32mI (5043) HTTP_TASK: ✅ Dispositivo [0x001C] validado exitosamente (HTTP 200)[0m
+[0;32mI (5043) HTTP_TASK: 🔍 Validando dispositivo con serial: 0x001D[0m
+[0;32mI (5043) HTTP_TASK: URL de validación: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001D[0m
+[0;32mI (5433) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (5913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (6163) HTTP_TASK: 📥 Respuesta validación [0x001D]: HTTP 404, Error: ESP_OK[0m
+[0;32mI (6163) HTTP_TASK: 📄 Contenido respuesta: {"error":"Sensor not found"}[0m
+[0;33mW (6173) HTTP_TASK: ⚠ Dispositivo [0x001D] no válido (HTTP 404) - pero continuando con envío de datos[0m
+[0;32mI (6173) HTTP_TASK: ✅ Sensor de humedad (0x001C) validado[0m
+[0;32mI (6173) HTTP_TASK: ✅ Sensor de luz (0x001D) validado[0m
+[0;32mI (6173) HTTP_TASK: Intervalo de envío: 60000 ms[0m
+[0;32mI (6173) HTTP_TASK: ✓ Tarea HTTP lista para recibir datos[0m
+[0;32mI (6173) HTTP_TASK: 📊 Datos recibidos - HS: 0.0%, Voltaje: 2792 mV, Raw: 4095[0m
+[0;32mI (6173) HTTP_TASK: === ENVIANDO DATOS HUMEDAD SUELO ===[0m
+[0;32mI (6173) HTTP_TASK: HS: 0.0%, Voltaje: 2792 mV, Raw: 4095[0m
+[0;32mI (6173) HTTP_TASK: 🚀 Enviando datos del sensor [0x001C]: {[0m
+	"value":	"0.0",
+	"unit":	"%",
+	"type":	"humidity",
+	"id_sensor":	8,
+	"raw_value":	4095,
+	"timestamp":	5980
+}
+[0;32mI (6563) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (7913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (8413) HTTP_TASK: ✅ Datos del sensor [0x001C] enviados exitosamente (HTTP 201)[0m
+[0;32mI (8413) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15097,"id_sensor":8,"value":0,"unit":"%","created_at":"2025-11-02T18:31:13.570Z","date":null},"sensorConfig":{"id_sensor":8,"interval_seconds":2000,"max_value":null,"min_value":null,"state":"synced","id_user_created":3,"created_at":"2025-11-01T03:06:35.213Z","id_user_modified":null,"modified_at":null}}[0m
+[0;32mI (8423) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (8423) HTTP_TASK: 🔄 Intervalo de posting actualizado desde servidor: 2000 segundos (2000000 ms)[0m
+[0;32mI (8423) HTTP_TASK: 💧 Intervalo sensor humedad actualizado: 2000 segundos[0m
+[0;32mI (8423) HTTP_TASK: 🆔 ID sensor recibido del servidor: 8[0m
+[0;32mI (8423) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (8423) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (8913) SOIL_HUMIDITY: 💧 Lectura #2: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (8913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (9913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (10913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (11913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (12913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (13913) SOIL_HUMIDITY: 💧 Lectura #3: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (13913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (14913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (15913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (16913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (17913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (18913) SOIL_HUMIDITY: 💧 Lectura #4: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (18913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (19913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (20913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (21913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (22913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (23913) SOIL_HUMIDITY: 💧 Lectura #5: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (23913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (24913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (25913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (26913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (27913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (28913) SOIL_HUMIDITY: 💧 Lectura #6: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (28913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (29913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (30913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (31913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (32913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (33913) SOIL_HUMIDITY: 💧 Lectura #7: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (33913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (34913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (35913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (36453) TASK_MAIN: Supervisor activo - Heap libre: 195420 bytes[0m
+[0;32mI (36913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (37913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (38913) SOIL_HUMIDITY: 💧 Lectura #8: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (38913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (39913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (40913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (41913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (42913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (43913) SOIL_HUMIDITY: 💧 Lectura #9: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (43913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (44913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (45913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (46913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (47913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (48913) SOIL_HUMIDITY: 💧 Lectura #10: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (48913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (49913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (50913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (51913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (52913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (53913) SOIL_HUMIDITY: 💧 Lectura #11: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (53913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (54913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (55913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (56913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (57913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (58913) SOIL_HUMIDITY: 💧 Lectura #12: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (58913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (59913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (60913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (61913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (62913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (63913) SOIL_HUMIDITY: 💧 Lectura #13: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (63913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (64913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (65913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (66913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (67913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (68913) SOIL_HUMIDITY: 💧 Lectura #14: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (68913) TASK_MAIN: Supervisor activo - Heap libre: 195420 bytes[0m
+[0;32mI (68913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (69913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (70913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (71913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (72913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (73913) SOIL_HUMIDITY: 💧 Lectura #15: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (73913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (74913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (75913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (76913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (77913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (78913) SOIL_HUMIDITY: 💧 Lectura #16: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (78913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (79913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (80913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (81913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (82913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (83913) SOIL_HUMIDITY: 💧 Lectura #17: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (83913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (84913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (85913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (86913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (87913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (88913) SOIL_HUMIDITY: 💧 Lectura #18: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (88913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (89913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (90913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (91913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (92913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (93913) SOIL_HUMIDITY: 💧 Lectura #19: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (93913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (94913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (95913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (96913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (97913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (98913) SOIL_HUMIDITY: 💧 Lectura #20: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (98913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (99913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (100913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (101913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (102913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (103913) SOIL_HUMIDITY: 💧 Lectura #21: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (103913) TASK_MAIN: Supervisor activo - Heap libre: 195444 bytes[0m
+[0;32mI (103913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (104913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (105913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (106913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (107913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (108913) SOIL_HUMIDITY: 💧 Lectura #22: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (108913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (109913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (110913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (111913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (112913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (113913) SOIL_HUMIDITY: 💧 Lectura #23: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (113913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (114913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (115913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (116913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (117913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (118913) SOIL_HUMIDITY: 💧 Lectura #24: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (118913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (119913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (120913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (121913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (122913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (123913) SOIL_HUMIDITY: 💧 Lectura #25: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (123913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (124913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (125913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (126913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (127913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (128913) SOIL_HUMIDITY: 💧 Lectura #26: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (128913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (129913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (130913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (131913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (132913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (133913) SOIL_HUMIDITY: 💧 Lectura #27: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (133913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (134913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (135913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (136913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (137913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (138913) SOIL_HUMIDITY: 💧 Lectura #28: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (138913) TASK_MAIN: Supervisor activo - Heap libre: 196332 bytes[0m
+[0;32mI (138913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (139913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (140913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (141913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (142913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (143913) SOIL_HUMIDITY: 💧 Lectura #29: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (143913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (144913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (145913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (146913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (147913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (148913) SOIL_HUMIDITY: 💧 Lectura #30: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (148913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (149913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (150913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (151913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (152913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (153913) SOIL_HUMIDITY: 💧 Lectura #31: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (153913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (154913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (155913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (156913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (157913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (158913) SOIL_HUMIDITY: 💧 Lectura #32: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (158913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (159913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (160913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (161913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (162913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (163913) SOIL_HUMIDITY: 💧 Lectura #33: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (163913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (164913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (165913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (166913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (167913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (168913) SOIL_HUMIDITY: 💧 Lectura #34: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (168913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (169913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (170913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (171913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (172913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (173913) SOIL_HUMIDITY: 💧 Lectura #35: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (173913) TASK_MAIN: Supervisor activo - Heap libre: 196332 bytes[0m
+[0;32mI (173913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (174913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (175913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (176913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (177913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (178913) SOIL_HUMIDITY: 💧 Lectura #36: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (178913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (179913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (180913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (181913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (182913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (183913) SOIL_HUMIDITY: 💧 Lectura #37: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (183913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (184913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (185913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (186913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (187913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (188913) SOIL_HUMIDITY: 💧 Lectura #38: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (188913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (189913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (190913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (191913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (192913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (193913) SOIL_HUMIDITY: 💧 Lectura #39: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (193913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (194913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (195913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (196913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (197913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (198913) SOIL_HUMIDITY: 💧 Lectura #40: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (198913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (199913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (200913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (201913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (202913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (203913) SOIL_HUMIDITY: 💧 Lectura #41: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (203913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (204913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (205913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (206913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (207913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (208913) SOIL_HUMIDITY: 💧 Lectura #42: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (208913) TASK_MAIN: Supervisor activo - Heap libre: 196332 bytes[0m
+[0;32mI (208913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (209913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (210913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (211913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (212913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (213913) SOIL_HUMIDITY: 💧 Lectura #43: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (213913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (214913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (215913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (216913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (217913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (218913) SOIL_HUMIDITY: 💧 Lectura #44: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (218913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (219913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (220913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (221913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (222913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (223913) SOIL_HUMIDITY: 💧 Lectura #45: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (223913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (224913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (225913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (226913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (227913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (228913) SOIL_HUMIDITY: 💧 Lectura #46: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (228913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (229913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (230913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (231913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (232913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (233913) SOIL_HUMIDITY: 💧 Lectura #47: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (233913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (234913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (235913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (236913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (237913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (238913) SOIL_HUMIDITY: 💧 Lectura #48: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (238913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (239913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (240913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (241913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (242913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (243913) SOIL_HUMIDITY: 💧 Lectura #49: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (243913) TASK_MAIN: Supervisor activo - Heap libre: 196332 bytes[0m
+[0;32mI (243913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (244913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (245913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (246913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (247913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (248913) SOIL_HUMIDITY: 💧 Lectura #50: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (248913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (249913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (250913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (251913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (252913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (253913) SOIL_HUMIDITY: 💧 Lectura #51: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (253913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (254913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (255913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (256913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (257913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (258913) SOIL_HUMIDITY: 💧 Lectura #52: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (258913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (259913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (260913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (261913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (262913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (263913) SOIL_HUMIDITY: 💧 Lectura #53: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (263913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (264913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (265913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (266913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (267913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (268913) SOIL_HUMIDITY: 💧 Lectura #54: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (268913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (269913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (270913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (271913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (272913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (273913) SOIL_HUMIDITY: 💧 Lectura #55: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (273913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (274913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (275913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (276913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (277913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (278913) SOIL_HUMIDITY: 💧 Lectura #56: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (278913) TASK_MAIN: Supervisor activo - Heap libre: 196332 bytes[0m
+[0;32mI (278913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (279913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (280913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (281913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (282913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (283913) SOIL_HUMIDITY: 💧 Lectura #57: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (283913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (284913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (285913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (286913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (287913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (288913) SOIL_HUMIDITY: 💧 Lectura #58: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (288913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (289913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (290913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (291913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (292913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (293913) SOIL_HUMIDITY: 💧 Lectura #59: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (293913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (294913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (295913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (296913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (297913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (298913) SOIL_HUMIDITY: 💧 Lectura #60: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (298913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (299913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (300913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (301913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (302913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (303913) SOIL_HUMIDITY: 💧 Lectura #61: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (303913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (304913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (305913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (306913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (307913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (308913) SOIL_HUMIDITY: 💧 Lectura #62: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (308913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (309913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (310913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (311913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (312913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (313913) SOIL_HUMIDITY: 💧 Lectura #63: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (313913) TASK_MAIN: Supervisor activo - Heap libre: 196332 bytes[0m
+[0;32mI (313913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (314913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (315913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (316913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (317913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (318913) SOIL_HUMIDITY: 💧 Lectura #64: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (318913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (319913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (320913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (321913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (322913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (323913) SOIL_HUMIDITY: 💧 Lectura #65: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (323913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (324913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (325913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (326913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (327913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (328913) SOIL_HUMIDITY: 💧 Lectura #66: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (328913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (329913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (330913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (331913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (332913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (333913) SOIL_HUMIDITY: 💧 Lectura #67: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (333913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (334913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (335913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (336913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (337913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (338913) SOIL_HUMIDITY: 💧 Lectura #68: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (338913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (339913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (340913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (341913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (342913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (343913) SOIL_HUMIDITY: 💧 Lectura #69: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (343913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (344913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (345913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (346913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (347913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (348913) SOIL_HUMIDITY: 💧 Lectura #70: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (348913) TASK_MAIN: Supervisor activo - Heap libre: 196332 bytes[0m
+[0;32mI (348913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (349913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (350913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (351913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (352913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (353913) SOIL_HUMIDITY: 💧 Lectura #71: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (353913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (354913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (355913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (356913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (357913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (358913) SOIL_HUMIDITY: 💧 Lectura #72: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (358913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (359913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (360913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (361913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (362913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (363913) SOIL_HUMIDITY: 💧 Lectura #73: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (363913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (364913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (365913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (366913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (367913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (368913) SOIL_HUMIDITY: 💧 Lectura #74: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (368913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (369913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (370913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (371913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (372913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (373913) SOIL_HUMIDITY: 💧 Lectura #75: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (373913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (374913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (375913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (376913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (377913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (378913) SOIL_HUMIDITY: 💧 Lectura #76: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (378913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (379913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (380913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (381913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (382913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (383913) SOIL_HUMIDITY: 💧 Lectura #77: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (383913) TASK_MAIN: Supervisor activo - Heap libre: 196288 bytes[0m
+[0;32mI (383913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (384913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (385913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (386913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (387913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (388913) SOIL_HUMIDITY: 💧 Lectura #78: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (388913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (389913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (390913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (391913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (392913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (393913) SOIL_HUMIDITY: 💧 Lectura #79: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (393913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (394913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (395913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (396913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (397913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (398913) SOIL_HUMIDITY: 💧 Lectura #80: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (398913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (399913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (400913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (401913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (402913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (403913) SOIL_HUMIDITY: 💧 Lectura #81: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (403913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (404913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (405913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (406913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (407913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (408913) SOIL_HUMIDITY: 💧 Lectura #82: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (408913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (409913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (410913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (411913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (412913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (413913) SOIL_HUMIDITY: 💧 Lectura #83: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (413913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (414913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (415913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (416913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (417913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (418913) SOIL_HUMIDITY: 💧 Lectura #84: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (418913) TASK_MAIN: Supervisor activo - Heap libre: 196332 bytes[0m
+[0;32mI (418913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (419913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (420913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m
+[0;32mI (421913) LIGHT_SENSOR: Esperando configuración del sensor de luz...[0m

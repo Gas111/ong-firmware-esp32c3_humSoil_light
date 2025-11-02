@@ -1,0 +1,25 @@
+idf_component_register(
+    SRCS 
+        "main.c"
+        "task_main.c"
+        "task_initial_config.c"
+        "task_wifi.c"
+        "task_soil_humidity.c"
+        "task_light_sensor.c"
+        "task_sensor_config.c"
+        "task_http.c"
+        "task_nvs.c"
+        "task_led_status.c"
+        "adc_shared.c"
+    INCLUDE_DIRS "."
+    REQUIRES 
+        driver 
+        esp_adc 
+        nvs_flash 
+        esp_wifi 
+        esp_http_client 
+        json 
+        espressif__led_strip
+        mbedtls
+        esp-tls
+)

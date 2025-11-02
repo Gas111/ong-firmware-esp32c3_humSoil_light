@@ -1,0 +1,29 @@
+Command: ninja all
+[1/18] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\bootloader\esp-idf\esptool_py && C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/bootloader/bootloader.bin"
+Bootloader binary size 0x43b0 bytes. 0x3c50 bytes (47%) free.
+[2/18] No install step for 'bootloader'
+[3/18] Completed 'bootloader'
+[4/18] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_soil_humidity.c.obj
+[5/18] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+[6/18] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_light_sensor.c.obj
+[7/18] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_led_status.c.obj
+[8/18] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_initial_config.c.obj
+[9/18] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_nvs.c.obj
+[10/18] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_main.c.obj
+[11/18] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_wifi.c.obj
+C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_wifi.c:47:18: warning: 'save_wifi_credentials_to_nvs' defined but not used [-Wunused-function]
+   47 | static esp_err_t save_wifi_credentials_to_nvs(const char *ssid, const char *pass)
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12/18] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_sensor_config.c.obj
+[13/18] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_http.c.obj
+[14/18] Linking C static library esp-idf\main\libmain.a
+[15/18] Generating esp-idf/esp_system/ld/sections.ld
+[16/18] Linking CXX executable sensor_esp32c3.elf
+FAILED: sensor_esp32c3.elf 
+C:\WINDOWS\system32\cmd.exe /C "cd . && C:\ESP32_Idf\Espressif\tools\riscv32-esp-elf\esp-14.2.0_20241119\riscv32-esp-elf\bin\riscv32-esp-elf-g++.exe -march=rv32imc_zicsr_zifencei -nostartfiles -march=rv32imc_zicsr_zifencei    -Wl,--cref -Wl,--defsym=IDF_TARGET_ESP32C3=0 -Wl,--Map=C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/sensor_esp32c3.map -Wl,--no-warn-rwx-segments -Wl,--orphan-handling=warn -fno-rtti -fno-lto -Wl,--gc-sections -Wl,--warn-common -T rom.api.ld -T esp32c3.peripherals.ld -T esp32c3.rom.ld -T esp32c3.rom.api.ld -T esp32c3.rom.bt_funcs.ld -T esp32c3.rom.libgcc.ld -T esp32c3.rom.version.ld -T esp32c3.rom.ble_master.ld -T esp32c3.rom.ble_50.ld -T esp32c3.rom.ble_smp.ld -T esp32c3.rom.ble_dtm.ld -T esp32c3.rom.ble_test.ld -T esp32c3.rom.ble_scan.ld -T esp32c3.rom.eco3.ld -T esp32c3.rom.eco3_bt_funcs.ld -T esp32c3.rom.libc.ld -T esp32c3.rom.libc-suboptimal_for_misaligned_mem.ld -T esp32c3.rom.newlib.ld -T memory.ld -T sections.ld @CMakeFiles\sensor_esp32c3.elf.rsp -o sensor_esp32c3.elf && cd ."
+C:/ESP32_Idf/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: esp-idf/main/libmain.a(task_main.c.obj): in function `task_main_supervisor':
+C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_main.c:284:(.text.task_main_supervisor+0x536): undefined reference to `task_sensor_reading'
+C:/ESP32_Idf/Espressif/tools/riscv32-esp-elf/esp-14.2.0_20241119/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/14.2.0/../../../../riscv32-esp-elf/bin/ld.exe: C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_main.c:284:(.text.task_main_supervisor+0x54a): undefined reference to `task_sensor_reading'
+collect2.exe: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
