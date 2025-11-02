@@ -341,6 +341,13 @@ void task_main_supervisor(void *pvParameters)
                 case SUPERVISOR_MSG_HEARTBEAT:
                     ESP_LOGD(TAG, "Heartbeat de tarea %d: %s", 
                             received_msg.task_type, received_msg.message);
+                    
+                    // Cambiar LED según el tipo de tarea
+                    if (received_msg.task_type == TASK_TYPE_SENSOR) {
+                        send_led_status(SYSTEM_STATE_SENSOR_READ, "Leyendo sensores");
+                    } else if (received_msg.task_type == TASK_TYPE_HTTP) {
+                        send_led_status(SYSTEM_STATE_HTTP_SEND, "Enviando datos");
+                    }
                     break;
                     
                 case SUPERVISOR_MSG_STATUS_UPDATE:
@@ -357,7 +364,7 @@ void task_main_supervisor(void *pvParameters)
                     (unsigned long)esp_get_free_heap_size());
             last_heartbeat_check = current_time;
             
-            // Enviar estado Ready si no hay errores
+            // Enviar estado Ready si no hay errores (volver a verde después de actividad)
             send_led_status(SYSTEM_STATE_READY, "Sistema OK");
         }
         
