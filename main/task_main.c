@@ -5,8 +5,7 @@
 #include "task_initial_config.h"
 #include "task_wifi.h"
 #include "task_sensor_config.h"
-#include "task_soil_humidity.h"
-#include "task_light_sensor.h"
+#include "task_sensors_unified.h"
 #include "task_http.h"
 #include "task_led_status.h"
 #include "task_nvs.h"
@@ -310,41 +309,18 @@ void task_main_supervisor(void *pvParameters)
         ESP_LOGI(TAG, "✓ Sensores configurados exitosamente");
     }
     
-    // Crear tareas de sensores - AMBAS ESCRIBEN EN LA MISMA COLA
-    ESP_LOGI(TAG, "Creando tareas de sensores...");
+    // Crear tarea unificada de sensores
+    ESP_LOGI(TAG, "Creando tarea unificada de sensores...");
+    ESP_LOGI(TAG, "  - Lectura cada %d ms", SENSOR_READING_INTERVAL_MS);
+    ESP_LOGI(TAG, "  - Envío HTTP según interval_seconds (configurado por MQTT)");
     
-    // Estructura para pasar colas a las tareas de sensores
-    struct {
-        QueueHandle_t sensor_data_queue;
-        QueueHandle_t config_update_queue;
-    } humidity_queues = {
-        .sensor_data_queue = shared_sensor_queue,
-        .config_update_queue = humidity_config_queue
-    };
-    
-    struct {
-        QueueHandle_t sensor_data_queue;
-        QueueHandle_t config_update_queue;
-    } light_queues = {
-        .sensor_data_queue = shared_sensor_queue,
-        .config_update_queue = light_config_queue
-    };
-    
-    // Tarea de sensor de humedad de suelo
-    result = xTaskCreate(task_soil_humidity_reading, "soil_humidity_task",
-                        4096, &humidity_queues, 3, &task_handles[TASK_TYPE_SENSOR]);
+    result = xTaskCreate(task_sensors_unified_reading, "sensors_unified",
+                        4096, shared_sensor_queue, 3, &task_handles[TASK_TYPE_SENSOR]);
     if (result != pdPASS) {
-        ESP_LOGE(TAG, "Error creando tarea de sensor de humedad");
+        ESP_LOGE(TAG, "Error creando tarea unificada de sensores");
         esp_restart();
     }
-    
-    // Tarea de sensor de luz
-    result = xTaskCreate(task_light_sensor_reading, "light_sensor_task",
-                        4096, &light_queues, 3, NULL);
-    if (result != pdPASS) {
-        ESP_LOGE(TAG, "Error creando tarea de sensor de luz");
-        esp_restart();
-    }
+    ESP_LOGI(TAG, "✓ Tarea unificada de sensores creada");
     
     // Crear tarea HTTP
     ESP_LOGI(TAG, "Creando tarea HTTP...");

@@ -210,38 +210,50 @@ void task_sensor_config_init(void *pvParameters)
 {
     ESP_LOGI(TAG, "=== INICIANDO CONFIGURACIÓN DE SENSORES ===");
 
-    // Cargar configuración del sensor de humedad
-    ESP_LOGI(TAG, "Cargando configuración del sensor de humedad...");
-    int32_t stored_humidity_id = 0;
-    bool humidity_registered = false;
+    // ========== SENSOR DE HUMEDAD ==========
+    ESP_LOGI(TAG, "📝 Cargando configuración del sensor de humedad...");
     
-    esp_err_t nvs_result_humidity = nvs_get_sensor_id("humidity_id", &stored_humidity_id);
-    nvs_get_registered_flag("humidity_registered", &humidity_registered);
+    // 1. Intentar cargar desde NVS primero
+    esp_err_t nvs_result = nvs_load_sensor_config(SENSOR_TYPE_SOIL_HUMIDITY, &g_sensor_humidity_config);
     
-    if (nvs_result_humidity == ESP_OK && stored_humidity_id > 0 && humidity_registered) {
-        ESP_LOGI(TAG, "Configuración de humedad encontrada en NVS (ID: %ld)", stored_humidity_id);
-        g_sensor_humidity_config.id_sensor = stored_humidity_id;
-        g_sensor_humidity_config.config_loaded = true;
+    if (nvs_result == ESP_OK) {
+        ESP_LOGI(TAG, "✅ Configuración de humedad cargada desde NVS");
     } else {
-        ESP_LOGI(TAG, "No hay configuración de humedad en NVS, obteniendo del servidor...");
-        fetch_sensor_config(DEVICE_SERIAL_HUMIDITY, &g_sensor_humidity_config, "HUMEDAD", "humidity");
+        ESP_LOGW(TAG, "⚠️ No hay configuración en NVS, usando valores por defecto");
+        // Valores por defecto definidos en config.h
+        g_sensor_humidity_config.id_sensor = 8; // ID por defecto
+        g_sensor_humidity_config.interval_s = 5;
+        g_sensor_humidity_config.state = true;
+        g_sensor_humidity_config.config_loaded = true; // Marcar como cargado con defaults
+        strncpy(g_sensor_humidity_config.description, "Sensor Humedad Suelo", sizeof(g_sensor_humidity_config.description) - 1);
+        
+        ESP_LOGI(TAG, "📋 Valores por defecto aplicados:");
+        ESP_LOGI(TAG, "  - ID: %d", g_sensor_humidity_config.id_sensor);
+        ESP_LOGI(TAG, "  - Intervalo: %d seg", g_sensor_humidity_config.interval_s);
+        ESP_LOGI(TAG, "  - Estado: %s", g_sensor_humidity_config.state ? "activo" : "inactivo");
     }
 
-    // Cargar configuración del sensor de luz
-    ESP_LOGI(TAG, "Cargando configuración del sensor de luz...");
-    int32_t stored_light_id = 0;
-    bool light_registered = false;
+    // ========== SENSOR DE LUZ ==========
+    ESP_LOGI(TAG, "📝 Cargando configuración del sensor de luz...");
     
-    esp_err_t nvs_result_light = nvs_get_sensor_id("light_id", &stored_light_id);
-    nvs_get_registered_flag("light_registered", &light_registered);
+    // 1. Intentar cargar desde NVS primero
+    nvs_result = nvs_load_sensor_config(SENSOR_TYPE_LIGHT, &g_sensor_light_config);
     
-    if (nvs_result_light == ESP_OK && stored_light_id > 0 && light_registered) {
-        ESP_LOGI(TAG, "Configuración de luz encontrada en NVS (ID: %ld)", stored_light_id);
-        g_sensor_light_config.id_sensor = stored_light_id;
-        g_sensor_light_config.config_loaded = true;
+    if (nvs_result == ESP_OK) {
+        ESP_LOGI(TAG, "✅ Configuración de luz cargada desde NVS");
     } else {
-        ESP_LOGI(TAG, "No hay configuración de luz en NVS, obteniendo del servidor...");
-        fetch_sensor_config(DEVICE_SERIAL_LIGHT, &g_sensor_light_config, "LUZ", "light");
+        ESP_LOGW(TAG, "⚠️ No hay configuración en NVS, usando valores por defecto");
+        // Valores por defecto definidos en config.h
+        g_sensor_light_config.id_sensor = 9; // ID por defecto
+        g_sensor_light_config.interval_s = 5;
+        g_sensor_light_config.state = true;
+        g_sensor_light_config.config_loaded = true; // Marcar como cargado con defaults
+        strncpy(g_sensor_light_config.description, "Sensor de Luz", sizeof(g_sensor_light_config.description) - 1);
+        
+        ESP_LOGI(TAG, "📋 Valores por defecto aplicados:");
+        ESP_LOGI(TAG, "  - ID: %d", g_sensor_light_config.id_sensor);
+        ESP_LOGI(TAG, "  - Intervalo: %d seg", g_sensor_light_config.interval_s);
+        ESP_LOGI(TAG, "  - Estado: %s", g_sensor_light_config.state ? "activo" : "inactivo");
     }
 
     // Mostrar configuración final de ambos sensores
@@ -252,14 +264,12 @@ void task_sensor_config_init(void *pvParameters)
     ESP_LOGI(TAG, "  Descripción: %s", g_sensor_humidity_config.description);
     ESP_LOGI(TAG, "  Intervalo: %d segundos", g_sensor_humidity_config.interval_s);
     ESP_LOGI(TAG, "  Estado: %s", g_sensor_humidity_config.state ? "activo" : "inactivo");
-    ESP_LOGI(TAG, "  Cargado: %s", g_sensor_humidity_config.config_loaded ? "servidor" : "por defecto");
     
     ESP_LOGI(TAG, "Sensor Luz:");
     ESP_LOGI(TAG, "  ID: %d", g_sensor_light_config.id_sensor);
     ESP_LOGI(TAG, "  Descripción: %s", g_sensor_light_config.description);
     ESP_LOGI(TAG, "  Intervalo: %d segundos", g_sensor_light_config.interval_s);
     ESP_LOGI(TAG, "  Estado: %s", g_sensor_light_config.state ? "activo" : "inactivo");
-    ESP_LOGI(TAG, "  Cargado: %s", g_sensor_light_config.config_loaded ? "servidor" : "por defecto");
 
     // Notificar al supervisor que la configuración está completa
     ESP_LOGI(TAG, "✅ Configuración de sensores completada");

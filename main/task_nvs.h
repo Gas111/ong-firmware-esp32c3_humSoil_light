@@ -5,6 +5,8 @@
 #include "freertos/task.h"
 #include "nvs.h"
 #include "nvs_flash.h"
+#include "task_sensor.h"
+#include "task_sensor_config.h"
 
 // Global variables for NVS handles
 extern nvs_handle_t my_handle;
@@ -37,6 +39,10 @@ esp_err_t nvs_get_sensor_id(const char *key, int32_t *out_id);
 // Persist a boolean 'registered' flag for sensors/device
 esp_err_t nvs_save_registered_flag(const char *key, bool value);
 esp_err_t nvs_get_registered_flag(const char *key, bool *out_value);
+
+// Sensor configuration persistence
+esp_err_t nvs_save_sensor_config(sensor_type_t sensor_type, sensor_config_t *config);
+esp_err_t nvs_load_sensor_config(sensor_type_t sensor_type, sensor_config_t *config);
 
 // Task
 void task_nvs_config(void *args);

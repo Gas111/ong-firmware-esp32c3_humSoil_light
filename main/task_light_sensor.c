@@ -128,22 +128,16 @@ void task_light_sensor_reading(void *pvParameters)
             data.timestamp = xTaskGetTickCount();
             data.valid = true;
             
-            // SIEMPRE mostrar logs cada 5 segundos
+            send_count++;
             ESP_LOGI(TAG, "💡 Lectura #%lu: Raw=%d, Voltaje=%.0f mV, Luz=%.0f LM%%", 
-                     (unsigned long)read_count, data.raw_value, data.adc_voltage, data.converted_value);
+                     (unsigned long)send_count, data.raw_value, data.adc_voltage, data.converted_value);
             
-            // Solo enviar al servidor según el intervalo configurado (dinámico)
-            if (g_sensor_light_config.state && (read_count % (current_interval_s / 5)) == 0) {
-                send_count++;
-                ESP_LOGI(TAG, "📤 Enviando datos #%lu al servidor (cada %d segundos)", 
-                        (unsigned long)send_count, current_interval_s);
-                
-                // Enviar a cola (reemplazar si está llena)
-                if (xQueueSend(light_queue, &data, 0) != pdTRUE) {
-                    sensor_data_t dummy;
-                    xQueueReceive(light_queue, &dummy, 0);
-                    xQueueSend(light_queue, &data, 0);
-                }
+            // Enviar a cola (reemplazar si está llena - cola de tamaño 1)
+            ESP_LOGI(TAG, "📤 Enviando datos al servidor");
+            if (xQueueSend(light_queue, &data, 0) != pdTRUE) {
+                sensor_data_t dummy;
+                xQueueReceive(light_queue, &dummy, 0);
+                xQueueSend(light_queue, &data, 0);
             }
             
             task_send_heartbeat(TASK_TYPE_SENSOR, "Luz OK");

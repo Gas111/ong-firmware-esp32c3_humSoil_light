@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "sensor_esp32c3",
-    "project_version":    "62086c2-dirty",
+    "project_version":    "6e18fc1-dirty",
     "project_path":       "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3",
     "idf_path":           "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1",
     "build_dir":          "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build",
@@ -910,7 +910,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__led_strip" ],
             "file": "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/main/libmain.a",
-            "sources": [ "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/main.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_main.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_initial_config.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_wifi.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_soil_humidity.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_light_sensor.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_sensor_config.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_http.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_nvs.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_led_status.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_mqtt.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/adc_shared.c" ],
+            "sources": [ "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/main.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_main.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_initial_config.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_wifi.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_sensors_unified.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_sensor_config.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_http.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_nvs.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_led_status.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_mqtt.c", "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/adc_shared.c" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {

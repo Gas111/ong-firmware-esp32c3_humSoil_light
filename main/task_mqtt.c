@@ -3,6 +3,7 @@
 #include "task_sensor_config.h"
 #include "task_main.h"
 #include "task_sensor.h"
+#include "task_nvs.h"
 #include "esp_log.h"
 #include "mqtt_client.h"
 #include "cJSON.h"
@@ -44,27 +45,39 @@ static void process_sensor_config_message(const char *serial, const char *json_d
         return;
     }
     
+    // Extraer el objeto sensorConfig si existe (estructura anidada)
+    cJSON *sensor_config_obj = cJSON_GetObjectItem(root, "sensorConfig");
+    cJSON *data_source = (sensor_config_obj != NULL) ? sensor_config_obj : root;
+    
+    if (sensor_config_obj != NULL) {
+        ESP_LOGI(TAG, "📦 Usando estructura anidada 'sensorConfig'");
+    } else {
+        ESP_LOGI(TAG, "📄 Usando estructura plana (root)");
+    }
+    
     // Parsear campos del JSON
-    cJSON *id_sensor = cJSON_GetObjectItem(root, "id_sensor");
+    cJSON *id_sensor = cJSON_GetObjectItem(data_source, "id_sensor");
     if (cJSON_IsNumber(id_sensor)) {
         config->id_sensor = id_sensor->valueint;
         ESP_LOGI(TAG, "  id_sensor: %d", config->id_sensor);
     }
     
-    cJSON *interval = cJSON_GetObjectItem(root, "interval_seconds");
+    cJSON *interval = cJSON_GetObjectItem(data_source, "interval_seconds");
     if (cJSON_IsNumber(interval)) {
         config->interval_s = interval->valueint;
         ESP_LOGI(TAG, "  interval_seconds: %d", config->interval_s);
     }
     
-    cJSON *state = cJSON_GetObjectItem(root, "state");
+    cJSON *state = cJSON_GetObjectItem(data_source, "state");
     if (cJSON_IsString(state)) {
-        config->state = (strcmp(state->valuestring, "active") == 0);
-        ESP_LOGI(TAG, "  state: %s", config->state ? "active" : "inactive");
+        // Considerar activo: "active", "desynced", "synced"
+        // Solo inactivo si es explícitamente "inactive"
+        config->state = (strcmp(state->valuestring, "inactive") != 0);
+        ESP_LOGI(TAG, "  state: %s -> %s", state->valuestring, config->state ? "ACTIVO" : "INACTIVO");
     }
     
     // Campos opcionales - max_value
-    cJSON *max_value = cJSON_GetObjectItem(root, "max_value");
+    cJSON *max_value = cJSON_GetObjectItem(data_source, "max_value");
     if (cJSON_IsNumber(max_value)) {
         config->max_value = (float)max_value->valuedouble;
         config->has_max_value = true;
@@ -75,7 +88,7 @@ static void process_sensor_config_message(const char *serial, const char *json_d
     }
     
     // Campos opcionales - min_value
-    cJSON *min_value = cJSON_GetObjectItem(root, "min_value");
+    cJSON *min_value = cJSON_GetObjectItem(data_source, "min_value");
     if (cJSON_IsNumber(min_value)) {
         config->min_value = (float)min_value->valuedouble;
         config->has_min_value = true;
@@ -86,13 +99,13 @@ static void process_sensor_config_message(const char *serial, const char *json_d
     }
     
     // Campos de auditoría
-    cJSON *id_user_created = cJSON_GetObjectItem(root, "id_user_created");
+    cJSON *id_user_created = cJSON_GetObjectItem(data_source, "id_user_created");
     if (cJSON_IsNumber(id_user_created)) {
         config->id_user_created = id_user_created->valueint;
         ESP_LOGI(TAG, "  id_user_created: %d", config->id_user_created);
     }
     
-    cJSON *id_user_modified = cJSON_GetObjectItem(root, "id_user_modified");
+    cJSON *id_user_modified = cJSON_GetObjectItem(data_source, "id_user_modified");
     if (cJSON_IsNumber(id_user_modified)) {
         config->id_user_modified = id_user_modified->valueint;
         ESP_LOGI(TAG, "  id_user_modified: %d", config->id_user_modified);
@@ -100,14 +113,14 @@ static void process_sensor_config_message(const char *serial, const char *json_d
         config->id_user_modified = 0; // NULL se representa como 0
     }
     
-    cJSON *created_at = cJSON_GetObjectItem(root, "created_at");
+    cJSON *created_at = cJSON_GetObjectItem(data_source, "created_at");
     if (cJSON_IsString(created_at)) {
         strncpy(config->created_at, created_at->valuestring, sizeof(config->created_at) - 1);
         config->created_at[sizeof(config->created_at) - 1] = '\0';
         ESP_LOGI(TAG, "  created_at: %s", config->created_at);
     }
     
-    cJSON *modified_at = cJSON_GetObjectItem(root, "modified_at");
+    cJSON *modified_at = cJSON_GetObjectItem(data_source, "modified_at");
     if (cJSON_IsString(modified_at)) {
         strncpy(config->modified_at, modified_at->valuestring, sizeof(config->modified_at) - 1);
         config->modified_at[sizeof(config->modified_at) - 1] = '\0';
@@ -116,6 +129,25 @@ static void process_sensor_config_message(const char *serial, const char *json_d
     
     config->config_loaded = true;
     ESP_LOGI(TAG, "✓ Configuración actualizada exitosamente para sensor %s", serial);
+    
+    // ===== GUARDAR EN NVS PARA PERSISTENCIA =====
+    sensor_type_t sensor_type;
+    if (strcmp(serial, DEVICE_SERIAL_HUMIDITY) == 0) {
+        sensor_type = SENSOR_TYPE_SOIL_HUMIDITY;
+    } else if (strcmp(serial, DEVICE_SERIAL_LIGHT) == 0) {
+        sensor_type = SENSOR_TYPE_LIGHT;
+    } else {
+        sensor_type = SENSOR_TYPE_UNKNOWN;
+    }
+    
+    if (sensor_type != SENSOR_TYPE_UNKNOWN) {
+        esp_err_t nvs_result = nvs_save_sensor_config(sensor_type, config);
+        if (nvs_result == ESP_OK) {
+            ESP_LOGI(TAG, "💾 Configuración guardada en NVS");
+        } else {
+            ESP_LOGW(TAG, "⚠️ No se pudo guardar configuración en NVS: %s", esp_err_to_name(nvs_result));
+        }
+    }
     
     // ===== ENVIAR MENSAJE A COLA PARA ACTUALIZACIÓN EN TIEMPO REAL =====
     config_update_message_t update_msg = {

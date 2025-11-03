@@ -84,6 +84,9 @@ static esp_err_t process_server_response(sensor_type_t sensor_type)
     if (sensor_config != NULL && cJSON_IsObject(sensor_config)) {
         ESP_LOGI(TAG, "🔧 Procesando configuración del sensor desde respuesta del servidor");
 
+        // NO LEER interval_seconds del backend - solo se configura por MQTT
+        // Comentado según requisito: "No leas el interval_seconds del backend"
+        /*
         // Extraer interval_seconds del sensorConfig
         cJSON *interval_item = cJSON_GetObjectItem(sensor_config, "interval_seconds");
         if (cJSON_IsNumber(interval_item)) {
@@ -118,6 +121,7 @@ static esp_err_t process_server_response(sensor_type_t sensor_type)
                 }
             }
         }
+        */
 
         // Extraer id_sensor del sensorConfig
         cJSON *id_item = cJSON_GetObjectItem(sensor_config, "id_sensor");
@@ -178,6 +182,9 @@ static esp_err_t process_server_response(sensor_type_t sensor_type)
     } else {
         ESP_LOGD(TAG, "ℹ No se encontró objeto sensorConfig en la respuesta");
         
+        // NO LEER interval_seconds del backend - solo se configura por MQTT
+        // Comentado según requisito: "No leas el interval_seconds del backend"
+        /*
         // Fallback: buscar interval_seconds directamente en el root (compatibilidad hacia atrás)
         cJSON *interval_item = cJSON_GetObjectItem(json, "interval_seconds");
         if (cJSON_IsNumber(interval_item)) {
@@ -188,6 +195,7 @@ static esp_err_t process_server_response(sensor_type_t sensor_type)
                         new_interval, sensor_post_interval_ms);
             }
         }
+        */
     }
 
     cJSON_Delete(json);
@@ -205,7 +213,7 @@ static esp_err_t send_sensor_value(const sensor_data_t *sensor_data, int id_sens
     switch (sensor_data->type) {
         case SENSOR_TYPE_SOIL_HUMIDITY:
             value_to_send = sensor_data->converted_value; // HS%
-            unit = "%";
+            unit = "HS%";
             sensor_type = "humidity";
             break;
         case SENSOR_TYPE_LIGHT:
@@ -479,71 +487,147 @@ void task_http_client(void *pvParameters)
     static bool humidity_sensor_validated = false;
     static bool light_sensor_validated = false;
 
+    // Variables para controlar timing de envío por sensor
+    uint32_t last_sent_humidity = 0;
+    uint32_t last_sent_light = 0;
+
     uint32_t successful_posts = 0;
     uint32_t failed_posts = 0;
     uint32_t last_activity_log = xTaskGetTickCount();
 
-    ESP_LOGI(TAG, "Intervalo de envío: %lu ms", sensor_post_interval_ms);
+    // Obtener configuraciones globales de sensores
+    extern sensor_config_t g_sensor_humidity_config;
+    extern sensor_config_t g_sensor_light_config;
+
+    ESP_LOGI(TAG, "Intervalo humedad: %d s, Intervalo luz: %d s", 
+             g_sensor_humidity_config.interval_s, g_sensor_light_config.interval_s);
     ESP_LOGI(TAG, "✓ Tarea HTTP lista para recibir datos");
 
     while (1) {
-        // Recibir datos de sensores con timeout
-        if (xQueueReceive(sensor_queue, &received_data, pdMS_TO_TICKS(sensor_post_interval_ms)) == pdTRUE) {
+        // Recibir datos de sensores con timeout corto para no bloquear
+        if (xQueueReceive(sensor_queue, &received_data, pdMS_TO_TICKS(1000)) == pdTRUE) {
             
-            // Limpiar cola para obtener siempre el valor más reciente
-            sensor_data_t temp_data;
-            while (xQueueReceive(sensor_queue, &temp_data, 0) == pdTRUE) {
-                received_data = temp_data; // Actualizar con el valor más nuevo
-                ESP_LOGD(TAG, "📊 Descartando valor anterior, usando más reciente");
-            }
+            // PROCESAR CADA DATO QUE LLEGA - NO descartar para evitar pérdida de datos
+            // Cada sensor envía datos a su propia velocidad de lectura (5s)
+            // La lógica de timing decide si enviar o no al backend
+            
             // Verificar si los datos son válidos
             if (received_data.valid) {
+                uint32_t current_time = xTaskGetTickCount();
+                bool should_send = false;
+                
+                // Log del tipo de dato recibido
+                const char *sensor_name = (received_data.type == SENSOR_TYPE_SOIL_HUMIDITY) ? "HUMEDAD" : 
+                                         (received_data.type == SENSOR_TYPE_LIGHT) ? "LUZ" : "DESCONOCIDO";
+                ESP_LOGI(TAG, "📥 Dato recibido: %s (tipo=%d)", sensor_name, received_data.type);
+
                 // Validar sensor si no ha sido validado aún
-                if (received_data.type == SENSOR_TYPE_SOIL_HUMIDITY && !humidity_sensor_validated) {
-                    ESP_LOGI(TAG, "🔍 Validando sensor de humedad por primera vez...");
-                    esp_err_t validation_result = validate_device_serial(DEVICE_SERIAL_HUMIDITY);
-                    if (validation_result == ESP_OK) {
-                        ESP_LOGI(TAG, "✅ Sensor de humedad (0x001C) validado exitosamente");
-                    } else {
-                        ESP_LOGI(TAG, "ℹ Sensor de humedad (0x001C) - validación omitida, enviando datos de todos modos");
+                if (received_data.type == SENSOR_TYPE_SOIL_HUMIDITY) {
+                    if (!humidity_sensor_validated) {
+                        ESP_LOGI(TAG, "🔍 Validando sensor de humedad por primera vez...");
+                        esp_err_t validation_result = validate_device_serial(DEVICE_SERIAL_HUMIDITY);
+                        if (validation_result == ESP_OK) {
+                            ESP_LOGI(TAG, "✅ Sensor de humedad (0x001C) validado exitosamente");
+                        } else {
+                            ESP_LOGI(TAG, "ℹ Sensor de humedad (0x001C) - validación omitida, enviando datos de todos modos");
+                        }
+                        humidity_sensor_validated = true;
                     }
-                    humidity_sensor_validated = true;
-                } else if (received_data.type == SENSOR_TYPE_LIGHT && !light_sensor_validated) {
-                    ESP_LOGI(TAG, "🔍 Validando sensor de luz por primera vez...");
-                    esp_err_t validation_result = validate_device_serial(DEVICE_SERIAL_LIGHT);
-                    if (validation_result == ESP_OK) {
-                        ESP_LOGI(TAG, "✅ Sensor de luz (0x001D) validado exitosamente");
+
+                    // DEBUG: Mostrar configuración actual
+                    ESP_LOGI(TAG, "🔧 Config humedad actual: interval_s=%d, id_sensor=%d, state=%d", 
+                             g_sensor_humidity_config.interval_s, 
+                             g_sensor_humidity_config.id_sensor,
+                             g_sensor_humidity_config.state);
+
+                    // Verificar si es tiempo de enviar datos de humedad
+                    uint32_t interval_ticks = pdMS_TO_TICKS(g_sensor_humidity_config.interval_s * 1000);
+                    uint32_t elapsed_ticks = current_time - last_sent_humidity;
+                    
+                    ESP_LOGI(TAG, "⏱ Humedad - Tiempo desde último envío: %lu ms (necesita %lu ms)", 
+                             (unsigned long)(elapsed_ticks * portTICK_PERIOD_MS),
+                             (unsigned long)(g_sensor_humidity_config.interval_s * 1000));
+                    
+                    if ((current_time - last_sent_humidity) >= interval_ticks || last_sent_humidity == 0) {
+                        should_send = true;
+                        ESP_LOGI(TAG, "✅ Humedad - TIEMPO CUMPLIDO, enviando...");
                     } else {
-                        ESP_LOGI(TAG, "ℹ Sensor de luz (0x001D) - validación omitida, enviando datos de todos modos");
+                        uint32_t remaining_ms = ((interval_ticks - (current_time - last_sent_humidity)) * portTICK_PERIOD_MS);
+                        ESP_LOGI(TAG, "⏸ Humedad: esperando %lu ms para próximo envío", remaining_ms);
                     }
-                    light_sensor_validated = true;
+
+                } else if (received_data.type == SENSOR_TYPE_LIGHT) {
+                    if (!light_sensor_validated) {
+                        ESP_LOGI(TAG, "🔍 Validando sensor de luz por primera vez...");
+                        esp_err_t validation_result = validate_device_serial(DEVICE_SERIAL_LIGHT);
+                        if (validation_result == ESP_OK) {
+                            ESP_LOGI(TAG, "✅ Sensor de luz (0x001D) validado exitosamente");
+                        } else {
+                            ESP_LOGI(TAG, "ℹ Sensor de luz (0x001D) - validación omitida, enviando datos de todos modos");
+                        }
+                        light_sensor_validated = true;
+                    }
+
+                    // DEBUG: Mostrar configuración actual
+                    ESP_LOGI(TAG, "🔧 Config luz actual: interval_s=%d, id_sensor=%d, state=%d", 
+                             g_sensor_light_config.interval_s, 
+                             g_sensor_light_config.id_sensor,
+                             g_sensor_light_config.state);
+
+                    // Verificar si es tiempo de enviar datos de luz
+                    uint32_t interval_ticks = pdMS_TO_TICKS(g_sensor_light_config.interval_s * 1000);
+                    uint32_t elapsed_ticks = current_time - last_sent_light;
+                    
+                    ESP_LOGI(TAG, "⏱ Luz - Tiempo desde último envío: %lu ms (necesita %lu ms)", 
+                             (unsigned long)(elapsed_ticks * portTICK_PERIOD_MS),
+                             (unsigned long)(g_sensor_light_config.interval_s * 1000));
+                    
+                    if ((current_time - last_sent_light) >= interval_ticks || last_sent_light == 0) {
+                        should_send = true;
+                        ESP_LOGI(TAG, "✅ Luz - TIEMPO CUMPLIDO, enviando...");
+                    } else {
+                        uint32_t remaining_ms = ((interval_ticks - (current_time - last_sent_light)) * portTICK_PERIOD_MS);
+                        ESP_LOGI(TAG, "⏸ Luz: esperando %lu ms para próximo envío", remaining_ms);
+                    }
                 }
 
-                // Mostrar información del sensor según su tipo
-                switch (received_data.type) {
-                    case SENSOR_TYPE_SOIL_HUMIDITY:
-                        ESP_LOGI(TAG, "📊 Datos recibidos - HS: %.1f%%, Voltaje: %.0f mV, Raw: %d",
-                                received_data.converted_value, received_data.adc_voltage, received_data.raw_value);
-                        break;
-                    case SENSOR_TYPE_LIGHT:
-                        ESP_LOGI(TAG, "📊 Datos recibidos - Luz: %.0f LM%%, Voltaje: %.0f mV, Raw: %d",
-                                received_data.converted_value, received_data.adc_voltage, received_data.raw_value);
-                        break;
-                    default:
-                        ESP_LOGI(TAG, "📊 Datos recibidos - Voltaje: %.0f mV, Raw: %d",
-                                received_data.adc_voltage, received_data.raw_value);
-                        break;
-                }
+                // Enviar solo si es tiempo para este sensor
+                if (should_send) {
+                    // Mostrar información del sensor según su tipo
+                    switch (received_data.type) {
+                        case SENSOR_TYPE_SOIL_HUMIDITY:
+                            ESP_LOGI(TAG, "📊 Enviando datos humedad - HS: %.1f%%, Voltaje: %.0f mV, Raw: %d",
+                                    received_data.converted_value, received_data.adc_voltage, received_data.raw_value);
+                            break;
+                        case SENSOR_TYPE_LIGHT:
+                            ESP_LOGI(TAG, "📊 Enviando datos luz - Luz: %.0f LM%%, Voltaje: %.0f mV, Raw: %d",
+                                    received_data.converted_value, received_data.adc_voltage, received_data.raw_value);
+                            break;
+                        default:
+                            ESP_LOGI(TAG, "📊 Enviando datos - Voltaje: %.0f mV, Raw: %d",
+                                    received_data.adc_voltage, received_data.raw_value);
+                            break;
+                    }
 
-                // Enviar datos al servidor
-                esp_err_t send_result = send_sensor_data(&received_data);
+                    // Enviar datos al servidor
+                    esp_err_t send_result = send_sensor_data(&received_data);
 
-                if (send_result == ESP_OK) {
-                    successful_posts++;
-                    task_send_status(TASK_TYPE_HTTP, "Datos enviados OK");
+                    if (send_result == ESP_OK) {
+                        successful_posts++;
+                        task_send_status(TASK_TYPE_HTTP, "Datos enviados OK");
+
+                        // Actualizar timestamp de último envío exitoso
+                        if (received_data.type == SENSOR_TYPE_SOIL_HUMIDITY) {
+                            last_sent_humidity = current_time;
+                        } else if (received_data.type == SENSOR_TYPE_LIGHT) {
+                            last_sent_light = current_time;
+                        }
+                    } else {
+                        failed_posts++;
+                        task_report_error(TASK_TYPE_HTTP, TASK_ERROR_TIMEOUT, "HTTP send failed");
+                    }
                 } else {
-                    failed_posts++;
-                    task_report_error(TASK_TYPE_HTTP, TASK_ERROR_TIMEOUT, "HTTP send failed");
+                    ESP_LOGD(TAG, "⏸ Datos recibidos pero aún no es tiempo de enviar");
                 }
             } else {
                 ESP_LOGW(TAG, "⚠ Datos de sensor inválidos recibidos, descartando");
