@@ -25,14 +25,14 @@ static const uint8_t state_colors[SYSTEM_STATE_MAX][3] = {
     [SYSTEM_STATE_INIT] = {255, 255, 0},           // Amarillo - Inicialización
     [SYSTEM_STATE_WIFI] = {255, 255, 0},           // Amarillo - Conectando WiFi
     [SYSTEM_STATE_CONFIG] = {0, 0, 255},           // Azul - Configurando sensores
-    [SYSTEM_STATE_READY] = {0, 0, 255},            // Azul - Sistema listo
-    [SYSTEM_STATE_SENSOR_READ] = {0, 255, 0},    // Cian - Leyendo sensor
-    [SYSTEM_STATE_HTTP_SEND] = {0, 255, 0},      // Cian - Enviando HTTP
+    [SYSTEM_STATE_READY] = {0, 255, 0},            // Verde - Sistema listo
+    [SYSTEM_STATE_SENSOR_READ] = {0, 255, 0},    // Verde - Leyendo sensor
+    [SYSTEM_STATE_HTTP_SEND] = {0, 255, 0},      // Verde - Enviando HTTP
     [SYSTEM_STATE_ERROR] = {255, 0, 0},            // Rojo - Error crítico
     [SYSTEM_STATE_ESPERANDO_WIFI] = {255, 255, 0}, // Amarillo - Esperando WiFi
-    [SYSTEM_STATE_PROVISIONING] = {0, 0, 255},   // Cian - Provisioning
+    [SYSTEM_STATE_PROVISIONING] = {0, 255, 0},   // verde - Provisioning
     [SYSTEM_STATE_WARNING] = {255, 255, 0},        // Amarillo - Advertencia
-}
+    };
 // Color order used by the LED strip. WS2812 typically uses GRB ordering.
 // If your strip expects RGB, set this to 0. If GRB, set to 1.
 // Para ESP32-C3 con WS2812, generalmente es GRB
