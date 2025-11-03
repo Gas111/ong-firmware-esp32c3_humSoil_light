@@ -1,0 +1,480 @@
+Command: C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\sensor_esp32c3.elf C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\bootloader\bootloader.elf --force-color -m 'C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe' 'C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xb (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40383e80
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5830,len:0xdb0
+load:0x403cbf10,len:0x948
+load:0x403ce710,len:0x2c5c
+entry 0x403cbf10
+[0;32mI (198) main_task: Started on CPU0[0m
+[0;32mI (198) main_task: Calling app_main()[0m
+[0;32mI (198) MAIN: ========================================[0m
+[0;32mI (198) MAIN: === ONG SENSOR APPLICATION v1.0 ===[0m
+[0;32mI (198) MAIN: ========================================[0m
+[0;32mI (198) MAIN: ESP32-C3 - Dual sensor monitoring[0m
+[0;32mI (198) MAIN: Free heap: 278524 bytes[0m
+[0;32mI (198) MAIN: ========================================[0m
+[0;32mI (198) MAIN: Creando colas de comunicación...[0m
+[0;32mI (198) MAIN: ✓ Colas creadas correctamente[0m
+[0;32mI (198) MAIN: ========================================[0m
+[0;32mI (198) MAIN: === INICIANDO SUPERVISOR DEL SISTEMA ===[0m
+[0;32mI (198) MAIN: ========================================[0m
+[0;32mI (198) MAIN: Creando tarea supervisor...[0m
+[0;32mI (198) TASK_MAIN: === INICIANDO SUPERVISOR PRINCIPAL ===[0m
+[0;32mI (198) TASK_MAIN: Inicializando LED de estado (WS2812)...[0m
+[0;32mI (198) MAIN: ✓ Tarea supervisor creada correctamente[0m
+[0;32mI (198) TASK_MAIN: ✓ LED de estado inicializado correctamente[0m
+[0;32mI (198) TASK_LED_STATUS: ✓ Queue del LED de estado creada[0m
+[0;32mI (198) TASK_MAIN: Creando tarea LED de estado...[0m
+[0;32mI (198) TASK_MAIN: Creando tarea de configuración inicial...[0m
+[0;32mI (198) TASK_MAIN: Esperando finalización de configuración inicial...[0m
+[0;32mI (198) TASK_LED_STATUS: === INICIANDO TAREA LED DE ESTADO ===[0m
+[0;32mI (198) TASK_LED_STATUS: ✓ LED de estado listo - GPIO4 (D2)[0m
+[0;32mI (198) INIT_CONFIG: === INICIANDO CONFIGURACION INICIAL ESP32-C3 ===[0m
+[0;32mI (198) INIT_CONFIG: Inicializando NVS Flash...[0m
+[0;32mI (208) INIT_CONFIG: ✓ NVS Flash inicializado correctamente[0m
+[0;32mI (208) INIT_CONFIG: Verificando sistema...[0m
+[0;32mI (208) INIT_CONFIG: Verificando sistema...[0m
+[0;32mI (208) INIT_CONFIG: Memoria libre: 261856 bytes[0m
+[0;32mI (208) INIT_CONFIG: ESP32-C3 - 1 núcleos, rev 4[0m
+[0;32mI (208) INIT_CONFIG: ✓ Verificación del sistema exitosa[0m
+[0;32mI (208) MAIN: ========================================[0m
+[0;32mI (208) MAIN: ✓ SISTEMA SUPERVISADO EN FUNCIONAMIENTO[0m
+[0;32mI (208) MAIN: ========================================[0m
+[0;32mI (308) INIT_CONFIG: Verificando configuración ADC...[0m
+[0;32mI (308) INIT_CONFIG: Inicializando ADC compartido...[0m
+[0;32mI (308) ADC_SHARED: === INICIALIZANDO ADC COMPARTIDO ===[0m
+[0;32mI (308) ADC_SHARED: ✓ ADC unit inicializado correctamente[0m
+[0;32mI (308) ADC_SHARED: Inicializando calibración ADC...[0m
+[0;32mI (308) ADC_SHARED: ✓ Calibración ADC habilitada[0m
+[0;32mI (308) ADC_SHARED: ✓ ADC compartido inicializado correctamente[0m
+[0;32mI (308) ADC_SHARED: ✓ Canal ADC 2 configurado correctamente[0m
+[0;32mI (308) ADC_SHARED: ✓ Canal ADC 3 configurado correctamente[0m
+[0;32mI (308) INIT_CONFIG: ✓ ADC compartido inicializado correctamente[0m
+[0;32mI (308) INIT_CONFIG: Sensor Humedad - GPIO2 (D0) - ADC_CHANNEL_2[0m
+[0;32mI (308) INIT_CONFIG: Sensor Luz - GPIO3 (D1) - ADC_CHANNEL_3[0m
+[0;32mI (308) INIT_CONFIG: === DIAGNÓSTICO DE SENSORES ADC ===[0m
+[0;32mI (308) INIT_CONFIG: Probando sensor de humedad (GPIO2)...[0m
+[0;32mI (308) INIT_CONFIG: Humedad - Raw: 4095, Voltaje: 2792 mV[0m
+[0;32mI (308) INIT_CONFIG: Probando sensor de luz (GPIO3)...[0m
+[0;32mI (308) INIT_CONFIG: Luz - Raw: 2221, Voltaje: 1555 mV[0m
+[0;32mI (308) INIT_CONFIG: === FIN DIAGNÓSTICO ===[0m
+[0;32mI (308) INIT_CONFIG: ✓ Configuración ADC verificada[0m
+[0;32mI (308) INIT_CONFIG: Aplicando configuración específica ESP32-C3...[0m
+[0;32mI (308) INIT_CONFIG: ✓ Configuración específica aplicada[0m
+[0;32mI (308) INIT_CONFIG: === CONFIGURACION INICIAL COMPLETADA ===[0m
+[0;32mI (308) INIT_CONFIG: Sistema: ESP32-C3[0m
+[0;32mI (308) INIT_CONFIG: Sensor Humedad: GPIO2 (D0)[0m
+[0;32mI (308) INIT_CONFIG: Sensor Luz: GPIO3 (D1)[0m
+[0;32mI (308) INIT_CONFIG: LED: GPIO4 (D2)[0m
+[0;32mI (308) INIT_CONFIG: Memoria libre: 265952 bytes[0m
+[0;32mI (308) TASK_MAIN: ✓ Configuración inicial completada[0m
+[0;32mI (308) TASK_MAIN: Creando tarea WiFi...[0m
+[0;32mI (308) TASK_MAIN: Esperando conexión WiFi...[0m
+[0;32mI (308) WIFI_TASK: === INICIANDO CONEXIÓN WIFI ===[0m
+[0;32mI (308) INIT_CONFIG: ✓ Tarea de configuración inicial finalizada[0m
+[0;32mI (308) pp: pp rom version: 9387209[0m
+[0;32mI (308) net80211: net80211 rom version: 9387209[0m
+[0;32mI (318) wifi_init: rx ba win: 6[0m
+[0;32mI (318) wifi_init: accept mbox: 6[0m
+[0;32mI (318) wifi_init: tcpip mbox: 32[0m
+[0;32mI (318) wifi_init: udp mbox: 6[0m
+[0;32mI (318) wifi_init: tcp mbox: 6[0m
+[0;32mI (318) wifi_init: tcp tx win: 5760[0m
+[0;32mI (318) wifi_init: tcp rx win: 5760[0m
+[0;32mI (318) wifi_init: tcp mss: 1440[0m
+[0;32mI (318) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (318) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (318) WIFI_TASK: No se pudo abrir NVS para WiFi, usando defaults[0m
+[0;32mI (358) WIFI_TASK: WiFi inicializado. Conectando a TeleCentro-5950...[0m
+[0;32mI (2958) esp_netif_handlers: sta ip: 192.168.0.151, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (2958) WIFI_TASK: Dirección IP obtenida:192.168.0.151[0m
+[0;32mI (2958) WIFI_TASK: ✓ Conectado exitosamente a WiFi SSID: TeleCentro-5950[0m
+[0;32mI (2958) WIFI_TASK:   - RSSI: -51 dBm[0m
+[0;32mI (2958) WIFI_TASK:   - Canal: 1[0m
+[0;32mI (2958) WIFI_TASK:   - IP: 192.168.0.151[0m
+[0;32mI (2958) WIFI_TASK:   - Máscara: 255.255.255.0[0m
+[0;32mI (2958) WIFI_TASK:   - Gateway: 192.168.0.1[0m
+[0;32mI (2958) TASK_MAIN: ✓ WiFi conectado exitosamente[0m
+[0;32mI (2958) TASK_MAIN: Creando tarea de configuración de sensores...[0m
+[0;32mI (2958) TASK_MAIN: Esperando configuración de sensores...[0m
+[0;32mI (2958) SENSOR_CONFIG: === INICIANDO CONFIGURACIÓN DE SENSORES ===[0m
+[0;32mI (2958) SENSOR_CONFIG: Cargando configuración del sensor de humedad...[0m
+[0;32mI (2958) NVS_TASK: Sensor ID leído: humidity_id = 8[0m
+[0;33mW (2958) NVS_TASK: Flag no encontrado: humidity_registered[0m
+[0;32mI (2958) SENSOR_CONFIG: No hay configuración de humedad en NVS, obteniendo del servidor...[0m
+[0;32mI (2958) SENSOR_CONFIG: === OBTENIENDO CONFIGURACIÓN SENSOR HUMEDAD ===[0m
+[0;32mI (2958) SENSOR_CONFIG: Número de serie: 0x001C[0m
+[0;32mI (2958) SENSOR_CONFIG: URL: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001C[0m
+[0;32mI (3398) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (4848) SENSOR_CONFIG: HTTP Status: 200, Content-Length: 524[0m
+[0;32mI (4848) SENSOR_CONFIG: Respuesta recibida (524 bytes): {"id_sensor":8,"id_room_location":3,"id_controller_station":2,"id_user_created":3,"serial_number":"0x001C","description":"SENSOR DE HUMEDAD SUELO","type":"SENSOR","model":"ANALOGICO","created_at":"2025-11-01T03:02:37.650Z","ip_address":null,"ip_mode":null,"unit":"HS%","maximun_radius":"0.30","interval_seconds":2000,"max_value":null,"min_value":null,"config_state":"desynced","config_user_created":3,"config_created_at":"2025-11-01T03:06:35.213Z","config_user_modified":null,"config_modified_at":"2025-11-03T02:36:28.105Z"}[0m
+[0;32mI (4858) SENSOR_CONFIG: ID Sensor: 8[0m
+[0;32mI (4858) SENSOR_CONFIG: Descripción: SENSOR DE HUMEDAD SUELO[0m
+[0;32mI (4858) SENSOR_CONFIG: ✅ Configuración de HUMEDAD cargada exitosamente[0m
+[0;32mI (4858) NVS_TASK: Sensor ID guardado: humidity_id = 8[0m
+[1;31mE (4858) NVS_TASK: Error guardando flag: ESP_ERR_NVS_KEY_TOO_LONG[0m
+[0;32mI (4858) SENSOR_CONFIG: Cargando configuración del sensor de luz...[0m
+[0;32mI (4858) NVS_TASK: Sensor ID leído: light_id = 9[0m
+[0;33mW (4858) NVS_TASK: Flag no encontrado: light_registered[0m
+[0;32mI (4858) SENSOR_CONFIG: No hay configuración de luz en NVS, obteniendo del servidor...[0m
+[0;32mI (4858) SENSOR_CONFIG: === OBTENIENDO CONFIGURACIÓN SENSOR LUZ ===[0m
+[0;32mI (4858) SENSOR_CONFIG: Número de serie: 0x001D[0m
+[0;32mI (4858) SENSOR_CONFIG: URL: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001D[0m
+[0;32mI (5338) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6088) SENSOR_CONFIG: HTTP Status: 200, Content-Length: 510[0m
+[0;32mI (6088) SENSOR_CONFIG: Respuesta recibida (510 bytes): {"id_sensor":9,"id_room_location":3,"id_controller_station":2,"id_user_created":3,"serial_number":"0x001D","description":"SENSOR DE LUZ AMB","type":"SENSOR","model":"LDR","created_at":"2025-11-02T15:12:24.102Z","ip_address":null,"ip_mode":null,"unit":"LM%","maximun_radius":"3.00","interval_seconds":20,"max_value":null,"min_value":null,"config_state":"desynced","config_user_created":3,"config_created_at":"2025-11-02T15:13:36.296Z","config_user_modified":null,"config_modified_at":"2025-11-03T02:36:22.791Z"}[0m
+[0;32mI (6088) SENSOR_CONFIG: ID Sensor: 9[0m
+[0;32mI (6088) SENSOR_CONFIG: Descripción: SENSOR DE LUZ AMB[0m
+[0;32mI (6088) SENSOR_CONFIG: ✅ Configuración de LUZ cargada exitosamente[0m
+[0;32mI (6088) NVS_TASK: Sensor ID guardado: light_id = 9[0m
+[1;31mE (6088) NVS_TASK: Error guardando flag: ESP_ERR_NVS_KEY_TOO_LONG[0m
+[0;32mI (6088) SENSOR_CONFIG: === CONFIGURACIÓN FINAL SENSORES ===[0m
+[0;32mI (6098) SENSOR_CONFIG: Sensor Humedad:[0m
+[0;32mI (6098) SENSOR_CONFIG:   ID: 8[0m
+[0;32mI (6098) SENSOR_CONFIG:   Descripción: SENSOR DE HUMEDAD SUELO[0m
+[0;32mI (6098) SENSOR_CONFIG:   Intervalo: 5 segundos[0m
+[0;32mI (6098) SENSOR_CONFIG:   Estado: activo[0m
+[0;32mI (6098) SENSOR_CONFIG:   Cargado: servidor[0m
+[0;32mI (6098) SENSOR_CONFIG: Sensor Luz:[0m
+[0;32mI (6098) SENSOR_CONFIG:   ID: 9[0m
+[0;32mI (6098) SENSOR_CONFIG:   Descripción: SENSOR DE LUZ AMB[0m
+[0;32mI (6098) SENSOR_CONFIG:   Intervalo: 5 segundos[0m
+[0;32mI (6098) SENSOR_CONFIG:   Estado: activo[0m
+[0;32mI (6098) SENSOR_CONFIG:   Cargado: servidor[0m
+[0;32mI (6098) SENSOR_CONFIG: ✅ Configuración de sensores completada[0m
+[0;32mI (6098) TASK_MAIN: ✓ Sensores configurados exitosamente[0m
+[0;32mI (6098) TASK_MAIN: Creando tareas de sensores...[0m
+[0;32mI (6098) TASK_MAIN: Creando tarea HTTP...[0m
+[0;32mI (6098) TASK_MAIN: Creando tarea MQTT...[0m
+[0;32mI (6098) TASK_MAIN: ✓ Tarea MQTT creada exitosamente[0m
+[0;32mI (6098) TASK_MAIN: Creando tarea NVS...[0m
+[0;32mI (6098) TASK_MAIN: ✓ Sistema completamente inicializado[0m
+[0;32mI (6098) TASK_MAIN: Status de tarea 0: Configuración inicial completa[0m
+[0;32mI (6098) SOIL_HUMIDITY: === INICIANDO SENSOR HUMEDAD SUELO ===[0m
+[0;32mI (6098) SOIL_HUMIDITY: ✓ Sensor inicializado - Lectura cada 5 segundos[0m
+[0;32mI (6098) SOIL_HUMIDITY: ✓ Configuración cargada - Intervalo de envío: 5 segundos[0m
+[0;32mI (6098) SOIL_HUMIDITY: 💧 Lectura #1: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (6098) SOIL_HUMIDITY: 📤 Enviando datos #1 al servidor (cada 5 segundos)[0m
+[0;32mI (6098) LIGHT_SENSOR: === INICIANDO SENSOR DE LUZ ===[0m
+[0;32mI (6098) LIGHT_SENSOR: ✓ Sensor inicializado - Lectura cada 5 segundos[0m
+[0;32mI (6098) LIGHT_SENSOR: ✓ Configuración cargada - Intervalo de envío: 5 segundos[0m
+[0;32mI (6098) LIGHT_SENSOR: 💡 Lectura #1: Raw=2268, Voltaje=1589 mV, Luz=43 LM%[0m
+[0;32mI (6098) LIGHT_SENSOR: 📤 Enviando datos #1 al servidor (cada 5 segundos)[0m
+[0;32mI (6098) HTTP_TASK: === INICIANDO TAREA HTTP CLIENT ===[0m
+[0;32mI (6098) HTTP_TASK: 🔍 Validación de sensores se hará cuando se reciba el primer dato de cada uno[0m
+[0;32mI (6098) HTTP_TASK: Intervalo de envío: 60000 ms[0m
+[0;32mI (6098) HTTP_TASK: ✓ Tarea HTTP lista para recibir datos[0m
+[0;32mI (6098) HTTP_TASK: 🔍 Validando sensor de luz por primera vez...[0m
+[0;32mI (6098) HTTP_TASK: 🔍 Validando dispositivo con serial: 0x001D[0m
+[0;32mI (6098) HTTP_TASK: URL de validación: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001D[0m
+I (6098) MQTT: Iniciando tarea MQTT...
+[0;32mI (6108) NVS_TASK: === INICIANDO TAREA NVS ===[0m
+[0;32mI (6108) NVS_TASK: ✓ NVS storage inicializado[0m
+[0;32mI (6108) NVS_TASK: ✓ NVS storage para password inicializado[0m
+[0;32mI (6198) TASK_MAIN: Status de tarea 1: WiFi conectado exitosamente[0m
+[0;32mI (6298) TASK_MAIN: Status de tarea 2: Configuración completa[0m
+[0;32mI (6488) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (7208) HTTP_TASK: 📥 Respuesta validación [0x001D]: HTTP 200, Error: ESP_OK[0m
+[0;32mI (7208) HTTP_TASK: 📄 Contenido respuesta: {"id_sensor":9,"id_room_location":3,"id_controller_station":2,"id_user_created":3,"serial_number":"0x001D","description":"SENSOR DE LUZ AMB","type":"SENSOR","model":"LDR","created_at":"2025-11-02T15:12:24.102Z","ip_address":null,"ip_mode":null,"unit":"LM%","maximun_radius":"3.00","interval_seconds":20,"max_value":null,"min_value":null,"config_state":"desynced","config_user_created":3,"config_created_at":"2025-11-02T15:13:36.296Z","config_user_modified":null,"config_modified_at":"2025-11-03T02:36:22.791Z"}[0m
+[0;32mI (7218) HTTP_TASK: ✅ Dispositivo [0x001D] validado exitosamente (HTTP 200)[0m
+[0;32mI (7218) HTTP_TASK: ✅ Sensor de luz (0x001D) validado exitosamente[0m
+[0;32mI (7218) HTTP_TASK: 📊 Datos recibidos - Luz: 43 LM%, Voltaje: 1589 mV, Raw: 2268[0m
+[0;32mI (7218) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (7218) HTTP_TASK: Luz: 43 LM%, Voltaje: 1589 mV, Raw: 2268[0m
+[0;32mI (7218) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"42.56",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2268,
+	"timestamp":	7020
+}
+[0;32mI (7598) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (8738) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (8738) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15426,"id_sensor":9,"value":42.56,"unit":"LM%","created_at":"2025-11-02T23:47:46.015Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (8738) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (8738) HTTP_TASK: 🔄 Intervalo de posting actualizado desde servidor: 20 segundos (20000 ms)[0m
+[0;32mI (8738) HTTP_TASK: 💡 Intervalo sensor luz actualizado: 20 segundos[0m
+[0;32mI (8738) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (8738) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (8738) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (11098) SOIL_HUMIDITY: 💧 Lectura #2: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (11098) SOIL_HUMIDITY: 📤 Enviando datos #2 al servidor (cada 5 segundos)[0m
+[0;32mI (11098) LIGHT_SENSOR: 💡 Lectura #2: Raw=2295, Voltaje=1607 mV, Luz=42 LM%[0m
+[0;32mI (11098) MQTT: Inicializando cliente MQTT...[0m
+[1;31mE (11098) mqtt_client: Error parse uri = 7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud[0m
+[1;31mE (11098) MQTT: Error al inicializar cliente MQTT[0m
+[1;31mE (11098) MQTT: Error al inicializar MQTT, abortando tarea[0m
+[0;32mI (11098) HTTP_TASK: 🔍 Validando sensor de humedad por primera vez...[0m
+[0;32mI (11098) HTTP_TASK: 🔍 Validando dispositivo con serial: 0x001C[0m
+[0;32mI (11098) HTTP_TASK: URL de validación: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001C[0m
+[0;32mI (11588) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (13048) HTTP_TASK: 📥 Respuesta validación [0x001C]: HTTP 200, Error: ESP_OK[0m
+[0;32mI (13048) HTTP_TASK: 📄 Contenido respuesta: {"id_sensor":8,"id_room_location":3,"id_controller_station":2,"id_user_created":3,"serial_number":"0x001C","description":"SENSOR DE HUMEDAD SUELO","type":"SENSOR","model":"ANALOGICO","created_at":"2025-11-01T03:02:37.650Z","ip_address":null,"ip_mode":null,"unit":"HS%","maximun_radius":"0.30","interval_seconds":2000,"max_value":null,"min_value":null,"config_state":"desynced","config_user_created":3,"config_created_at":"2025-11-01T03:06:35.213Z","config_user_modified":null,"config_modified_at":"2025-11-03T02:36:28.105Z"}[0m
+[0;32mI (13058) HTTP_TASK: ✅ Dispositivo [0x001C] validado exitosamente (HTTP 200)[0m
+[0;32mI (13058) HTTP_TASK: ✅ Sensor de humedad (0x001C) validado exitosamente[0m
+[0;32mI (13058) HTTP_TASK: 📊 Datos recibidos - HS: 0.0%, Voltaje: 2792 mV, Raw: 4095[0m
+[0;32mI (13058) HTTP_TASK: === ENVIANDO DATOS HUMEDAD SUELO ===[0m
+[0;32mI (13058) HTTP_TASK: HS: 0.0%, Voltaje: 2792 mV, Raw: 4095[0m
+[0;32mI (13058) HTTP_TASK: 🚀 Enviando datos del sensor [0x001C]: {[0m
+	"value":	"0.0",
+	"unit":	"%",
+	"type":	"humidity",
+	"id_sensor":	8,
+	"raw_value":	4095,
+	"timestamp":	12860
+}
+[0;32mI (13528) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (14588) HTTP_TASK: ✅ Datos del sensor [0x001C] enviados exitosamente (HTTP 201)[0m
+[0;32mI (14588) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15427,"id_sensor":8,"value":0,"unit":"%","created_at":"2025-11-02T23:47:51.856Z","date":null},"sensorConfig":{"id_sensor":8,"interval_seconds":2000,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-01T03:06:35.213Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:28.105Z"}}[0m
+[0;32mI (14588) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (14588) HTTP_TASK: 🔄 Intervalo de posting actualizado desde servidor: 2000 segundos (2000000 ms)[0m
+[0;32mI (14588) HTTP_TASK: 💧 Intervalo sensor humedad actualizado: 2000 segundos[0m
+[0;32mI (14588) HTTP_TASK: 🆔 ID sensor recibido del servidor: 8[0m
+[0;32mI (14588) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (14588) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (16098) SOIL_HUMIDITY: 💧 Lectura #3: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (16098) LIGHT_SENSOR: 💡 Lectura #3: Raw=2300, Voltaje=1612 mV, Luz=42 LM%[0m
+[0;32mI (21098) SOIL_HUMIDITY: 💧 Lectura #4: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (21098) LIGHT_SENSOR: 💡 Lectura #4: Raw=2318, Voltaje=1624 mV, Luz=41 LM%[0m
+[0;32mI (21098) LIGHT_SENSOR: 📤 Enviando datos #2 al servidor (cada 20 segundos)[0m
+[0;32mI (21098) HTTP_TASK: 📊 Datos recibidos - Luz: 41 LM%, Voltaje: 1624 mV, Raw: 2318[0m
+[0;32mI (21098) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (21098) HTTP_TASK: Luz: 41 LM%, Voltaje: 1624 mV, Raw: 2318[0m
+[0;32mI (21098) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"41.17",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2318,
+	"timestamp":	20900
+}
+[0;32mI (21518) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (22678) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (22678) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15428,"id_sensor":9,"value":41.17,"unit":"LM%","created_at":"2025-11-02T23:47:59.954Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (22678) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (22678) HTTP_TASK: 🔄 Intervalo de posting actualizado desde servidor: 20 segundos (20000 ms)[0m
+[0;32mI (22678) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (22678) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (22678) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (26098) LIGHT_SENSOR: 💡 Lectura #5: Raw=2297, Voltaje=1609 mV, Luz=42 LM%[0m
+[0;32mI (26098) SOIL_HUMIDITY: 💧 Lectura #5: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (31098) SOIL_HUMIDITY: 💧 Lectura #6: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (31098) LIGHT_SENSOR: 💡 Lectura #6: Raw=2265, Voltaje=1586 mV, Luz=43 LM%[0m
+[0;32mI (36098) LIGHT_SENSOR: 💡 Lectura #7: Raw=2332, Voltaje=1633 mV, Luz=41 LM%[0m
+[0;32mI (36098) SOIL_HUMIDITY: 💧 Lectura #7: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (36198) TASK_MAIN: Supervisor activo - Heap libre: 193892 bytes[0m
+[0;32mI (41098) SOIL_HUMIDITY: 💧 Lectura #8: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (41098) LIGHT_SENSOR: 💡 Lectura #8: Raw=2319, Voltaje=1625 mV, Luz=41 LM%[0m
+[0;32mI (41098) LIGHT_SENSOR: 📤 Enviando datos #3 al servidor (cada 20 segundos)[0m
+[0;32mI (41098) HTTP_TASK: 📊 Datos recibidos - Luz: 41 LM%, Voltaje: 1625 mV, Raw: 2319[0m
+[0;32mI (41098) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (41098) HTTP_TASK: Luz: 41 LM%, Voltaje: 1625 mV, Raw: 2319[0m
+[0;32mI (41098) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"41.14",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2319,
+	"timestamp":	40900
+}
+[0;32mI (41588) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (42648) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (42648) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15429,"id_sensor":9,"value":41.14,"unit":"LM%","created_at":"2025-11-02T23:48:19.898Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (42648) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (42648) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (42648) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (42648) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (46098) SOIL_HUMIDITY: 💧 Lectura #9: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (46098) LIGHT_SENSOR: 💡 Lectura #9: Raw=2284, Voltaje=1598 mV, Luz=42 LM%[0m
+[0;32mI (51098) SOIL_HUMIDITY: 💧 Lectura #10: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (51098) LIGHT_SENSOR: 💡 Lectura #10: Raw=2348, Voltaje=1643 mV, Luz=40 LM%[0m
+[0;32mI (56098) LIGHT_SENSOR: 💡 Lectura #11: Raw=2329, Voltaje=1631 mV, Luz=41 LM%[0m
+[0;32mI (56098) SOIL_HUMIDITY: 💧 Lectura #11: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (61098) SOIL_HUMIDITY: 💧 Lectura #12: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (61098) LIGHT_SENSOR: 💡 Lectura #12: Raw=2303, Voltaje=1613 mV, Luz=42 LM%[0m
+[0;32mI (61098) LIGHT_SENSOR: 📤 Enviando datos #4 al servidor (cada 20 segundos)[0m
+[0;32mI (61098) HTTP_TASK: 📊 Datos recibidos - Luz: 42 LM%, Voltaje: 1613 mV, Raw: 2303[0m
+[0;32mI (61098) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (61098) HTTP_TASK: Luz: 42 LM%, Voltaje: 1613 mV, Raw: 2303[0m
+[0;32mI (61098) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"41.58",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2303,
+	"timestamp":	60900
+}
+[0;32mI (61488) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (62608) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (62608) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15430,"id_sensor":9,"value":41.58,"unit":"LM%","created_at":"2025-11-02T23:48:39.901Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (62608) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (62608) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (62608) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (62618) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (66098) LIGHT_SENSOR: 💡 Lectura #13: Raw=2348, Voltaje=1643 mV, Luz=40 LM%[0m
+[0;32mI (66098) SOIL_HUMIDITY: 💧 Lectura #13: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (71098) LIGHT_SENSOR: 💡 Lectura #14: Raw=2270, Voltaje=1590 mV, Luz=42 LM%[0m
+[0;32mI (71098) TASK_MAIN: Supervisor activo - Heap libre: 193380 bytes[0m
+[0;32mI (71098) SOIL_HUMIDITY: 💧 Lectura #14: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (76098) SOIL_HUMIDITY: 💧 Lectura #15: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (76098) LIGHT_SENSOR: 💡 Lectura #15: Raw=2317, Voltaje=1624 mV, Luz=41 LM%[0m
+[0;32mI (81098) SOIL_HUMIDITY: 💧 Lectura #16: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (81098) LIGHT_SENSOR: 💡 Lectura #16: Raw=2345, Voltaje=1640 mV, Luz=40 LM%[0m
+[0;32mI (81098) LIGHT_SENSOR: 📤 Enviando datos #5 al servidor (cada 20 segundos)[0m
+[0;32mI (81098) HTTP_TASK: 📊 Datos recibidos - Luz: 40 LM%, Voltaje: 1640 mV, Raw: 2345[0m
+[0;32mI (81098) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (81098) HTTP_TASK: Luz: 40 LM%, Voltaje: 1640 mV, Raw: 2345[0m
+[0;32mI (81098) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"40.42",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2345,
+	"timestamp":	80900
+}
+[0;32mI (81488) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (82578) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (82578) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15431,"id_sensor":9,"value":40.42,"unit":"LM%","created_at":"2025-11-02T23:48:59.856Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (82578) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (82578) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (82578) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (82588) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (86098) LIGHT_SENSOR: 💡 Lectura #17: Raw=2314, Voltaje=1621 mV, Luz=41 LM%[0m
+[0;32mI (86098) SOIL_HUMIDITY: 💧 Lectura #17: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (91098) SOIL_HUMIDITY: 💧 Lectura #18: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (91098) LIGHT_SENSOR: 💡 Lectura #18: Raw=2285, Voltaje=1599 mV, Luz=42 LM%[0m
+[0;32mI (96098) LIGHT_SENSOR: 💡 Lectura #19: Raw=2345, Voltaje=1640 mV, Luz=40 LM%[0m
+[1;31mE (96098) ADC_SHARED: Error leyendo canal ADC 2: ESP_ERR_TIMEOUT[0m
+[1;31mE (96098) SOIL_HUMIDITY: Error leyendo ADC: ESP_ERR_TIMEOUT[0m
+[1;31mE (96198) TASK_MAIN: Error reportado por tarea 3: ADC read failed[0m
+[0;32mI (101098) LIGHT_SENSOR: 💡 Lectura #20: Raw=2396, Voltaje=1677 mV, Luz=39 LM%[0m
+[0;32mI (101098) LIGHT_SENSOR: 📤 Enviando datos #6 al servidor (cada 20 segundos)[0m
+[0;32mI (101098) SOIL_HUMIDITY: 💧 Lectura #20: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (101098) HTTP_TASK: 📊 Datos recibidos - Luz: 39 LM%, Voltaje: 1677 mV, Raw: 2396[0m
+[0;32mI (101098) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (101098) HTTP_TASK: Luz: 39 LM%, Voltaje: 1677 mV, Raw: 2396[0m
+[0;32mI (101098) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"39.00",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2396,
+	"timestamp":	100900
+}
+[0;32mI (101198) TASK_MAIN: Supervisor activo - Heap libre: 181544 bytes[0m
+[0;32mI (101588) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (102758) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (102758) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15432,"id_sensor":9,"value":39,"unit":"LM%","created_at":"2025-11-02T23:49:20.017Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (102758) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (102758) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (102758) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (102758) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (106098) SOIL_HUMIDITY: 💧 Lectura #21: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (106098) LIGHT_SENSOR: 💡 Lectura #21: Raw=2366, Voltaje=1657 mV, Luz=40 LM%[0m
+[0;32mI (111098) LIGHT_SENSOR: 💡 Lectura #22: Raw=2350, Voltaje=1645 mV, Luz=40 LM%[0m
+[0;32mI (111098) SOIL_HUMIDITY: 💧 Lectura #22: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (116098) SOIL_HUMIDITY: 💧 Lectura #23: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (116098) LIGHT_SENSOR: 💡 Lectura #23: Raw=2312, Voltaje=1619 mV, Luz=41 LM%[0m
+[0;32mI (121098) LIGHT_SENSOR: 💡 Lectura #24: Raw=2314, Voltaje=1621 mV, Luz=41 LM%[0m
+[0;32mI (121098) LIGHT_SENSOR: 📤 Enviando datos #7 al servidor (cada 20 segundos)[0m
+[0;32mI (121098) SOIL_HUMIDITY: 💧 Lectura #24: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (121098) HTTP_TASK: 📊 Datos recibidos - Luz: 41 LM%, Voltaje: 1621 mV, Raw: 2314[0m
+[0;32mI (121098) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (121098) HTTP_TASK: Luz: 41 LM%, Voltaje: 1621 mV, Raw: 2314[0m
+[0;32mI (121098) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"41.28",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2314,
+	"timestamp":	120900
+}
+[0;32mI (121558) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (122828) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (122828) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15433,"id_sensor":9,"value":41.28,"unit":"LM%","created_at":"2025-11-02T23:49:40.091Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (122828) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (122828) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (122828) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (122828) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (126098) SOIL_HUMIDITY: 💧 Lectura #25: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (126098) LIGHT_SENSOR: 💡 Lectura #25: Raw=2302, Voltaje=1613 mV, Luz=42 LM%[0m
+[0;32mI (131098) SOIL_HUMIDITY: 💧 Lectura #26: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (131098) LIGHT_SENSOR: 💡 Lectura #26: Raw=2286, Voltaje=1600 mV, Luz=42 LM%[0m
+[0;32mI (136098) LIGHT_SENSOR: 💡 Lectura #27: Raw=2286, Voltaje=1600 mV, Luz=42 LM%[0m
+[0;32mI (136098) TASK_MAIN: Supervisor activo - Heap libre: 194068 bytes[0m
+[0;32mI (136098) SOIL_HUMIDITY: 💧 Lectura #27: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (141098) SOIL_HUMIDITY: 💧 Lectura #28: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (141098) LIGHT_SENSOR: 💡 Lectura #28: Raw=2329, Voltaje=1631 mV, Luz=41 LM%[0m
+[0;32mI (141098) LIGHT_SENSOR: 📤 Enviando datos #8 al servidor (cada 20 segundos)[0m
+[0;32mI (141098) HTTP_TASK: 📊 Datos recibidos - Luz: 41 LM%, Voltaje: 1631 mV, Raw: 2329[0m
+[0;32mI (141098) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (141098) HTTP_TASK: Luz: 41 LM%, Voltaje: 1631 mV, Raw: 2329[0m
+[0;32mI (141098) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"40.86",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2329,
+	"timestamp":	140900
+}
+[0;32mI (141488) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (142588) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (142588) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15434,"id_sensor":9,"value":40.86,"unit":"LM%","created_at":"2025-11-02T23:49:59.898Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (142588) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (142588) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (142588) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (142588) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (146098) SOIL_HUMIDITY: 💧 Lectura #29: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (146098) LIGHT_SENSOR: 💡 Lectura #29: Raw=2280, Voltaje=1598 mV, Luz=42 LM%[0m
+[0;32mI (151098) LIGHT_SENSOR: 💡 Lectura #30: Raw=2312, Voltaje=1619 mV, Luz=41 LM%[0m
+[0;32mI (151098) SOIL_HUMIDITY: 💧 Lectura #30: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (156098) SOIL_HUMIDITY: 💧 Lectura #31: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (156098) LIGHT_SENSOR: 💡 Lectura #31: Raw=2319, Voltaje=1625 mV, Luz=41 LM%[0m
+[0;32mI (161098) LIGHT_SENSOR: 💡 Lectura #32: Raw=2366, Voltaje=1657 mV, Luz=40 LM%[0m
+[0;32mI (161098) LIGHT_SENSOR: 📤 Enviando datos #9 al servidor (cada 20 segundos)[0m
+[0;32mI (161098) SOIL_HUMIDITY: 💧 Lectura #32: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (161098) HTTP_TASK: 📊 Datos recibidos - Luz: 40 LM%, Voltaje: 1657 mV, Raw: 2366[0m
+[0;32mI (161098) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (161098) HTTP_TASK: Luz: 40 LM%, Voltaje: 1657 mV, Raw: 2366[0m
+[0;32mI (161098) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"39.83",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2366,
+	"timestamp":	160900
+}
+[0;32mI (161628) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (162768) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (162768) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15435,"id_sensor":9,"value":39.83,"unit":"LM%","created_at":"2025-11-02T23:50:20.059Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (162768) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (162768) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (162768) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (162768) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (166098) SOIL_HUMIDITY: 💧 Lectura #33: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (166098) LIGHT_SENSOR: 💡 Lectura #33: Raw=2303, Voltaje=1613 mV, Luz=42 LM%[0m
+[0;32mI (166198) TASK_MAIN: Supervisor activo - Heap libre: 194068 bytes[0m
+[0;32mI (171098) LIGHT_SENSOR: 💡 Lectura #34: Raw=2347, Voltaje=1643 mV, Luz=40 LM%[0m
+[0;32mI (171098) SOIL_HUMIDITY: 💧 Lectura #34: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (176098) LIGHT_SENSOR: 💡 Lectura #35: Raw=2255, Voltaje=1580 mV, Luz=43 LM%[0m
+[0;32mI (176098) SOIL_HUMIDITY: 💧 Lectura #35: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (181098) SOIL_HUMIDITY: 💧 Lectura #36: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (181098) LIGHT_SENSOR: 💡 Lectura #36: Raw=2267, Voltaje=1588 mV, Luz=43 LM%[0m
+[0;32mI (181098) LIGHT_SENSOR: 📤 Enviando datos #10 al servidor (cada 20 segundos)[0m
+[0;32mI (181098) HTTP_TASK: 📊 Datos recibidos - Luz: 43 LM%, Voltaje: 1588 mV, Raw: 2267[0m
+[0;32mI (181098) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (181098) HTTP_TASK: Luz: 43 LM%, Voltaje: 1588 mV, Raw: 2267[0m
+[0;32mI (181098) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"42.58",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2267,
+	"timestamp":	180900
+}
+[0;32mI (181478) esp-x509-crt-bundle: Certificate validated[0m

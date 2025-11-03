@@ -116,7 +116,9 @@ $<TARGET_FILE:idf::tcp_transport>
 $<TARGET_FILE:idf::esp_http_client>
 $<TARGET_FILE:idf::json>
 $<TARGET_FILE:idf::espressif__led_strip>
+$<TARGET_FILE:idf::mqtt>
 $<TARGET_FILE:idf::main>
 $<TARGET_FILE:__idf_esp_adc>
 $<TARGET_FILE:__idf_json>
 $<TARGET_FILE:__idf_espressif__led_strip>
+$<TARGET_FILE:__idf_mqtt>

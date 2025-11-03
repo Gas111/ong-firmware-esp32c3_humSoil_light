@@ -42,6 +42,7 @@ source "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/heap/Kconfig
 source "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/log/Kconfig"
 source "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/lwip/Kconfig"
 source "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/mbedtls/Kconfig"
+source "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/mqtt/esp-mqtt/Kconfig"
 source "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/newlib/Kconfig"
 source "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/nvs_flash/Kconfig"
 source "C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/pthread/Kconfig"

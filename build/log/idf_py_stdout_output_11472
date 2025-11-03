@@ -1,0 +1,405 @@
+Command: C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM4 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\sensor_esp32c3.elf C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\bootloader\bootloader.elf --force-color -m 'C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe' 'C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py' '-p' 'COM4'
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xb (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40383e80
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5830,len:0xdb0
+load:0x403cbf10,len:0x948
+load:0x403ce710,len:0x2c5c
+entry 0x403cbf10
+[0;32mI (198) main_task: Started on CPU0[0m
+[0;32mI (198) main_task: Calling app_main()[0m
+[0;32mI (198) MAIN: ========================================[0m
+[0;32mI (198) MAIN: === ONG SENSOR APPLICATION v1.0 ===[0m
+[0;32mI (198) MAIN: ========================================[0m
+[0;32mI (198) MAIN: ESP32-C3 - Dual sensor monitoring[0m
+[0;32mI (198) MAIN: Free heap: 278524 bytes[0m
+[0;32mI (198) MAIN: ========================================[0m
+[0;32mI (198) MAIN: Creando colas de comunicación...[0m
+[0;32mI (198) MAIN: ✓ Colas creadas correctamente[0m
+[0;32mI (198) MAIN: ========================================[0m
+[0;32mI (198) MAIN: === INICIANDO SUPERVISOR DEL SISTEMA ===[0m
+[0;32mI (198) MAIN: ========================================[0m
+[0;32mI (198) MAIN: Creando tarea supervisor...[0m
+[0;32mI (198) TASK_MAIN: === INICIANDO SUPERVISOR PRINCIPAL ===[0m
+[0;32mI (198) TASK_MAIN: Inicializando LED de estado (WS2812)...[0m
+[0;32mI (198) MAIN: ✓ Tarea supervisor creada correctamente[0m
+[0;32mI (198) TASK_MAIN: ✓ LED de estado inicializado correctamente[0m
+[0;32mI (198) TASK_LED_STATUS: ✓ Queue del LED de estado creada[0m
+[0;32mI (198) TASK_MAIN: Creando tarea LED de estado...[0m
+[0;32mI (198) TASK_MAIN: Creando tarea de configuración inicial...[0m
+[0;32mI (198) TASK_MAIN: Esperando finalización de configuración inicial...[0m
+[0;32mI (198) TASK_LED_STATUS: === INICIANDO TAREA LED DE ESTADO ===[0m
+[0;32mI (198) TASK_LED_STATUS: ✓ LED de estado listo - GPIO4 (D2)[0m
+[0;32mI (198) INIT_CONFIG: === INICIANDO CONFIGURACION INICIAL ESP32-C3 ===[0m
+[0;32mI (198) INIT_CONFIG: Inicializando NVS Flash...[0m
+[0;32mI (208) INIT_CONFIG: ✓ NVS Flash inicializado correctamente[0m
+[0;32mI (208) INIT_CONFIG: Verificando sistema...[0m
+[0;32mI (208) INIT_CONFIG: Verificando sistema...[0m
+[0;32mI (208) INIT_CONFIG: Memoria libre: 261856 bytes[0m
+[0;32mI (208) INIT_CONFIG: ESP32-C3 - 1 núcleos, rev 4[0m
+[0;32mI (208) INIT_CONFIG: ✓ Verificación del sistema exitosa[0m
+[0;32mI (208) MAIN: ========================================[0m
+[0;32mI (208) MAIN: ✓ SISTEMA SUPERVISADO EN FUNCIONAMIENTO[0m
+[0;32mI (208) MAIN: ========================================[0m
+[0;32mI (308) INIT_CONFIG: Verificando configuración ADC...[0m
+[0;32mI (308) INIT_CONFIG: Inicializando ADC compartido...[0m
+[0;32mI (308) ADC_SHARED: === INICIALIZANDO ADC COMPARTIDO ===[0m
+[0;32mI (308) ADC_SHARED: ✓ ADC unit inicializado correctamente[0m
+[0;32mI (308) ADC_SHARED: Inicializando calibración ADC...[0m
+[0;32mI (308) ADC_SHARED: ✓ Calibración ADC habilitada[0m
+[0;32mI (308) ADC_SHARED: ✓ ADC compartido inicializado correctamente[0m
+[0;32mI (308) ADC_SHARED: ✓ Canal ADC 2 configurado correctamente[0m
+[0;32mI (308) ADC_SHARED: ✓ Canal ADC 3 configurado correctamente[0m
+[0;32mI (308) INIT_CONFIG: ✓ ADC compartido inicializado correctamente[0m
+[0;32mI (308) INIT_CONFIG: Sensor Humedad - GPIO2 (D0) - ADC_CHANNEL_2[0m
+[0;32mI (308) INIT_CONFIG: Sensor Luz - GPIO3 (D1) - ADC_CHANNEL_3[0m
+[0;32mI (308) INIT_CONFIG: === DIAGNÓSTICO DE SENSORES ADC ===[0m
+[0;32mI (308) INIT_CONFIG: Probando sensor de humedad (GPIO2)...[0m
+[0;32mI (308) INIT_CONFIG: Humedad - Raw: 4095, Voltaje: 2792 mV[0m
+[0;32mI (308) INIT_CONFIG: Probando sensor de luz (GPIO3)...[0m
+[0;32mI (308) INIT_CONFIG: Luz - Raw: 2311, Voltaje: 1618 mV[0m
+[0;32mI (308) INIT_CONFIG: === FIN DIAGNÓSTICO ===[0m
+[0;32mI (308) INIT_CONFIG: ✓ Configuración ADC verificada[0m
+[0;32mI (308) INIT_CONFIG: Aplicando configuración específica ESP32-C3...[0m
+[0;32mI (308) INIT_CONFIG: ✓ Configuración específica aplicada[0m
+[0;32mI (308) INIT_CONFIG: === CONFIGURACION INICIAL COMPLETADA ===[0m
+[0;32mI (308) INIT_CONFIG: Sistema: ESP32-C3[0m
+[0;32mI (308) INIT_CONFIG: Sensor Humedad: GPIO2 (D0)[0m
+[0;32mI (308) INIT_CONFIG: Sensor Luz: GPIO3 (D1)[0m
+[0;32mI (308) INIT_CONFIG: LED: GPIO4 (D2)[0m
+[0;32mI (308) INIT_CONFIG: Memoria libre: 265952 bytes[0m
+[0;32mI (308) TASK_MAIN: ✓ Configuración inicial completada[0m
+[0;32mI (308) TASK_MAIN: Creando tarea WiFi...[0m
+[0;32mI (308) TASK_MAIN: Esperando conexión WiFi...[0m
+[0;32mI (308) WIFI_TASK: === INICIANDO CONEXIÓN WIFI ===[0m
+[0;32mI (308) INIT_CONFIG: ✓ Tarea de configuración inicial finalizada[0m
+[0;32mI (308) pp: pp rom version: 9387209[0m
+[0;32mI (308) net80211: net80211 rom version: 9387209[0m
+[0;32mI (318) wifi_init: rx ba win: 6[0m
+[0;32mI (318) wifi_init: accept mbox: 6[0m
+[0;32mI (318) wifi_init: tcpip mbox: 32[0m
+[0;32mI (318) wifi_init: udp mbox: 6[0m
+[0;32mI (318) wifi_init: tcp mbox: 6[0m
+[0;32mI (318) wifi_init: tcp tx win: 5760[0m
+[0;32mI (318) wifi_init: tcp rx win: 5760[0m
+[0;32mI (318) wifi_init: tcp mss: 1440[0m
+[0;32mI (318) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (318) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (318) WIFI_TASK: No se pudo abrir NVS para WiFi, usando defaults[0m
+[0;32mI (358) WIFI_TASK: WiFi inicializado. Conectando a TeleCentro-5950...[0m
+[0;32mI (1458) esp_netif_handlers: sta ip: 192.168.0.151, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (1458) WIFI_TASK: Dirección IP obtenida:192.168.0.151[0m
+[0;32mI (1458) WIFI_TASK: ✓ Conectado exitosamente a WiFi SSID: TeleCentro-5950[0m
+[0;32mI (1458) WIFI_TASK:   - RSSI: -50 dBm[0m
+[0;32mI (1458) WIFI_TASK:   - Canal: 1[0m
+[0;32mI (1458) WIFI_TASK:   - IP: 192.168.0.151[0m
+[0;32mI (1458) WIFI_TASK:   - Máscara: 255.255.255.0[0m
+[0;32mI (1458) WIFI_TASK:   - Gateway: 192.168.0.1[0m
+[0;32mI (1458) TASK_MAIN: ✓ WiFi conectado exitosamente[0m
+[0;32mI (1458) TASK_MAIN: Creando tarea de configuración de sensores...[0m
+[0;32mI (1458) TASK_MAIN: Esperando configuración de sensores...[0m
+[0;32mI (1458) SENSOR_CONFIG: === INICIANDO CONFIGURACIÓN DE SENSORES ===[0m
+[0;32mI (1458) SENSOR_CONFIG: Cargando configuración del sensor de humedad...[0m
+[0;32mI (1458) NVS_TASK: Sensor ID leído: humidity_id = 8[0m
+[0;33mW (1458) NVS_TASK: Flag no encontrado: humidity_registered[0m
+[0;32mI (1458) SENSOR_CONFIG: No hay configuración de humedad en NVS, obteniendo del servidor...[0m
+[0;32mI (1458) SENSOR_CONFIG: === OBTENIENDO CONFIGURACIÓN SENSOR HUMEDAD ===[0m
+[0;32mI (1458) SENSOR_CONFIG: Número de serie: 0x001C[0m
+[0;32mI (1458) SENSOR_CONFIG: URL: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001C[0m
+[0;32mI (1868) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (2568) SENSOR_CONFIG: HTTP Status: 200, Content-Length: 524[0m
+[0;32mI (2568) SENSOR_CONFIG: Respuesta recibida (524 bytes): {"id_sensor":8,"id_room_location":3,"id_controller_station":2,"id_user_created":3,"serial_number":"0x001C","description":"SENSOR DE HUMEDAD SUELO","type":"SENSOR","model":"ANALOGICO","created_at":"2025-11-01T03:02:37.650Z","ip_address":null,"ip_mode":null,"unit":"HS%","maximun_radius":"0.30","interval_seconds":2000,"max_value":null,"min_value":null,"config_state":"desynced","config_user_created":3,"config_created_at":"2025-11-01T03:06:35.213Z","config_user_modified":null,"config_modified_at":"2025-11-03T02:36:28.105Z"}[0m
+[0;32mI (2568) SENSOR_CONFIG: ID Sensor: 8[0m
+[0;32mI (2568) SENSOR_CONFIG: Descripción: SENSOR DE HUMEDAD SUELO[0m
+[0;32mI (2568) SENSOR_CONFIG: ✅ Configuración de HUMEDAD cargada exitosamente[0m
+[0;32mI (2568) NVS_TASK: Sensor ID guardado: humidity_id = 8[0m
+[1;31mE (2568) NVS_TASK: Error guardando flag: ESP_ERR_NVS_KEY_TOO_LONG[0m
+[0;32mI (2578) SENSOR_CONFIG: Cargando configuración del sensor de luz...[0m
+[0;32mI (2578) NVS_TASK: Sensor ID leído: light_id = 9[0m
+[0;33mW (2578) NVS_TASK: Flag no encontrado: light_registered[0m
+[0;32mI (2578) SENSOR_CONFIG: No hay configuración de luz en NVS, obteniendo del servidor...[0m
+[0;32mI (2578) SENSOR_CONFIG: === OBTENIENDO CONFIGURACIÓN SENSOR LUZ ===[0m
+[0;32mI (2578) SENSOR_CONFIG: Número de serie: 0x001D[0m
+[0;32mI (2578) SENSOR_CONFIG: URL: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001D[0m
+[0;32mI (2948) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (3688) SENSOR_CONFIG: HTTP Status: 200, Content-Length: 510[0m
+[0;32mI (3688) SENSOR_CONFIG: Respuesta recibida (510 bytes): {"id_sensor":9,"id_room_location":3,"id_controller_station":2,"id_user_created":3,"serial_number":"0x001D","description":"SENSOR DE LUZ AMB","type":"SENSOR","model":"LDR","created_at":"2025-11-02T15:12:24.102Z","ip_address":null,"ip_mode":null,"unit":"LM%","maximun_radius":"3.00","interval_seconds":20,"max_value":null,"min_value":null,"config_state":"desynced","config_user_created":3,"config_created_at":"2025-11-02T15:13:36.296Z","config_user_modified":null,"config_modified_at":"2025-11-03T02:36:22.791Z"}[0m
+[0;32mI (3698) SENSOR_CONFIG: ID Sensor: 9[0m
+[0;32mI (3698) SENSOR_CONFIG: Descripción: SENSOR DE LUZ AMB[0m
+[0;32mI (3698) SENSOR_CONFIG: ✅ Configuración de LUZ cargada exitosamente[0m
+[0;32mI (3698) NVS_TASK: Sensor ID guardado: light_id = 9[0m
+[1;31mE (3698) NVS_TASK: Error guardando flag: ESP_ERR_NVS_KEY_TOO_LONG[0m
+[0;32mI (3698) SENSOR_CONFIG: === CONFIGURACIÓN FINAL SENSORES ===[0m
+[0;32mI (3698) SENSOR_CONFIG: Sensor Humedad:[0m
+[0;32mI (3698) SENSOR_CONFIG:   ID: 8[0m
+[0;32mI (3698) SENSOR_CONFIG:   Descripción: SENSOR DE HUMEDAD SUELO[0m
+[0;32mI (3698) SENSOR_CONFIG:   Intervalo: 5 segundos[0m
+[0;32mI (3698) SENSOR_CONFIG:   Estado: activo[0m
+[0;32mI (3698) SENSOR_CONFIG:   Cargado: servidor[0m
+[0;32mI (3698) SENSOR_CONFIG: Sensor Luz:[0m
+[0;32mI (3698) SENSOR_CONFIG:   ID: 9[0m
+[0;32mI (3698) SENSOR_CONFIG:   Descripción: SENSOR DE LUZ AMB[0m
+[0;32mI (3698) SENSOR_CONFIG:   Intervalo: 5 segundos[0m
+[0;32mI (3698) SENSOR_CONFIG:   Estado: activo[0m
+[0;32mI (3698) SENSOR_CONFIG:   Cargado: servidor[0m
+[0;32mI (3698) SENSOR_CONFIG: ✅ Configuración de sensores completada[0m
+[0;32mI (3698) TASK_MAIN: ✓ Sensores configurados exitosamente[0m
+[0;32mI (3698) TASK_MAIN: Creando tareas de sensores...[0m
+[0;32mI (3698) TASK_MAIN: Creando tarea HTTP...[0m
+[0;32mI (3698) TASK_MAIN: Creando tarea MQTT...[0m
+[0;32mI (3698) TASK_MAIN: ✓ Tarea MQTT creada exitosamente[0m
+[0;32mI (3698) TASK_MAIN: Creando tarea NVS...[0m
+[0;32mI (3698) TASK_MAIN: ✓ Sistema completamente inicializado[0m
+[0;32mI (3698) TASK_MAIN: Status de tarea 0: Configuración inicial completa[0m
+[0;32mI (3698) SOIL_HUMIDITY: === INICIANDO SENSOR HUMEDAD SUELO ===[0m
+[0;32mI (3698) SOIL_HUMIDITY: ✓ Sensor inicializado - Lectura cada 5 segundos[0m
+[0;32mI (3698) SOIL_HUMIDITY: ✓ Configuración cargada - Intervalo de envío: 5 segundos[0m
+[0;32mI (3698) SOIL_HUMIDITY: 💧 Lectura #1: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (3708) SOIL_HUMIDITY: 📤 Enviando datos #1 al servidor (cada 5 segundos)[0m
+[0;32mI (3698) LIGHT_SENSOR: === INICIANDO SENSOR DE LUZ ===[0m
+[0;32mI (3708) LIGHT_SENSOR: ✓ Sensor inicializado - Lectura cada 5 segundos[0m
+[0;32mI (3708) LIGHT_SENSOR: ✓ Configuración cargada - Intervalo de envío: 5 segundos[0m
+[0;32mI (3708) LIGHT_SENSOR: 💡 Lectura #1: Raw=2347, Voltaje=1643 mV, Luz=40 LM%[0m
+[0;32mI (3708) LIGHT_SENSOR: 📤 Enviando datos #1 al servidor (cada 5 segundos)[0m
+[0;32mI (3708) HTTP_TASK: === INICIANDO TAREA HTTP CLIENT ===[0m
+[0;32mI (3708) HTTP_TASK: 🔍 Validación de sensores se hará cuando se reciba el primer dato de cada uno[0m
+[0;32mI (3708) HTTP_TASK: Intervalo de envío: 60000 ms[0m
+[0;32mI (3708) HTTP_TASK: ✓ Tarea HTTP lista para recibir datos[0m
+[0;32mI (3708) HTTP_TASK: 🔍 Validando sensor de luz por primera vez...[0m
+[0;32mI (3708) HTTP_TASK: 🔍 Validando dispositivo con serial: 0x001D[0m
+[0;32mI (3708) HTTP_TASK: URL de validación: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001D[0m
+[0;32mI (3708) MQTT: Iniciando tarea MQTT...[0m
+[0;32mI (3708) NVS_TASK: === INICIANDO TAREA NVS ===[0m
+[0;32mI (3708) NVS_TASK: ✓ NVS storage inicializado[0m
+[0;32mI (3708) NVS_TASK: ✓ NVS storage para password inicializado[0m
+[0;32mI (3798) TASK_MAIN: Status de tarea 1: WiFi conectado exitosamente[0m
+[0;32mI (3898) TASK_MAIN: Status de tarea 2: Configuración completa[0m
+[0;32mI (4098) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (4818) HTTP_TASK: 📥 Respuesta validación [0x001D]: HTTP 200, Error: ESP_OK[0m
+[0;32mI (4818) HTTP_TASK: 📄 Contenido respuesta: {"id_sensor":9,"id_room_location":3,"id_controller_station":2,"id_user_created":3,"serial_number":"0x001D","description":"SENSOR DE LUZ AMB","type":"SENSOR","model":"LDR","created_at":"2025-11-02T15:12:24.102Z","ip_address":null,"ip_mode":null,"unit":"LM%","maximun_radius":"3.00","interval_seconds":20,"max_value":null,"min_value":null,"config_state":"desynced","config_user_created":3,"config_created_at":"2025-11-02T15:13:36.296Z","config_user_modified":null,"config_modified_at":"2025-11-03T02:36:22.791Z"}[0m
+[0;32mI (4818) HTTP_TASK: ✅ Dispositivo [0x001D] validado exitosamente (HTTP 200)[0m
+[0;32mI (4818) HTTP_TASK: ✅ Sensor de luz (0x001D) validado exitosamente[0m
+[0;32mI (4828) HTTP_TASK: 📊 Datos recibidos - Luz: 40 LM%, Voltaje: 1643 mV, Raw: 2347[0m
+[0;32mI (4828) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (4828) HTTP_TASK: Luz: 40 LM%, Voltaje: 1643 mV, Raw: 2347[0m
+[0;32mI (4828) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"40.36",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2347,
+	"timestamp":	4630
+}
+[0;32mI (5208) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6358) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (6358) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15445,"id_sensor":9,"value":40.36,"unit":"LM%","created_at":"2025-11-02T23:53:39.111Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (6358) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (6358) HTTP_TASK: 🔄 Intervalo de posting actualizado desde servidor: 20 segundos (20000 ms)[0m
+[0;32mI (6358) HTTP_TASK: 💡 Intervalo sensor luz actualizado: 20 segundos[0m
+[0;32mI (6358) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (6358) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (6358) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (8708) SOIL_HUMIDITY: 💧 Lectura #2: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (8708) SOIL_HUMIDITY: 📤 Enviando datos #2 al servidor (cada 5 segundos)[0m
+[0;32mI (8708) LIGHT_SENSOR: 💡 Lectura #2: Raw=2382, Voltaje=1666 mV, Luz=39 LM%[0m
+[0;32mI (8708) MQTT: Inicializando cliente MQTT...[0m
+[0;32mI (8708) HTTP_TASK: 🔍 Validando sensor de humedad por primera vez...[0m
+[0;32mI (8708) HTTP_TASK: 🔍 Validando dispositivo con serial: 0x001C[0m
+[0;32mI (8708) HTTP_TASK: URL de validación: https://ong-controller.vercel.app/api/v1/sensors/serial/0x001C[0m
+[0;32mI (8708) MQTT: Cliente MQTT iniciado correctamente[0m
+[0;32mI (9098) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (9108) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (9108) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (9118) esp-tls: create_ssl_handle failed[0m
+[1;31mE (9118) esp-tls: Failed to open new connection[0m
+[1;31mE (9118) transport_base: Failed to open a new connection[0m
+[1;31mE (9118) mqtt_client: Error transport connect[0m
+[1;31mE (9118) MQTT: Error MQTT[0m
+[1;31mE (9118) MQTT: Error de transporte TCP reportado[0m
+[0;33mW (9118) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (9828) HTTP_TASK: 📥 Respuesta validación [0x001C]: HTTP 200, Error: ESP_OK[0m
+[0;32mI (9838) HTTP_TASK: 📄 Contenido respuesta: {"id_sensor":8,"id_room_location":3,"id_controller_station":2,"id_user_created":3,"serial_number":"0x001C","description":"SENSOR DE HUMEDAD SUELO","type":"SENSOR","model":"ANALOGICO","created_at":"2025-11-01T03:02:37.650Z","ip_address":null,"ip_mode":null,"unit":"HS%","maximun_radius":"0.30","interval_seconds":2000,"max_value":null,"min_value":null,"config_state":"desynced","config_user_created":3,"config_created_at":"2025-11-01T03:06:35.213Z","config_user_modified":null,"config_modified_at":"2025-11-03T02:36:28.105Z"}[0m
+[0;32mI (9838) HTTP_TASK: ✅ Dispositivo [0x001C] validado exitosamente (HTTP 200)[0m
+[0;32mI (9838) HTTP_TASK: ✅ Sensor de humedad (0x001C) validado exitosamente[0m
+[0;32mI (9838) HTTP_TASK: 📊 Datos recibidos - HS: 0.0%, Voltaje: 2792 mV, Raw: 4095[0m
+[0;32mI (9838) HTTP_TASK: === ENVIANDO DATOS HUMEDAD SUELO ===[0m
+[0;32mI (9838) HTTP_TASK: HS: 0.0%, Voltaje: 2792 mV, Raw: 4095[0m
+[0;32mI (9838) HTTP_TASK: 🚀 Enviando datos del sensor [0x001C]: {[0m
+	"value":	"0.0",
+	"unit":	"%",
+	"type":	"humidity",
+	"id_sensor":	8,
+	"raw_value":	4095,
+	"timestamp":	9640
+}
+[0;32mI (10398) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (11578) HTTP_TASK: ✅ Datos del sensor [0x001C] enviados exitosamente (HTTP 201)[0m
+[0;32mI (11578) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15446,"id_sensor":8,"value":0,"unit":"%","created_at":"2025-11-02T23:53:44.326Z","date":null},"sensorConfig":{"id_sensor":8,"interval_seconds":2000,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-01T03:06:35.213Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:28.105Z"}}[0m
+[0;32mI (11578) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (11578) HTTP_TASK: 🔄 Intervalo de posting actualizado desde servidor: 2000 segundos (2000000 ms)[0m
+[0;32mI (11578) HTTP_TASK: 💧 Intervalo sensor humedad actualizado: 2000 segundos[0m
+[0;32mI (11588) HTTP_TASK: 🆔 ID sensor recibido del servidor: 8[0m
+[0;32mI (11588) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (11588) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (13708) SOIL_HUMIDITY: 💧 Lectura #3: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (13708) LIGHT_SENSOR: 💡 Lectura #3: Raw=2362, Voltaje=1652 mV, Luz=40 LM%[0m
+[1;31mE (16898) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (16898) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (16898) esp-tls: create_ssl_handle failed[0m
+[1;31mE (16898) esp-tls: Failed to open new connection[0m
+[1;31mE (16898) transport_base: Failed to open a new connection[0m
+[1;31mE (16898) mqtt_client: Error transport connect[0m
+[1;31mE (16898) MQTT: Error MQTT[0m
+[1;31mE (16898) MQTT: Error de transporte TCP reportado[0m
+[0;33mW (16898) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (18708) LIGHT_SENSOR: 💡 Lectura #4: Raw=2329, Voltaje=1631 mV, Luz=41 LM%[0m
+[0;32mI (18708) LIGHT_SENSOR: 📤 Enviando datos #2 al servidor (cada 20 segundos)[0m
+[0;32mI (18708) SOIL_HUMIDITY: 💧 Lectura #4: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (18708) HTTP_TASK: 📊 Datos recibidos - Luz: 41 LM%, Voltaje: 1631 mV, Raw: 2329[0m
+[0;32mI (18708) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (18708) HTTP_TASK: Luz: 41 LM%, Voltaje: 1631 mV, Raw: 2329[0m
+[0;32mI (18708) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"40.86",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2329,
+	"timestamp":	18510
+}
+[0;32mI (19238) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (20388) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (20388) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15447,"id_sensor":9,"value":40.86,"unit":"LM%","created_at":"2025-11-02T23:53:53.134Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (20388) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (20388) HTTP_TASK: 🔄 Intervalo de posting actualizado desde servidor: 20 segundos (20000 ms)[0m
+[0;32mI (20388) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (20388) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (20388) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (23708) SOIL_HUMIDITY: 💧 Lectura #5: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (23708) LIGHT_SENSOR: 💡 Lectura #5: Raw=2282, Voltaje=1599 mV, Luz=42 LM%[0m
+[1;31mE (24678) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (24678) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (24678) esp-tls: create_ssl_handle failed[0m
+[1;31mE (24678) esp-tls: Failed to open new connection[0m
+[1;31mE (24678) transport_base: Failed to open a new connection[0m
+[1;31mE (24678) mqtt_client: Error transport connect[0m
+[1;31mE (24678) MQTT: Error MQTT[0m
+[1;31mE (24678) MQTT: Error de transporte TCP reportado[0m
+[0;33mW (24678) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (28708) LIGHT_SENSOR: 💡 Lectura #6: Raw=2396, Voltaje=1677 mV, Luz=39 LM%[0m
+[0;32mI (28708) SOIL_HUMIDITY: 💧 Lectura #6: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[1;31mE (32468) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (32468) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (32468) esp-tls: create_ssl_handle failed[0m
+[1;31mE (32468) esp-tls: Failed to open new connection[0m
+[1;31mE (32468) transport_base: Failed to open a new connection[0m
+[1;31mE (32468) mqtt_client: Error transport connect[0m
+[1;31mE (32468) MQTT: Error MQTT[0m
+[1;31mE (32468) MQTT: Error de transporte TCP reportado[0m
+[0;33mW (32468) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (33708) SOIL_HUMIDITY: 💧 Lectura #7: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (33708) TASK_MAIN: Supervisor activo - Heap libre: 178504 bytes[0m
+[0;32mI (33708) LIGHT_SENSOR: 💡 Lectura #7: Raw=2284, Voltaje=1598 mV, Luz=42 LM%[0m
+[0;32mI (38708) LIGHT_SENSOR: 💡 Lectura #8: Raw=2346, Voltaje=1641 mV, Luz=40 LM%[0m
+[0;32mI (38708) LIGHT_SENSOR: 📤 Enviando datos #3 al servidor (cada 20 segundos)[0m
+[0;32mI (38708) SOIL_HUMIDITY: 💧 Lectura #8: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (38708) HTTP_TASK: 📊 Datos recibidos - Luz: 40 LM%, Voltaje: 1641 mV, Raw: 2346[0m
+[0;32mI (38708) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (38708) HTTP_TASK: Luz: 40 LM%, Voltaje: 1641 mV, Raw: 2346[0m
+[0;32mI (38708) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"40.39",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2346,
+	"timestamp":	38510
+}
+[0;32mI (39098) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (40348) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (40348) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (40348) esp-tls: create_ssl_handle failed[0m
+[1;31mE (40348) esp-tls: Failed to open new connection[0m
+[1;31mE (40348) transport_base: Failed to open a new connection[0m
+[1;31mE (40348) mqtt_client: Error transport connect[0m
+[1;31mE (40348) MQTT: Error MQTT[0m
+[1;31mE (40348) MQTT: Error de transporte TCP reportado[0m
+[0;33mW (40348) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (40358) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (40358) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15448,"id_sensor":9,"value":40.39,"unit":"LM%","created_at":"2025-11-02T23:54:12.992Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (40358) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (40358) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (40358) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (40358) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[0;32mI (43708) LIGHT_SENSOR: 💡 Lectura #9: Raw=2286, Voltaje=1600 mV, Luz=42 LM%[0m
+[0;32mI (43708) SOIL_HUMIDITY: 💧 Lectura #9: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[1;31mE (48128) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (48128) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (48128) esp-tls: create_ssl_handle failed[0m
+[1;31mE (48128) esp-tls: Failed to open new connection[0m
+[1;31mE (48128) transport_base: Failed to open a new connection[0m
+[1;31mE (48128) mqtt_client: Error transport connect[0m
+[1;31mE (48128) MQTT: Error MQTT[0m
+[1;31mE (48128) MQTT: Error de transporte TCP reportado[0m
+[0;33mW (48128) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (48708) LIGHT_SENSOR: 💡 Lectura #10: Raw=2317, Voltaje=1624 mV, Luz=41 LM%[0m
+[0;32mI (48708) SOIL_HUMIDITY: 💧 Lectura #10: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (53708) SOIL_HUMIDITY: 💧 Lectura #11: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (53708) LIGHT_SENSOR: 💡 Lectura #11: Raw=2318, Voltaje=1624 mV, Luz=41 LM%[0m
+[1;31mE (55908) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (55918) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (55918) esp-tls: create_ssl_handle failed[0m
+[1;31mE (55918) esp-tls: Failed to open new connection[0m
+[1;31mE (55918) transport_base: Failed to open a new connection[0m
+[1;31mE (55918) mqtt_client: Error transport connect[0m
+[1;31mE (55918) MQTT: Error MQTT[0m
+[1;31mE (55918) MQTT: Error de transporte TCP reportado[0m
+[0;33mW (55918) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (58708) LIGHT_SENSOR: 💡 Lectura #12: Raw=2287, Voltaje=1602 mV, Luz=42 LM%[0m
+[0;32mI (58708) LIGHT_SENSOR: 📤 Enviando datos #4 al servidor (cada 20 segundos)[0m
+[0;32mI (58708) SOIL_HUMIDITY: 💧 Lectura #12: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (58708) HTTP_TASK: 📊 Datos recibidos - Luz: 42 LM%, Voltaje: 1602 mV, Raw: 2287[0m
+[0;32mI (58708) HTTP_TASK: === ENVIANDO DATOS LUZ ===[0m
+[0;32mI (58708) HTTP_TASK: Luz: 42 LM%, Voltaje: 1602 mV, Raw: 2287[0m
+[0;32mI (58708) HTTP_TASK: 🚀 Enviando datos del sensor [0x001D]: {[0m
+	"value":	"42.03",
+	"unit":	"LM%",
+	"type":	"light",
+	"id_sensor":	9,
+	"raw_value":	2287,
+	"timestamp":	58510
+}
+[0;32mI (59098) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (60218) HTTP_TASK: ✅ Datos del sensor [0x001D] enviados exitosamente (HTTP 201)[0m
+[0;32mI (60218) HTTP_TASK: 📥 Procesando respuesta del servidor: {"processData":{"id_process_data":15449,"id_sensor":9,"value":42.03,"unit":"LM%","created_at":"2025-11-02T23:54:32.962Z","date":null},"sensorConfig":{"id_sensor":9,"interval_seconds":20,"max_value":null,"min_value":null,"state":"desynced","id_user_created":3,"created_at":"2025-11-02T15:13:36.296Z","id_user_modified":null,"modified_at":"2025-11-03T02:36:22.791Z"}}[0m
+[0;32mI (60218) HTTP_TASK: 🔧 Procesando configuración del sensor desde respuesta del servidor[0m
+[0;32mI (60218) HTTP_TASK: 🆔 ID sensor recibido del servidor: 9[0m
+[0;32mI (60218) HTTP_TASK: ✅ Datos enviados exitosamente[0m
+[0;32mI (60218) TASK_MAIN: Status de tarea 4: Datos enviados OK[0m
+[1;31mE (63698) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (63698) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (63698) esp-tls: create_ssl_handle failed[0m
+[1;31mE (63698) esp-tls: Failed to open new connection[0m
+[1;31mE (63698) transport_base: Failed to open a new connection[0m
+[1;31mE (63698) mqtt_client: Error transport connect[0m
+[1;31mE (63698) MQTT: Error MQTT[0m
+[1;31mE (63698) MQTT: Error de transporte TCP reportado[0m
+[0;33mW (63698) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (63708) SOIL_HUMIDITY: 💧 Lectura #13: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (63708) LIGHT_SENSOR: 💡 Lectura #13: Raw=2317, Voltaje=1624 mV, Luz=41 LM%[0m
+[0;32mI (63808) TASK_MAIN: Supervisor activo - Heap libre: 177324 bytes[0m
+[0;32mI (68708) SOIL_HUMIDITY: 💧 Lectura #14: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (68708) LIGHT_SENSOR: 💡 Lectura #14: Raw=2377, Voltaje=1665 mV, Luz=40 LM%[0m
+[0;33mW (68708) MQTT: MQTT desconectado, esperando reconexión automática...[0m
+[1;31mE (71578) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (71578) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (71578) esp-tls: create_ssl_handle failed[0m
+[1;31mE (71578) esp-tls: Failed to open new connection[0m
+[1;31mE (71578) transport_base: Failed to open a new connection[0m
+[1;31mE (71578) mqtt_client: Error transport connect[0m
+[1;31mE (71578) MQTT: Error MQTT[0m
+[1;31mE (71578) MQTT: Error de transporte TCP reportado[0m
+[0;33mW (71578) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (73708) SOIL_HUMIDITY: 💧 Lectura #15: Raw=4095, Voltaje=2792 mV, HS=0.0%[0m
+[0;32mI (73708) LIGHT_SENSOR: 💡 Lectura #15: Raw=2296, Voltaje=1607 mV, Luz=42 LM%[0m

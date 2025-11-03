@@ -12,6 +12,16 @@ typedef struct {
     int interval_s;          // Intervalo de lectura en segundos
     bool state;              // Si el sensor está habilitado
     bool config_loaded;      // Si la configuración fue cargada exitosamente
+    
+    // Campos extendidos para MQTT
+    float max_value;         // Valor máximo para alertas
+    float min_value;         // Valor mínimo para alertas
+    bool has_max_value;      // Si tiene valor máximo definido
+    bool has_min_value;      // Si tiene valor mínimo definido
+    int id_user_created;     // ID del usuario que creó la configuración
+    int id_user_modified;    // ID del usuario que modificó la configuración
+    char created_at[32];     // Timestamp de creación (ISO 8601)
+    char modified_at[32];    // Timestamp de modificación (ISO 8601)
 } sensor_config_t;
 
 // Configuraciones para cada sensor

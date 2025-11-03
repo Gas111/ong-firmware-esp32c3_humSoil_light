@@ -10,6 +10,7 @@ idf_component_register(
         "task_http.c"
         "task_nvs.c"
         "task_led_status.c"
+        "task_mqtt.c"
         "adc_shared.c"
     INCLUDE_DIRS "."
     REQUIRES 
@@ -22,4 +23,5 @@ idf_component_register(
         espressif__led_strip
         mbedtls
         esp-tls
+        mqtt
 )

@@ -10,6 +10,7 @@
 #include "task_http.h"
 #include "task_led_status.h"
 #include "task_nvs.h"
+#include "task_mqtt.h"
 #include <string.h>
 
 static const char *TAG = "TASK_MAIN";
@@ -123,6 +124,19 @@ QueueHandle_t supervisor_queue_global = NULL;
 static QueueHandle_t shared_sensor_queue = NULL;
 static QueueHandle_t shared_error_queue = NULL;
 
+// Colas para actualización de configuración de sensores en tiempo real
+static QueueHandle_t humidity_config_queue = NULL;
+static QueueHandle_t light_config_queue = NULL;
+
+// Funciones para acceder a las colas de configuración desde otras tareas
+QueueHandle_t get_humidity_config_queue(void) {
+    return humidity_config_queue;
+}
+
+QueueHandle_t get_light_config_queue(void) {
+    return light_config_queue;
+}
+
 // Función para enviar heartbeat al supervisor
 void task_send_heartbeat(task_type_t task_type, const char *message)
 {
@@ -200,6 +214,21 @@ void task_main_supervisor(void *pvParameters)
         ESP_LOGE(TAG, "Error creando cola del supervisor");
         esp_restart();
     }
+    
+    // Crear colas de actualización de configuración de sensores (tamaño 1)
+    humidity_config_queue = xQueueCreate(1, sizeof(config_update_message_t));
+    if (humidity_config_queue == NULL) {
+        ESP_LOGE(TAG, "Error creando cola de config de humedad");
+        esp_restart();
+    }
+    
+    light_config_queue = xQueueCreate(1, sizeof(config_update_message_t));
+    if (light_config_queue == NULL) {
+        ESP_LOGE(TAG, "Error creando cola de config de luz");
+        esp_restart();
+    }
+    
+    ESP_LOGI(TAG, "✓ Colas de configuración creadas (tamaño: 1)");
     
     // Inicializar LED de estado
     init_status_led();
@@ -284,9 +313,26 @@ void task_main_supervisor(void *pvParameters)
     // Crear tareas de sensores - AMBAS ESCRIBEN EN LA MISMA COLA
     ESP_LOGI(TAG, "Creando tareas de sensores...");
     
+    // Estructura para pasar colas a las tareas de sensores
+    struct {
+        QueueHandle_t sensor_data_queue;
+        QueueHandle_t config_update_queue;
+    } humidity_queues = {
+        .sensor_data_queue = shared_sensor_queue,
+        .config_update_queue = humidity_config_queue
+    };
+    
+    struct {
+        QueueHandle_t sensor_data_queue;
+        QueueHandle_t config_update_queue;
+    } light_queues = {
+        .sensor_data_queue = shared_sensor_queue,
+        .config_update_queue = light_config_queue
+    };
+    
     // Tarea de sensor de humedad de suelo
     result = xTaskCreate(task_soil_humidity_reading, "soil_humidity_task",
-                        4096, shared_sensor_queue, 3, &task_handles[TASK_TYPE_SENSOR]);
+                        4096, &humidity_queues, 3, &task_handles[TASK_TYPE_SENSOR]);
     if (result != pdPASS) {
         ESP_LOGE(TAG, "Error creando tarea de sensor de humedad");
         esp_restart();
@@ -294,7 +340,7 @@ void task_main_supervisor(void *pvParameters)
     
     // Tarea de sensor de luz
     result = xTaskCreate(task_light_sensor_reading, "light_sensor_task",
-                        4096, shared_sensor_queue, 3, NULL);
+                        4096, &light_queues, 3, NULL);
     if (result != pdPASS) {
         ESP_LOGE(TAG, "Error creando tarea de sensor de luz");
         esp_restart();
@@ -307,6 +353,17 @@ void task_main_supervisor(void *pvParameters)
     if (result != pdPASS) {
         ESP_LOGE(TAG, "Error creando tarea HTTP");
         esp_restart();
+    }
+    
+    // Crear tarea MQTT
+    ESP_LOGI(TAG, "Creando tarea MQTT...");
+    result = xTaskCreate(task_mqtt_client, "mqtt_task",
+                        4096, NULL, 2, NULL);
+    if (result != pdPASS) {
+        ESP_LOGE(TAG, "Error creando tarea MQTT");
+        // No reiniciar, MQTT es complementario
+    } else {
+        ESP_LOGI(TAG, "✓ Tarea MQTT creada exitosamente");
     }
     
     // Crear tarea NVS

@@ -19,7 +19,15 @@ sensor_config_t g_sensor_humidity_config = {
     .description = "Soil Humidity Sensor",
     .interval_s = 5,
     .state = true,
-    .config_loaded = false
+    .config_loaded = false,
+    .max_value = 0.0f,
+    .min_value = 0.0f,
+    .has_max_value = false,
+    .has_min_value = false,
+    .id_user_created = 0,
+    .id_user_modified = 0,
+    .created_at = "",
+    .modified_at = ""
 };
 
 sensor_config_t g_sensor_light_config = {
@@ -27,7 +35,15 @@ sensor_config_t g_sensor_light_config = {
     .description = "Light Sensor",
     .interval_s = 5,
     .state = true,
-    .config_loaded = false
+    .config_loaded = false,
+    .max_value = 0.0f,
+    .min_value = 0.0f,
+    .has_max_value = false,
+    .has_min_value = false,
+    .id_user_created = 0,
+    .id_user_modified = 0,
+    .created_at = "",
+    .modified_at = ""
 };
 
 // Callback para manejar la respuesta HTTP

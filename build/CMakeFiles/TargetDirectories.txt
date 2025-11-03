@@ -607,6 +607,13 @@ C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/es
 C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/espressif__led_strip/CMakeFiles/install.dir
 C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/espressif__led_strip/CMakeFiles/install/local.dir
 C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/espressif__led_strip/CMakeFiles/install/strip.dir
+C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir
+C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/mqtt/CMakeFiles/edit_cache.dir
+C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/mqtt/CMakeFiles/rebuild_cache.dir
+C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/mqtt/CMakeFiles/list_install_components.dir
+C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/mqtt/CMakeFiles/install.dir
+C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/mqtt/CMakeFiles/install/local.dir
+C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/mqtt/CMakeFiles/install/strip.dir
 C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/main/CMakeFiles/__idf_main.dir
 C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/main/CMakeFiles/edit_cache.dir
 C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/esp-idf/main/CMakeFiles/rebuild_cache.dir

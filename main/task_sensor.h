@@ -22,6 +22,13 @@ typedef struct {
     bool valid;             // Si la lectura es válida
 } sensor_data_t;
 
+// Estructura para actualización de configuración en tiempo real vía MQTT
+typedef struct {
+    sensor_type_t type;     // Tipo de sensor afectado
+    int new_interval_s;     // Nuevo intervalo de lectura en segundos
+    bool update_interval;   // true = actualizar intervalo de lectura
+} config_update_message_t;
+
 /**
  * @brief Tarea de lectura de sensores ADC
  * 

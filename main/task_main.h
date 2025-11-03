@@ -116,4 +116,8 @@ void reset_http_backoff(void);
 // Cola global del supervisor
 extern QueueHandle_t supervisor_queue_global;
 
+// Funciones para acceder a colas de configuración de sensores
+QueueHandle_t get_humidity_config_queue(void);
+QueueHandle_t get_light_config_queue(void);
+
 #endif // TASK_MAIN_H

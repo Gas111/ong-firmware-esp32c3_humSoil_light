@@ -41,10 +41,17 @@ void task_light_sensor_reading(void *pvParameters)
 {
     ESP_LOGI(TAG, "=== INICIANDO SENSOR DE LUZ ===");
 
-    QueueHandle_t light_queue = (QueueHandle_t)pvParameters;
+    // Recibir estructura con ambas colas
+    struct {
+        QueueHandle_t sensor_data_queue;
+        QueueHandle_t config_update_queue;
+    } *queues = (typeof(queues))pvParameters;
+    
+    QueueHandle_t light_queue = queues->sensor_data_queue;
+    QueueHandle_t config_queue = queues->config_update_queue;
 
-    if (light_queue == NULL) {
-        ESP_LOGE(TAG, "Error: Cola es NULL");
+    if (light_queue == NULL || config_queue == NULL) {
+        ESP_LOGE(TAG, "Error: Una o más colas son NULL");
         task_report_error(TASK_TYPE_SENSOR, TASK_ERROR_QUEUE_FULL, "Cola NULL");
         vTaskDelete(NULL);
         return;
@@ -58,10 +65,9 @@ void task_light_sensor_reading(void *pvParameters)
         return;
     }
     
-    ESP_LOGI(TAG, "✓ Sensor inicializado - Lectura cada 5 segundos");
+    ESP_LOGI(TAG, "✓ Sensor inicializado");
     
     sensor_data_t data;
-    uint32_t read_count = 0;
     uint32_t send_count = 0;
     int raw_value, voltage_mv;
     
@@ -71,10 +77,26 @@ void task_light_sensor_reading(void *pvParameters)
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
     
-    ESP_LOGI(TAG, "✓ Configuración cargada - Intervalo de envío: %d segundos", g_sensor_light_config.interval_s);
+    // Variable local para intervalo dinámico
+    int current_interval_s = g_sensor_light_config.interval_s;
+    ESP_LOGI(TAG, "🔄 Intervalo de lectura y envío: %d segundos", current_interval_s);
     
     while (1) {
-        read_count++;
+        // Verificar si hay actualizaciones de configuración (sin bloqueo)
+        config_update_message_t config_msg;
+        if (xQueueReceive(config_queue, &config_msg, 0) == pdTRUE) {
+            if (config_msg.update_interval && config_msg.type == SENSOR_TYPE_LIGHT) {
+                current_interval_s = config_msg.new_interval_s;
+                ESP_LOGI(TAG, "🔄 ¡Intervalo actualizado dinámicamente a %d segundos!", current_interval_s);
+            }
+        }
+        
+        // Verificar si el sensor está activo
+        if (!g_sensor_light_config.state) {
+            ESP_LOGW(TAG, "⚠️ Sensor deshabilitado, esperando...");
+            vTaskDelay(pdMS_TO_TICKS(current_interval_s * 1000));
+            continue;
+        }
         
         // Leer ADC usando funciones compartidas con reintentos
         esp_err_t ret = ESP_FAIL;
@@ -110,11 +132,11 @@ void task_light_sensor_reading(void *pvParameters)
             ESP_LOGI(TAG, "💡 Lectura #%lu: Raw=%d, Voltaje=%.0f mV, Luz=%.0f LM%%", 
                      (unsigned long)read_count, data.raw_value, data.adc_voltage, data.converted_value);
             
-            // Solo enviar al servidor según el intervalo configurado
-            if (g_sensor_light_config.state && (read_count % (g_sensor_light_config.interval_s / 5)) == 0) {
+            // Solo enviar al servidor según el intervalo configurado (dinámico)
+            if (g_sensor_light_config.state && (read_count % (current_interval_s / 5)) == 0) {
                 send_count++;
                 ESP_LOGI(TAG, "📤 Enviando datos #%lu al servidor (cada %d segundos)", 
-                        (unsigned long)send_count, g_sensor_light_config.interval_s);
+                        (unsigned long)send_count, current_interval_s);
                 
                 // Enviar a cola (reemplazar si está llena)
                 if (xQueueSend(light_queue, &data, 0) != pdTRUE) {
@@ -129,32 +151,10 @@ void task_light_sensor_reading(void *pvParameters)
         } else {
             ESP_LOGE(TAG, "Error leyendo ADC después de %d reintentos: %s", max_retries, esp_err_to_name(ret));
             task_report_error(TASK_TYPE_SENSOR, TASK_ERROR_SENSOR_READ, "ADC read failed");
-            
-            // Enviar datos con valores por defecto para mantener la funcionalidad
-            ESP_LOGW(TAG, "⚠ Usando valores por defecto para sensor de luz");
-            data.type = SENSOR_TYPE_LIGHT;
-            data.raw_value = 0;
-            data.adc_voltage = 0.0f;
-            data.converted_value = 0.0f; // 0% (oscuridad)
-            data.timestamp = xTaskGetTickCount();
-            data.valid = false; // Marcar como inválido pero enviar de todos modos
-            
-            // Solo enviar al servidor según el intervalo configurado (datos inválidos)
-            if (g_sensor_light_config.state && (read_count % (g_sensor_light_config.interval_s / 5)) == 0) {
-                send_count++;
-                ESP_LOGW(TAG, "📤 Enviando datos inválidos #%lu al servidor (ADC falló)", 
-                        (unsigned long)send_count);
-                
-                // Enviar a cola (reemplazar si está llena)
-                if (xQueueSend(light_queue, &data, 0) != pdTRUE) {
-                    sensor_data_t dummy;
-                    xQueueReceive(light_queue, &dummy, 0);
-                    xQueueSend(light_queue, &data, 0);
-                }
-            }
         }
         
-        // Leer cada 5 segundos
-        vTaskDelay(pdMS_TO_TICKS(5000));
+        // Esperar el intervalo configurado dinámicamente
+        ESP_LOGD(TAG, "⏳ Esperando %d segundos hasta próxima lectura", current_interval_s);
+        vTaskDelay(pdMS_TO_TICKS(current_interval_s * 1000));
     }
 }

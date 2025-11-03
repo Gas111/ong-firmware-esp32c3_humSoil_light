@@ -1,0 +1,31 @@
+Command: ninja all
+[1/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/adc_shared.c.obj
+[2/19] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\bootloader\esp-idf\esptool_py && C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/bootloader/bootloader.bin"
+Bootloader binary size 0x43b0 bytes. 0x3c50 bytes (47%) free.
+[3/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_led_status.c.obj
+[4/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_soil_humidity.c.obj
+[5/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_initial_config.c.obj
+[6/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+[7/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_main.c.obj
+[8/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_light_sensor.c.obj
+[9/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_wifi.c.obj
+C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/main/task_wifi.c:47:18: warning: 'save_wifi_credentials_to_nvs' defined but not used [-Wunused-function]
+   47 | static esp_err_t save_wifi_credentials_to_nvs(const char *ssid, const char *pass)
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[10/19] No install step for 'bootloader'
+[11/19] Completed 'bootloader'
+[12/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_sensor_config.c.obj
+[13/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_http.c.obj
+[14/19] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/task_mqtt.c.obj
+[15/19] Linking C static library esp-idf\main\libmain.a
+[16/19] Generating esp-idf/esp_system/ld/sections.ld
+[17/19] Linking CXX executable sensor_esp32c3.elf
+[18/19] Generating binary image from built executable
+esptool.py v4.10.0
+Creating esp32c3 image...
+Merged 1 ELF section
+Successfully created esp32c3 image.
+Generated C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/sensor_esp32c3.bin
+[19/19] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\esp-idf\esptool_py && C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/partition_table/partition-table.bin C:/ESP32_Idf/Espressif/frameworks/esp-idf-v5.5.1/sensor_esp32c3/build/sensor_esp32c3.bin"
+sensor_esp32c3.bin binary size 0xf2960 bytes. Smallest app partition is 0x100000 bytes. 0xd6a0 bytes (5%) free.
