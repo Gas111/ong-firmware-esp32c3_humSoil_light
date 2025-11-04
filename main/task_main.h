@@ -5,7 +5,13 @@
 #include "freertos/task.h"
 #include "freertos/queue.h"
 #include "freertos/semphr.h"
+#include "freertos/event_groups.h"
 #include "led_strip.h"
+
+// Event Group para estado de conectividad
+extern EventGroupHandle_t g_connectivity_event_group;
+#define CONNECTIVITY_WIFI_CONNECTED_BIT BIT0
+#define CONNECTIVITY_INTERNET_AVAILABLE_BIT BIT1
 
 // LED Neopixel global compartido entre tareas
 extern led_strip_handle_t g_led_strip;

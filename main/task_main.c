@@ -10,6 +10,7 @@
 #include "task_led_status.h"
 #include "task_nvs.h"
 #include "task_mqtt.h"
+#include "task_error_logger.h"
 #include <string.h>
 
 static const char *TAG = "TASK_MAIN";
@@ -23,6 +24,9 @@ float sensor_adc_max = 3300.0f;  // Valor por defecto (3.3V en mV)
 
 // LED Neopixel global compartido entre tareas
 led_strip_handle_t g_led_strip = NULL;
+
+// Event Group para estado de conectividad global
+EventGroupHandle_t g_connectivity_event_group = NULL;
 
 // Función para inicializar LED Neopixel
 static void init_status_led(void)
@@ -59,8 +63,6 @@ SemaphoreHandle_t system_ready_semaphore = NULL;
 
 // Handles de las tareas para poder controlarlas
 static TaskHandle_t task_handles[TASK_TYPE_MAX] = {NULL};
-// Track which tasks we suspended via pause_all_tasks_for_ms so we can resume them
-static bool task_suspended[TASK_TYPE_MAX] = {false};
 // HTTP backoff stage: 0 == initial (5m), 1 == 10m, 2 == 30m, capped at max
 static int http_backoff_stage = 0;
 
@@ -75,36 +77,26 @@ static uint32_t backoff_ms_for_stage(int stage)
 }
 
 // Pause tasks using progressive backoff. Each call increments the backoff stage
-// up to a cap. The function suspends tasks, waits the interval for the stage,
-// then resumes tasks.
+// up to a cap. The backoff delay is applied via the connectivity event group,
+// not by suspending tasks directly (which causes panics).
 void pause_all_tasks_with_backoff(void)
 {
     uint32_t backoff_time = backoff_ms_for_stage(http_backoff_stage);
     
-    ESP_LOGW(TAG, "Pausando tareas por %lu ms (backoff stage %d)", backoff_time, http_backoff_stage);
+    ESP_LOGW(TAG, "⏸️ Backoff HTTP activo por %lu ms (stage %d)", backoff_time, http_backoff_stage);
+    ESP_LOGW(TAG, "Las tareas esperarán naturalmente por conectividad");
     
-    // Suspend tasks (except this supervisor)
-    for (int i = 0; i < TASK_TYPE_MAX; i++) {
-        if (task_handles[i] != NULL) {
-            vTaskSuspend(task_handles[i]);
-            task_suspended[i] = true;
-        }
-    }
+    // NO suspender tareas manualmente - causa stack overflow y panics
+    // Las tareas ya están esperando en el Event Group por conectividad
+    // Solo incrementamos el backoff stage para control de reintentos
     
-    vTaskDelay(pdMS_TO_TICKS(backoff_time));
-    
-    // Resume tasks
-    for (int i = 0; i < TASK_TYPE_MAX; i++) {
-        if (task_suspended[i] && task_handles[i] != NULL) {
-            vTaskResume(task_handles[i]);
-            task_suspended[i] = false;
-        }
-    }
-    
-    // Increment backoff stage
+    // Incrementar backoff stage
     if (http_backoff_stage < 2) {
         http_backoff_stage++;
     }
+    
+    // Agregar delay solo si se llama explícitamente desde HTTP task
+    // No bloquear aquí - dejar que las tareas manejen su propio timing
 }
 
 // Reset backoff stage to initial (called on successful HTTP communication)
@@ -241,6 +233,14 @@ void task_main_supervisor(void *pvParameters)
     sensor_config_semaphore = xSemaphoreCreateBinary();
     system_ready_semaphore = xSemaphoreCreateBinary();
     
+    // Crear Event Group de conectividad
+    g_connectivity_event_group = xEventGroupCreate();
+    if (g_connectivity_event_group == NULL) {
+        ESP_LOGE(TAG, "Error creando Event Group de conectividad");
+        esp_restart();
+    }
+    ESP_LOGI(TAG, "✓ Event Group de conectividad creado");
+    
     // Estado inicial
     send_led_status(SYSTEM_STATE_INIT, "Iniciando sistema");
     
@@ -271,11 +271,19 @@ void task_main_supervisor(void *pvParameters)
     }
     ESP_LOGI(TAG, "✓ Configuración inicial completada");
     
+    // Inicializar sistema de logging de errores ANTES de WiFi
+    ESP_LOGI(TAG, "Inicializando sistema de logging de errores...");
+    if (error_logger_init() != ESP_OK) {
+        ESP_LOGW(TAG, "⚠ Error inicializando sistema de logs, continuando sin él");
+    } else {
+        ESP_LOGI(TAG, "✓ Sistema de error logging inicializado");
+    }
+    
     // Crear tarea WiFi
     ESP_LOGI(TAG, "Creando tarea WiFi...");
     send_led_status(SYSTEM_STATE_WIFI, "Conectando WiFi");
     result = xTaskCreate(task_wifi_connection, "wifi_task",
-                        4096, NULL, 3, &task_handles[TASK_TYPE_WIFI]);
+                        6144, NULL, 3, &task_handles[TASK_TYPE_WIFI]);  // Aumentado de 4096 a 6144
     if (result != pdPASS) {
         ESP_LOGE(TAG, "Error creando tarea WiFi");
         esp_restart();
@@ -349,6 +357,16 @@ void task_main_supervisor(void *pvParameters)
     if (result != pdPASS) {
         ESP_LOGE(TAG, "Error creando tarea NVS");
         esp_restart();
+    }
+    
+    // Crear tarea de error logger (la inicialización ya se hizo antes de WiFi)
+    ESP_LOGI(TAG, "Creando tarea de error logger...");
+    result = xTaskCreate(task_error_logger, "error_logger",
+                        4096, NULL, 1, NULL);
+    if (result != pdPASS) {
+        ESP_LOGW(TAG, "⚠ Error creando tarea de error logger");
+    } else {
+        ESP_LOGI(TAG, "✓ Tarea de error logger creada");
     }
     
     // Sistema listo

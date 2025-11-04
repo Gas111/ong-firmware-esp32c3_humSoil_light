@@ -10,6 +10,7 @@ idf_component_register(
         "task_nvs.c"
         "task_led_status.c"
         "task_mqtt.c"
+        "task_error_logger.c"
         "adc_shared.c"
     INCLUDE_DIRS "."
     REQUIRES 

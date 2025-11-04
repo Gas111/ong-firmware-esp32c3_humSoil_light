@@ -1,5 +1,6 @@
 #include "task_wifi.h"
 #include "task_main.h"
+#include "task_error_logger.h"
 #include "esp_log.h"
 #include "esp_wifi.h"
 #include "esp_event.h"
@@ -86,7 +87,10 @@ static void event_handler(void* arg, esp_event_base_t event_base,
 {
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
         esp_wifi_connect();
+        ESP_LOGI(TAG, "WiFi iniciado, intentando conectar...");
     } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
+        wifi_event_sta_disconnected_t* disconnected = (wifi_event_sta_disconnected_t*) event_data;
+        
         if (s_retry_num < WIFI_MAXIMUM_RETRY) {
             esp_wifi_connect();
             s_retry_num++;
@@ -96,6 +100,13 @@ static void event_handler(void* arg, esp_event_base_t event_base,
             xEventGroupSetBits(s_wifi_event_group, WIFI_FAIL_BIT);
             ESP_LOGE(TAG, "Conexión WiFi falló después de %d intentos", WIFI_MAXIMUM_RETRY);
             send_led_status(SYSTEM_STATE_ERROR, "WiFi falló");
+            
+            // Notificar pérdida de conectividad
+            xEventGroupClearBits(g_connectivity_event_group, CONNECTIVITY_WIFI_CONNECTED_BIT);
+            ESP_LOGW(TAG, "⚠️ Conectividad perdida - Tareas pausadas");
+            
+            // NO llamar error_logger aquí - causa stack overflow en sys_evt task
+            // El loop de monitoreo detectará y loggeará el error
         }
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
@@ -103,6 +114,13 @@ static void event_handler(void* arg, esp_event_base_t event_base,
         s_retry_num = 0;
         xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
         send_led_status(SYSTEM_STATE_WIFI, "WiFi conectado");
+        
+        // Notificar conectividad global
+        xEventGroupSetBits(g_connectivity_event_group, CONNECTIVITY_WIFI_CONNECTED_BIT);
+        ESP_LOGI(TAG, "✅ Conectividad establecida - Tareas reanudadas");
+        
+        // NO LLAMAR error_logger aquí - causa stack overflow en sys_evt
+        // El log se enviará desde el loop principal de la tarea WiFi
     }
 }
 
@@ -185,9 +203,25 @@ void task_wifi_connection(void *pvParameters)
         // Obtener IP
         esp_netif_ip_info_t ip_info;
         if (esp_netif_get_ip_info(sta_netif, &ip_info) == ESP_OK) {
-            ESP_LOGI(TAG, "  - IP: " IPSTR, IP2STR(&ip_info.ip));
-            ESP_LOGI(TAG, "  - Máscara: " IPSTR, IP2STR(&ip_info.netmask));
-            ESP_LOGI(TAG, "  - Gateway: " IPSTR, IP2STR(&ip_info.gw));
+            // Usar un solo log para reducir uso de stack
+            ESP_LOGI(TAG, "  - IP: " IPSTR " | Mask: " IPSTR " | GW: " IPSTR,
+                     IP2STR(&ip_info.ip), IP2STR(&ip_info.netmask), IP2STR(&ip_info.gw));
+            
+            // Enviar log INFO de primera conexión exitosa (AQUÍ SÍ HAY STACK SUFICIENTE)
+            static bool first_connection = true;
+            if (first_connection) {
+                first_connection = false;
+                char details[128];
+                snprintf(details, sizeof(details), 
+                         "{\"ip\":\""IPSTR"\",\"ssid\":\"%s\"}", 
+                         IP2STR(&ip_info.ip), wifi_ssid);
+                error_logger_log_system(
+                    "WIFI_CONNECTED",
+                    ERROR_SEVERITY_INFO,
+                    "Conexión WiFi establecida exitosamente",
+                    details
+                );
+            }
         }
         
         // Notificar al supervisor
@@ -197,12 +231,29 @@ void task_wifi_connection(void *pvParameters)
     } else if (bits & WIFI_FAIL_BIT) {
         ESP_LOGE(TAG, "✗ Fallo conectando a WiFi SSID: %s", wifi_ssid);
         task_report_error(TASK_TYPE_WIFI, TASK_ERROR_WIFI_CONNECTION_FAILED, "WiFi connection failed");
-        // No damos el semáforo en caso de fallo
+        
+        // Log de fallo de conexión inicial (aquí sí tenemos stack suficiente)
+        char details[128];
+        snprintf(details, sizeof(details), 
+                 "{\"attempts\": %d, \"ssid\": \"%s\"}", 
+                 WIFI_MAXIMUM_RETRY, wifi_ssid);
+        error_logger_log_system(
+            "WIFI_CONNECTION_FAILED",
+            ERROR_SEVERITY_CRITICAL,
+            "WiFi desconectado tras múltiples intentos",
+            details
+        );
+        
+        // NO bloqueamos aquí - continuamos al loop de monitoreo que reintentará periódicamente
+        ESP_LOGW(TAG, "⏭️ Continuando al loop de monitoreo - reintentará cada 60s");
+        
+        // No damos el semáforo en caso de fallo inicial
     } else {
         ESP_LOGE(TAG, "✗ Evento WiFi inesperado");
     }
     
-    // Loop de monitoreo WiFi
+    // Loop de monitoreo WiFi - maneja reconexiones periódicas
+    uint32_t last_reconnect_attempt = xTaskGetTickCount();
     uint32_t last_status_check = xTaskGetTickCount();
     bool was_connected = (bits & WIFI_CONNECTED_BIT) != 0;
     
@@ -215,9 +266,28 @@ void task_wifi_connection(void *pvParameters)
             if (ret == ESP_OK) {
                 // Conectado
                 if (!was_connected) {
-                    ESP_LOGI(TAG, "WiFi reconectado");
+                    ESP_LOGI(TAG, "✅ WiFi reconectado exitosamente");
                     send_led_status(SYSTEM_STATE_WIFI, "WiFi OK");
+                    s_retry_num = 0; // Resetear contador de reintentos
                     was_connected = true;
+                    
+                    // Notificar reconexión
+                    xEventGroupSetBits(g_connectivity_event_group, CONNECTIVITY_WIFI_CONNECTED_BIT);
+                    ESP_LOGI(TAG, "▶️ Conectividad restablecida - Tareas reanudadas");
+                    
+                    // Forzar reintento de errores pendientes
+                    error_logger_trigger_retry();
+                    
+                    // Registrar recuperación de conexión
+                    char details[128];
+                    snprintf(details, sizeof(details), "{\"ssid\": \"%s\", \"rssi\": %d}", 
+                             wifi_ssid, ap_info.rssi);
+                    error_logger_log_system(
+                        "WIFI_RECONNECTED",
+                        ERROR_SEVERITY_INFO,
+                        "WiFi reconectado exitosamente",
+                        details
+                    );
                 }
                 
                 // Enviar heartbeat con información de señal
@@ -226,12 +296,41 @@ void task_wifi_connection(void *pvParameters)
                 task_send_heartbeat(TASK_TYPE_WIFI, heartbeat_msg);
                 
             } else {
-                // Desconectado
+                // Desconectado - reintentar cada 60 segundos
                 if (was_connected) {
-                    ESP_LOGW(TAG, "WiFi desconectado, intentando reconectar...");
+                    // Primera vez que detectamos desconexión
+                    ESP_LOGW(TAG, "⚠ WiFi desconectado, comenzando reintentos periódicos...");
                     send_led_status(SYSTEM_STATE_ESPERANDO_WIFI, "Reconectando");
-                    esp_wifi_connect();
                     was_connected = false;
+                    
+                    // Notificar pérdida de conectividad
+                    xEventGroupClearBits(g_connectivity_event_group, CONNECTIVITY_WIFI_CONNECTED_BIT);
+                    ESP_LOGW(TAG, "⏸️ Conectividad perdida - Tareas pausadas");
+                    
+                    // Log de desconexión WiFi durante monitoreo
+                    char details[128];
+                    snprintf(details, sizeof(details), "{\"ssid\": \"%s\"}", wifi_ssid);
+                    error_logger_log_system(
+                        "WIFI_DISCONNECTED",
+                        ERROR_SEVERITY_WARNING,
+                        "WiFi desconectado durante operación normal",
+                        details
+                    );
+                    
+                    // Primer intento de reconexión
+                    s_retry_num = 0;
+                    esp_wifi_connect();
+                    last_reconnect_attempt = xTaskGetTickCount();
+                } else {
+                    // Ya sabíamos que estaba desconectado - reintentar cada 60s
+                    uint32_t time_since_last_attempt = xTaskGetTickCount() - last_reconnect_attempt;
+                    if (time_since_last_attempt > pdMS_TO_TICKS(60000)) {
+                        ESP_LOGI(TAG, "🔄 Reintentando conexión WiFi periódica...");
+                        s_retry_num = 0;
+                        xEventGroupClearBits(s_wifi_event_group, WIFI_FAIL_BIT);
+                        esp_wifi_connect();
+                        last_reconnect_attempt = xTaskGetTickCount();
+                    }
                 }
             }
             

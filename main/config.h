@@ -8,6 +8,7 @@
 #define WIFI_MAXIMUM_RETRY 5
 
 #define HTTP_SERVER_URL "https://ong-controller.vercel.app/api/v1/process-data"
+#define HTTP_SERVER_BASE_URL "https://ong-controller.vercel.app/api/v1"
 #define HTTP_CONFIG_URL "https://ong-controller.vercel.app/api/v1/sensors/serial/"
 #define HTTP_TIMEOUT_MS 20000
 #define DEVICE_SERIAL_HUMIDITY "0x001C"
@@ -61,6 +62,6 @@
 
 // Colas - UNA SOLA COLA COMPARTIDA PARA AMBOS SENSORES
 #define SENSOR_QUEUE_SIZE 5 // Cola compartida para ambos sensores
-#define ERROR_QUEUE_SIZE 5
+#define ERROR_QUEUE_SIZE 20 // Cola para supervisor de errores
 
 #endif

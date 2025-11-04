@@ -4,6 +4,7 @@
 #include "task_main.h"
 #include "task_sensor.h"
 #include "task_nvs.h"
+#include "task_error_logger.h"
 #include "esp_log.h"
 #include "mqtt_client.h"
 #include "cJSON.h"
@@ -204,6 +205,17 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
         case MQTT_EVENT_DISCONNECTED:
             ESP_LOGW(TAG, "Desconectado del broker MQTT");
             mqtt_connected = false;
+            send_led_status(SYSTEM_STATE_WARNING, "MQTT desconectado");
+            
+            // Log de desconexión MQTT
+            char details_disc[128];
+            snprintf(details_disc, sizeof(details_disc), "{\"broker\": \"%s\"}", MQTT_BROKER_URL);
+            error_logger_log_system(
+                "MQTT_DISCONNECTED",
+                ERROR_SEVERITY_WARNING,
+                "Desconectado del broker MQTT",
+                details_disc
+            );
             break;
             
         case MQTT_EVENT_SUBSCRIBED:
@@ -251,9 +263,23 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
             
         case MQTT_EVENT_ERROR:
             ESP_LOGE(TAG, "Error MQTT");
+            send_led_status(SYSTEM_STATE_ERROR, "Error MQTT");
+            
             if (event->error_handle->error_type == MQTT_ERROR_TYPE_TCP_TRANSPORT) {
                 ESP_LOGE(TAG, "Error de transporte TCP reportado");
             }
+            
+            // Log de error MQTT
+            char details_err[256];
+            snprintf(details_err, sizeof(details_err), 
+                     "{\"error_type\": %d, \"broker\": \"%s\"}",
+                     event->error_handle->error_type, MQTT_BROKER_URL);
+            error_logger_log_system(
+                "MQTT_ERROR",
+                ERROR_SEVERITY_ERROR,
+                "Error en conexión MQTT",
+                details_err
+            );
             break;
             
         default:
@@ -332,16 +358,17 @@ void task_mqtt_client(void *pvParameters)
 {
     ESP_LOGI(TAG, "Iniciando tarea MQTT...");
     
-    // Esperar a que WiFi esté conectado (máximo 30 segundos)
-    int wait_count = 0;
-    while (wait_count < 30) {
-        vTaskDelay(pdMS_TO_TICKS(1000));
-        wait_count++;
-        // Asumimos que si pasaron 5 segundos, WiFi ya debe estar conectado
-        if (wait_count >= 5) {
-            break;
-        }
-    }
+    // Esperar conectividad WiFi antes de inicializar MQTT
+    ESP_LOGI(TAG, "⏳ MQTT: Esperando conectividad WiFi...");
+    xEventGroupWaitBits(
+        g_connectivity_event_group,
+        CONNECTIVITY_WIFI_CONNECTED_BIT,
+        pdFALSE,  // No clear bits
+        pdFALSE,  // Wait for any bit
+        portMAX_DELAY  // Esperar indefinidamente
+    );
+    
+    ESP_LOGI(TAG, "✅ WiFi conectado, inicializando cliente MQTT");
     
     esp_err_t ret = mqtt_client_init();
     if (ret != ESP_OK) {
@@ -352,12 +379,19 @@ void task_mqtt_client(void *pvParameters)
     
     // Loop de heartbeat
     while (1) {
-        vTaskDelay(pdMS_TO_TICKS(60000)); // Cada 60 segundos
+        // Verificar conectividad antes de intentar publicar
+        EventBits_t bits = xEventGroupGetBits(g_connectivity_event_group);
         
-        if (mqtt_connected) {
-            mqtt_publish_status("online");
+        if (bits & CONNECTIVITY_WIFI_CONNECTED_BIT) {
+            if (mqtt_connected) {
+                mqtt_publish_status("online");
+            } else {
+                ESP_LOGW(TAG, "MQTT desconectado, esperando reconexión automática...");
+            }
         } else {
-            ESP_LOGW(TAG, "MQTT desconectado, esperando reconexión automática...");
+            ESP_LOGW(TAG, "⏸️ MQTT: Sin conectividad WiFi");
         }
+        
+        vTaskDelay(pdMS_TO_TICKS(60000)); // Cada 60 segundos
     }
 }

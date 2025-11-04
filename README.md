@@ -69,3 +69,7 @@ I (477) EXAMPLE: Unit: ADC-1, Channel: 3, Value: 62f
     * The baud rate for downloading is too high: lower your baud rate in the `menuconfig` menu, and try again.
 
 For any technical queries, please open an [issue](https://github.com/espressif/esp-idf/issues) on GitHub. We will get back to you soon.
+
+
+
+LE AGREGUE AL FINAL QUE AL ESPERAR POR WIFI PAUSE TODAS LAS OTRAS TAREAS, ESTO SE DEBE CAMBIAR POSTERIORMETNE Y QUE SIGA LEYENDO YA QUE EL OTRO CANAL DE COMUNICACION VA A SER LA RED INTERNA Y TAMBIEN EL LED INDICA SI ESTA POR ARRIBA O ABAJO DEL VALOR SETEADO. 

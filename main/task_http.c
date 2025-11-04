@@ -3,6 +3,7 @@
 #include "task_sensor.h"
 #include "task_sensor_config.h"
 #include "task_led_status.h"
+#include "task_error_logger.h"
 #include "config.h"
 #include "esp_log.h"
 #include "task_nvs.h"
@@ -325,12 +326,44 @@ static esp_err_t send_sensor_value(const sensor_data_t *sensor_data, int id_sens
             ESP_LOGW(TAG, "⚠ Servidor respondió con código HTTP %d", status_code);
             response_len = 0; // Limpiar buffer en caso de error
             consecutive_failures++;
+            
+            // Log de error HTTP
+            if (consecutive_failures >= 3) {
+                char details[256];
+                snprintf(details, sizeof(details), 
+                         "{\"http_code\": %d, \"consecutive_failures\": %d, \"sensor_type\": \"%s\"}",
+                         status_code, consecutive_failures, 
+                         sensor_data->type == SENSOR_TYPE_SOIL_HUMIDITY ? "humidity" : "light");
+                error_logger_log_system(
+                    "HTTP_SERVER_ERROR",
+                    ERROR_SEVERITY_WARNING,
+                    "Servidor respondió con error HTTP",
+                    details
+                );
+            }
+            
             return ESP_FAIL;
         }
     } else {
         ESP_LOGE(TAG, "❌ Error en petición HTTP: %s", esp_err_to_name(err));
         response_len = 0; // Limpiar buffer en caso de error
         consecutive_failures++;
+        
+        // Log de error de conexión
+        if (consecutive_failures >= 3) {
+            char details[256];
+            snprintf(details, sizeof(details), 
+                     "{\"error_esp\": \"%s\", \"consecutive_failures\": %d, \"sensor_type\": \"%s\"}",
+                     esp_err_to_name(err), consecutive_failures,
+                     sensor_data->type == SENSOR_TYPE_SOIL_HUMIDITY ? "humidity" : "light");
+            error_logger_log_system(
+                "HTTP_CONNECTION_ERROR",
+                ERROR_SEVERITY_ERROR,
+                "Error de conexión HTTP al backend",
+                details
+            );
+        }
+        
         return ESP_FAIL;
     }
 }
@@ -466,6 +499,9 @@ esp_err_t send_sensor_data(const sensor_data_t *sensor_data)
         if (consecutive_failures >= 3) {
             ESP_LOGW(TAG, "⚠ Múltiples fallos HTTP (%d), activando backoff", consecutive_failures);
             pause_all_tasks_with_backoff();
+            
+            // Delay local en esta tarea para espaciar reintentos
+            vTaskDelay(pdMS_TO_TICKS(30000)); // Esperar 30s antes de siguiente intento
         }
         
         return ESP_FAIL;
@@ -504,6 +540,21 @@ void task_http_client(void *pvParameters)
     ESP_LOGI(TAG, "✓ Tarea HTTP lista para recibir datos");
 
     while (1) {
+        // Esperar conectividad WiFi antes de procesar
+        EventBits_t bits = xEventGroupWaitBits(
+            g_connectivity_event_group,
+            CONNECTIVITY_WIFI_CONNECTED_BIT,
+            pdFALSE,  // No clear bits
+            pdFALSE,  // Wait for any bit
+            portMAX_DELAY  // Esperar indefinidamente
+        );
+        
+        if (!(bits & CONNECTIVITY_WIFI_CONNECTED_BIT)) {
+            ESP_LOGW(TAG, "⏸️ HTTP: Sin conectividad WiFi, esperando...");
+            vTaskDelay(pdMS_TO_TICKS(5000));
+            continue;
+        }
+        
         // Recibir datos de sensores con timeout corto para no bloquear
         if (xQueueReceive(sensor_queue, &received_data, pdMS_TO_TICKS(1000)) == pdTRUE) {
             

@@ -5,6 +5,7 @@
 #include "adc_shared.h"
 #include "task_sensor_config.h"
 #include "task_sensor.h"
+#include "task_error_logger.h"
 
 static const char *TAG = "SENSORS_UNIFIED";
 
@@ -127,6 +128,21 @@ void task_sensors_unified_reading(void *pvParameters)
             } else {
                 ESP_LOGE(TAG, "❌ Error leyendo sensor de humedad: %s", esp_err_to_name(ret));
                 task_report_error(TASK_TYPE_SENSOR, TASK_ERROR_SENSOR_READ, "Humidity read failed");
+                send_led_status(SYSTEM_STATE_ERROR, "Error sensor humedad");
+                
+                // Registrar error en el sistema de logs
+                char details[256];
+                snprintf(details, sizeof(details), 
+                         "{\"error_esp\": \"%s\", \"sensor_type\": \"humidity\", \"attempts\": 1}",
+                         esp_err_to_name(ret));
+                error_logger_log_sensor(
+                    g_sensor_humidity_config.id_sensor,
+                    "SENSOR_READ_ERROR",
+                    ERROR_SEVERITY_ERROR,
+                    "Fallo al leer sensor de humedad",
+                    details,
+                    DEVICE_SERIAL_HUMIDITY
+                );
             }
         } else {
             ESP_LOGD(TAG, "⏸ Sensor de humedad deshabilitado");
@@ -163,6 +179,21 @@ void task_sensors_unified_reading(void *pvParameters)
             } else {
                 ESP_LOGE(TAG, "❌ Error leyendo sensor de luz: %s", esp_err_to_name(ret));
                 task_report_error(TASK_TYPE_SENSOR, TASK_ERROR_SENSOR_READ, "Light read failed");
+                send_led_status(SYSTEM_STATE_ERROR, "Error sensor luz");
+                
+                // Registrar error en el sistema de logs
+                char details[256];
+                snprintf(details, sizeof(details), 
+                         "{\"error_esp\": \"%s\", \"sensor_type\": \"light\", \"attempts\": 1}",
+                         esp_err_to_name(ret));
+                error_logger_log_sensor(
+                    g_sensor_light_config.id_sensor,
+                    "SENSOR_READ_ERROR",
+                    ERROR_SEVERITY_ERROR,
+                    "Fallo al leer sensor de luz",
+                    details,
+                    DEVICE_SERIAL_LIGHT
+                );
             }
         } else {
             ESP_LOGD(TAG, "⏸ Sensor de luz deshabilitado");
