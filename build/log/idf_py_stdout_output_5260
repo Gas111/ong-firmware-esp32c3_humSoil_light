@@ -1,0 +1,2118 @@
+Command: C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM7 -b 115200 --toolchain-prefix riscv32-esp-elf- --target esp32c3 --revision 3 --decode-panic backtrace C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\sensor_esp32c3.elf C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\sensor_esp32c3\build\bootloader\bootloader.elf --force-color -m 'C:\ESP32_Idf\Espressif\python_env\idf5.5_py3.12_env\Scripts\python.exe' 'C:\ESP32_Idf\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py'
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0xc (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4004c516
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5820,len:0x15ac
+load:0x403cbf10,len:0xc34
+load:0x403ce710,len:0x2fd0
+entry 0x403cbf1a
+[0;32mI (24) boot: ESP-IDF v5.5.1-dirty 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Dec  6 2025 19:43:43[0m
+[0;32mI (25) boot: chip revision: v0.4[0m
+[0;32mI (25) boot: efuse block revision: v1.3[0m
+[0;32mI (29) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (32) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (36) boot.esp32c3: SPI Flash Size : 4MB[0m
+[0;32mI (40) boot: Enabling RNG early entropy source...[0m
+[0;32mI (44) boot: Partition Table:[0m
+[0;32mI (47) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (53) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (60) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (66) boot:  2 factory          factory app      00 00 00010000 00200000[0m
+[0;32mI (73) boot: End of partition table[0m
+[0;32mI (76) esp_image: segment 0: paddr=00010020 vaddr=3c140020 size=504a4h (328868) map[0m
+[0;32mI (136) esp_image: segment 1: paddr=000604cc vaddr=3fc9aa00 size=0369ch ( 13980) load[0m
+[0;32mI (139) esp_image: segment 2: paddr=00063b70 vaddr=40380000 size=0c4a8h ( 50344) load[0m
+[0;32mI (149) esp_image: segment 3: paddr=00070020 vaddr=42000020 size=138068h (1278056) map[0m
+[0;32mI (353) esp_image: segment 4: paddr=001a8090 vaddr=4038c4a8 size=0e464h ( 58468) load[0m
+[0;32mI (364) esp_image: segment 5: paddr=001b64fc vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (373) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (373) boot: Disabling RNG early entropy source...[0m
+[0;32mI (383) cpu_start: Unicore app[0m
+[0;32mI (391) cpu_start: Pro cpu start user code[0m
+[0;32mI (391) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (391) app_init: Application information:[0m
+[0;32mI (392) app_init: Project name:     sensor_esp32c3[0m
+[0;32mI (396) app_init: App version:      d35946d-dirty[0m
+[0;32mI (400) app_init: Compile time:     Dec  6 2025 19:43:04[0m
+[0;32mI (405) app_init: ELF file SHA256:  b0d6a3fb2...[0m
+[0;32mI (410) app_init: ESP-IDF:          v5.5.1-dirty[0m
+[0;32mI (414) efuse_init: Min chip rev:     v0.3[0m
+[0;32mI (418) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (422) efuse_init: Chip rev:         v0.4[0m
+[0;32mI (426) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (432) heap_init: At 3FCA6D10 len 000192F0 (100 KiB): RAM[0m
+[0;32mI (437) heap_init: At 3FCC0000 len 0001C710 (113 KiB): Retention RAM[0m
+[0;32mI (443) heap_init: At 3FCDC710 len 00002950 (10 KiB): Retention RAM[0m
+[0;32mI (449) heap_init: At 50000020 len 00001FC8 (7 KiB): RTCRAM[0m
+[0;32mI (455) spi_flash: detected chip: generic[0m
+[0;32mI (458) spi_flash: flash io: dio[0m
+[0;32mI (462) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (468) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (474) coexist: coex firmware version: b0bcc39[0m
+[0;32mI (479) coexist: coexist rom version 9387209[0m
+[0;32mI (483) main_task: Started on CPU0[0m
+[0;32mI (485) main_task: Calling app_main()[0m
+[0;32mI (489) MAIN: ========================================[0m
+[0;32mI (493) MAIN: === ONG SENSOR APPLICATION v1.0 ===[0m
+[0;32mI (498) MAIN: ========================================[0m
+[0;32mI (503) MAIN: ESP32-C3 - Dual sensor monitoring[0m
+[0;32mI (507) MAIN: Free heap: 222412 bytes[0m
+[0;32mI (510) MAIN: ========================================[0m
+[0;32mI (515) MAIN: Creando colas de comunicación...[0m
+[0;32mI (520) MAIN: ✓ Colas creadas correctamente[0m
+[0;32mI (524) MAIN: Inicializando bus I2C...[0m
+[0;33mW (527) i2c.master: Please check pull-up resistances whether be connected properly. Otherwise unexpected behavior would happen. For more detailed information, please read docs[0m
+[0;32mI (543) MAIN: ✓ Bus I2C inicializado correctamente[0m
+[0;32mI (547) MAIN: ========================================[0m
+[0;32mI (552) MAIN: === INICIANDO SUPERVISOR DEL SISTEMA ===[0m
+[0;32mI (557) MAIN: ========================================[0m
+[0;32mI (562) MAIN: Creando tarea supervisor...[0m
+[0;32mI (565) TASK_MAIN: === INICIANDO SUPERVISOR PRINCIPAL ===[0m
+[0;32mI (571) TASK_MAIN: ✓ Colas de configuración creadas (tamaño: 1)[0m
+[0;32mI (577) TASK_MAIN: Inicializando LED de estado (WS2812)...[0m
+[0;32mI (582) MAIN: ✓ Tarea supervisor creada correctamente[0m
+[0;32mI (583) TASK_MAIN: ✓ LED de estado inicializado correctamente[0m
+[0;32mI (592) TASK_LED_STATUS: ✓ Queue del LED de estado creada[0m
+[0;32mI (598) TASK_MAIN: ✓ Event Group de conectividad creado[0m
+[0;32mI (603) TASK_MAIN: Creando tarea LED de estado...[0m
+[0;32mI (607) TASK_MAIN: Creando tarea de configuración inicial...[0m
+[0;32mI (613) TASK_MAIN: Esperando finalización de configuración inicial...[0m
+[0;32mI (619) TASK_LED_STATUS: === INICIANDO TAREA LED DE ESTADO ===[0m
+[0;32mI (625) TASK_LED_STATUS: ✓ LED de estado listo - GPIO4 (D2)[0m
+[0;32mI (630) INIT_CONFIG: === INICIANDO CONFIGURACION INICIAL ESP32-C3 ===[0m
+[0;32mI (636) INIT_CONFIG: Inicializando NVS Flash...[0m
+[0;32mI (648) INIT_CONFIG: ✓ NVS Flash inicializado correctamente[0m
+[0;32mI (649) INIT_CONFIG: Verificando sistema...[0m
+[0;32mI (650) INIT_CONFIG: Verificando sistema...[0m
+[0;32mI (654) INIT_CONFIG: Memoria libre: 200392 bytes[0m
+[0;32mI (658) INIT_CONFIG: ESP32-C3 - 1 núcleos, rev 4[0m
+[0;32mI (662) INIT_CONFIG: ✓ Verificación del sistema exitosa[0m
+[0;32mI (668) MAIN: ========================================[0m
+[0;32mI (673) MAIN: ✓ SISTEMA SUPERVISADO EN FUNCIONAMIENTO[0m
+[0;32mI (677) MAIN: ========================================[0m
+[0;32mI (768) INIT_CONFIG: Verificando configuración ADC...[0m
+[0;32mI (768) INIT_CONFIG: Inicializando ADC compartido...[0m
+[0;32mI (768) ADC_SHARED: === INICIALIZANDO ADC COMPARTIDO ===[0m
+[0;32mI (771) ADC_SHARED: ✓ ADC unit inicializado correctamente[0m
+[0;32mI (776) ADC_SHARED: Inicializando calibración ADC...[0m
+[0;32mI (781) ADC_SHARED: ✓ Calibración ADC habilitada[0m
+[0;32mI (786) ADC_SHARED: ✓ ADC compartido inicializado correctamente[0m
+[0;32mI (792) ADC_SHARED: ✓ Canal ADC 2 configurado correctamente[0m
+[0;32mI (797) ADC_SHARED: ✓ Canal ADC 3 configurado correctamente[0m
+[0;32mI (803) INIT_CONFIG: ✓ ADC compartido inicializado correctamente[0m
+[0;32mI (808) INIT_CONFIG: Sensor Humedad - GPIO2 (D0) - ADC_CHANNEL_2[0m
+[0;32mI (814) INIT_CONFIG: Sensor Luz - GPIO3 (D1) - ADC_CHANNEL_3[0m
+[0;32mI (820) INIT_CONFIG: === DIAGNÓSTICO DE SENSORES ADC ===[0m
+[0;32mI (825) INIT_CONFIG: Probando sensor de humedad (GPIO2)...[0m
+[0;32mI (830) INIT_CONFIG: Humedad - Raw: 297, Voltaje: 224 mV[0m
+[0;32mI (835) INIT_CONFIG: Probando sensor de luz (GPIO3)...[0m
+[0;32mI (840) INIT_CONFIG: Luz - Raw: 826, Voltaje: 615 mV[0m
+[0;32mI (844) INIT_CONFIG: === FIN DIAGNÓSTICO ===[0m
+[0;32mI (849) INIT_CONFIG: ✓ Configuración ADC verificada[0m
+[0;32mI (853) INIT_CONFIG: Aplicando configuración específica ESP32-C3...[0m
+[0;32mI (860) INIT_CONFIG: ✓ Configuración específica aplicada[0m
+[0;32mI (865) INIT_CONFIG: === CONFIGURACION INICIAL COMPLETADA ===[0m
+[0;32mI (870) INIT_CONFIG: Sistema: ESP32-C3[0m
+[0;32mI (874) INIT_CONFIG: Sensor Humedad: GPIO2 (D0)[0m
+[0;32mI (878) INIT_CONFIG: Sensor Luz: GPIO3 (D1)[0m
+[0;32mI (882) INIT_CONFIG: LED: GPIO4 (D2)[0m
+[0;32mI (885) INIT_CONFIG: Memoria libre: 204488 bytes[0m
+[0;32mI (890) TASK_MAIN: ✓ Configuración inicial completada[0m
+[0;32mI (895) TASK_MAIN: Inicializando sistema de logging de errores...[0m
+[0;32mI (901) ERROR_LOGGER: ✅ Sistema de logging de errores inicializado[0m
+[0;32mI (907) ERROR_LOGGER:    - Cola: 50 entradas[0m
+[0;32mI (911) TASK_MAIN: ✓ Sistema de error logging inicializado[0m
+[0;32mI (916) TASK_MAIN: Creando tarea WiFi...[0m
+[0;32mI (920) TASK_MAIN: Creando tarea Bluetooth...[0m
+[0;32mI (924) TASK_MAIN: ✓ Tarea Bluetooth creada exitosamente[0m
+[0;32mI (929) TASK_MAIN: Esperando conexión WiFi...[0m
+[0;32mI (933) WIFI_TASK: === INICIANDO CONEXIÓN WIFI ===[0m
+[0;32mI (934) INIT_CONFIG: ✓ Tarea de configuración inicial finalizada[0m
+[0;32mI (941) pp: pp rom version: 9387209[0m
+[0;32mI (947) net80211: net80211 rom version: 9387209[0m
+[0;32mI (952) BLUETOOTH: === INICIANDO TAREA BLUETOOTH ===[0m
+[0;32mI (960) wifi_init: rx ba win: 6[0m
+[0;32mI (960) wifi_init: accept mbox: 6[0m
+[0;32mI (962) wifi_init: tcpip mbox: 32[0m
+[0;32mI (965) wifi_init: udp mbox: 6[0m
+[0;32mI (967) wifi_init: tcp mbox: 6[0m
+[0;32mI (970) wifi_init: tcp tx win: 5760[0m
+[0;32mI (973) wifi_init: tcp rx win: 5760[0m
+[0;32mI (977) wifi_init: tcp mss: 1440[0m
+[0;32mI (980) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (983) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;33mW (987) WIFI_TASK: No se pudo abrir NVS para WiFi, usando defaults[0m
+[0;32mI (993) WIFI_TASK: ✅ Credenciales válidas - SSID: 'Tcl'[0m
+[0;32mI (1037) WIFI_TASK: WiFi iniciado, intentando conectar...[0m
+[0;32mI (1037) WIFI_TASK: WiFi inicializado. Conectando a Tcl...[0m
+[0;32mI (1068) WIFI_TASK: Reintentando conexión WiFi (1/5)[0m
+[0;33mW (1364) wifi:tx null, bss is null[0m
+[0;32mI (3479) WIFI_TASK: Reintentando conexión WiFi (2/5)[0m
+[0;32mI (5044) esp_netif_handlers: sta ip: 10.40.55.167, mask: 255.255.255.0, gw: 10.40.55.137[0m
+[0;32mI (5044) WIFI_TASK: Dirección IP obtenida:10.40.55.167[0m
+[0;32mI (5046) WIFI_TASK: ✅ Conectividad establecida - Tareas reanudadas[0m
+[0;32mI (5052) WIFI_TASK: ✓ Conectado exitosamente a WiFi SSID: Tcl[0m
+[0;32mI (5058) WIFI_TASK:   - RSSI: -38 dBm[0m
+[0;32mI (5061) WIFI_TASK:   - Canal: 6[0m
+[0;32mI (5064) WIFI_TASK:   - IP: 10.40.55.167 | Mask: 255.255.255.0 | GW: 10.40.55.137[0m
+[0;32mI (5072) ERROR_LOGGER: 🔍 Config global - Humedad id=0, Luz id=0[0m
+[0;33mW (5077) ERROR_LOGGER: No se pudo abrir NVS para leer id_sensor: ESP_ERR_NVS_NOT_FOUND[0m
+[0;32mI (5085) ERROR_LOGGER: 📖 ID humedad leído desde NVS: -1[0m
+[0;33mW (5090) ERROR_LOGGER: No se pudo abrir NVS para leer id_sensor: ESP_ERR_NVS_NOT_FOUND[0m
+[0;32mI (5098) ERROR_LOGGER: 📖 ID luz leído desde NVS: -1[0m
+[0;33mW (5103) ERROR_LOGGER: ⚠️  ID humedad inválido (-1) - no se enviará error para humedad[0m
+[0;33mW (5111) ERROR_LOGGER: ⚠️  ID luz inválido (-1) - no se enviará error para luz[0m
+[0;32mI (5118) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=-1, state=1, device_serial=0x001C[0m
+[0;32mI (5126) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=-1, state=1, device_serial=0x001D[0m
+[0;32mI (5134) ERROR_LOGGER: 📝 Error registrado: [WIFI_CONNECTED] Conexión WiFi establecida exitosamente[0m
+[0;32mI (5143) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=-1)[0m
+[0;32mI (5148) ERROR_LOGGER: 📝 Error registrado: [WIFI_CONNECTED] Conexión WiFi establecida exitosamente[0m
+[0;32mI (5157) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=-1)[0m
+[0;32mI (5163) TASK_MAIN: ✓ WiFi conectado exitosamente[0m
+[0;32mI (5167) TASK_MAIN: Creando tarea de configuración de sensores...[0m
+[0;32mI (5173) TASK_MAIN: Esperando configuración de sensores...[0m
+[0;32mI (5178) SENSOR_CONFIG: === INICIANDO CONFIGURACIÓN DE SENSORES ===[0m
+[0;32mI (5185) SENSOR_CONFIG: 📝 Cargando configuración del sensor de humedad...[0m
+[0;33mW (5192) NVS_TASK: No se pudo abrir NVS sensor_cfg para lectura: ESP_ERR_NVS_NOT_FOUND[0m
+[0;33mW (5199) SENSOR_CONFIG: ⚠️ No hay configuración en NVS, usando valores por defecto[0m
+[0;32mI (5207) SENSOR_CONFIG: 📋 Valores por defecto aplicados:[0m
+[0;32mI (5212) SENSOR_CONFIG:   - ID: 8[0m
+[0;32mI (5215) SENSOR_CONFIG:   - Intervalo: 5 seg[0m
+[0;32mI (5219) SENSOR_CONFIG:   - Estado: activo[0m
+[0;32mI (5223) SENSOR_CONFIG: 📝 Cargando configuración del sensor de luz...[0m
+[0;33mW (5230) NVS_TASK: No se pudo abrir NVS sensor_cfg para lectura: ESP_ERR_NVS_NOT_FOUND[0m
+[0;33mW (5237) SENSOR_CONFIG: ⚠️ No hay configuración en NVS, usando valores por defecto[0m
+[0;32mI (5245) SENSOR_CONFIG: 📋 Valores por defecto aplicados:[0m
+[0;32mI (5250) SENSOR_CONFIG:   - ID: 9[0m
+[0;32mI (5253) SENSOR_CONFIG:   - Intervalo: 5 seg[0m
+[0;32mI (5257) SENSOR_CONFIG:   - Estado: activo[0m
+[0;32mI (5261) SENSOR_CONFIG: === CONFIGURACIÓN FINAL SENSORES ===[0m
+[0;32mI (5266) SENSOR_CONFIG: Sensor Humedad:[0m
+[0;32mI (5270) SENSOR_CONFIG:   ID: 8[0m
+[0;32mI (5273) SENSOR_CONFIG:   Descripción: Sensor Humedad Suelo[0m
+[0;32mI (5278) SENSOR_CONFIG:   Intervalo: 5 segundos[0m
+[0;32mI (5282) SENSOR_CONFIG:   Estado: activo[0m
+[0;32mI (5286) SENSOR_CONFIG: Sensor Luz:[0m
+[0;32mI (5289) SENSOR_CONFIG:   ID: 9[0m
+[0;32mI (5292) SENSOR_CONFIG:   Descripción: Sensor de Luz[0m
+[0;32mI (5297) SENSOR_CONFIG:   Intervalo: 5 segundos[0m
+[0;32mI (5301) SENSOR_CONFIG:   Estado: activo[0m
+[0;32mI (5305) SENSOR_CONFIG: ✅ Configuración de sensores completada[0m
+[0;32mI (5311) TASK_MAIN: ✓ Sensores configurados exitosamente[0m
+[0;32mI (5316) TASK_MAIN: Creando tarea unificada de sensores...[0m
+[0;32mI (5321) TASK_MAIN:   - Lectura cada 5000 ms[0m
+[0;32mI (5325) TASK_MAIN:   - Envío HTTP según interval_seconds (configurado por MQTT)[0m
+[0;32mI (5332) TASK_MAIN: ✓ Tarea unificada de sensores creada[0m
+[0;32mI (5338) TASK_MAIN: Creando tarea HTTP...[0m
+[0;32mI (5341) TASK_MAIN: Creando tarea MQTT...[0m
+[0;32mI (5345) TASK_MAIN: ✓ Tarea MQTT creada exitosamente[0m
+[0;32mI (5350) TASK_MAIN: Creando tarea NVS...[0m
+[0;32mI (5354) TASK_MAIN: Creando tarea de error logger...[0m
+[0;32mI (5358) TASK_MAIN: ✓ Tarea de error logger creada[0m
+[0;32mI (5363) TASK_MAIN: ✓ Sistema completamente inicializado[0m
+[0;32mI (5368) TASK_MAIN: Status de tarea 0: Configuración inicial completa[0m
+[0;32mI (5375) SENSORS_UNIFIED: === INICIANDO TAREA UNIFICADA DE SENSORES ===[0m
+[0;32mI (5381) SENSORS_UNIFIED: ✓ AHT10 device handle created successfully[0m
+[0;32mI (5387) HTTP_TASK: === INICIANDO TAREA HTTP CLIENT ===[0m
+[1;31mE (5387) i2c.master: I2C transaction unexpected nack detected[0m
+[1;31mE (5397) i2c.master: s_i2c_synchronous_transaction(945): I2C transaction failed[0m
+[1;31mE (5405) i2c.master: i2c_master_multi_buffer_transmit(1214): I2C transaction failed[0m
+[1;31mE (5412) SENSORS_UNIFIED: Failed to init AHT10: ESP_ERR_INVALID_STATE[0m
+[0;32mI (5418) MQTT: Iniciando tarea MQTT...[0m
+[0;32mI (5421) MQTT: ⏳ MQTT: Esperando conectividad WiFi...[0m
+[0;32mI (5426) MQTT: ✅ WiFi conectado, inicializando cliente MQTT[0m
+[0;32mI (5432) MQTT: Inicializando cliente MQTT...[0m
+[0;32mI (5419) HTTP_TASK: 🔍 Validación de sensores se hará cuando se reciba el primer dato de cada uno[0m
+[0;32mI (5445) HTTP_TASK: Intervalo humedad: 5 s, Intervalo luz: 5 s[0m
+[0;32mI (5450) HTTP_TASK: ✓ Tarea HTTP lista para recibir datos[0m
+[0;32mI (5438) MQTT: Cliente MQTT iniciado correctamente[0m
+[0;33mW (5460) MQTT: MQTT desconectado, esperando reconexión automática...[0m
+[0;32mI (5467) NVS_TASK: === INICIANDO TAREA NVS ===[0m
+[0;32mI (5471) NVS_TASK: ✓ NVS storage inicializado[0m
+[0;32mI (5474) TASK_MAIN: Status de tarea 1: WiFi conectado exitosamente[0m
+[0;32mI (5481) NVS_TASK: ✓ NVS storage para password inicializado[0m
+[0;32mI (5468) ERROR_LOGGER: === INICIANDO TAREA ERROR LOGGER ===[0m
+[0;32mI (5491) ERROR_LOGGER: 📤 Procesando error: [WIFI_CONNECTED] Conexión WiFi establecida exitosamente[0m
+[0;32mI (5501) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (5508) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (5516) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[0;32mI (5581) TASK_MAIN: Status de tarea 3: Configuración completa[0m
+[1;31mE (5681) TASK_MAIN: Error reportado por tarea 4: AHT10 init failed[0m
+[1;31mE (5755) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (5756) esp-tls: create_ssl_handle failed[0m
+[1;31mE (5756) esp-tls: Failed to open new connection[0m
+[1;31mE (5758) transport_base: Failed to open a new connection[0m
+[1;31mE (5765) mqtt_client: Error transport connect[0m
+[1;31mE (5767) MQTT: Error MQTT[0m
+[1;31mE (5770) MQTT: Error de transporte TCP reportado[0m
+[0;32mI (5774) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (5780) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (5788) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (5795) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (5802) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (5808) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (5815) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;33mW (5821) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (5825) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (5830) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (5838) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (5845) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (5854) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (5859) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (5868) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[1;31mE (5902) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (5903) esp-tls: create_ssl_handle failed[0m
+[1;31mE (5903) esp-tls: Failed to open new connection[0m
+[1;31mE (5905) transport_base: Failed to open a new connection[0m
+[1;31mE (5911) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (5915) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (5922) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 1)[0m
+[0;32mI (5930) ERROR_LOGGER: 🔄 Reintentando envío de error: [WIFI_CONNECTED][0m
+[0;32mI (5936) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (5944) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (5952) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (6007) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (6008) esp-tls: create_ssl_handle failed[0m
+[1;31mE (6008) esp-tls: Failed to open new connection[0m
+[1;31mE (6010) transport_base: Failed to open a new connection[0m
+[1;31mE (6017) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (6020) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (6027) ERROR_LOGGER: 📤 Procesando error: [WIFI_CONNECTED] Conexión WiFi establecida exitosamente[0m
+[0;32mI (6037) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (6044) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (6052) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (6203) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (6203) esp-tls: create_ssl_handle failed[0m
+[1;31mE (6203) esp-tls: Failed to open new connection[0m
+[1;31mE (6205) transport_base: Failed to open a new connection[0m
+[1;31mE (6212) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (6215) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (6222) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 2)[0m
+[0;32mI (6230) ERROR_LOGGER: 🔄 Reintentando envío de error: [WIFI_CONNECTED][0m
+[0;32mI (6237) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (6244) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (6252) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (6307) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (6308) esp-tls: create_ssl_handle failed[0m
+[1;31mE (6308) esp-tls: Failed to open new connection[0m
+[1;31mE (6310) transport_base: Failed to open a new connection[0m
+[1;31mE (6317) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (6320) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (6327) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (6335) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (6342) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (6348) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (6408) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (6408) esp-tls: create_ssl_handle failed[0m
+[1;31mE (6409) esp-tls: Failed to open new connection[0m
+[1;31mE (6411) transport_base: Failed to open a new connection[0m
+[1;31mE (6417) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (6420) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (6428) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 3)[0m
+[0;32mI (6436) ERROR_LOGGER: 🔄 Reintentando envío de error: [WIFI_CONNECTED][0m
+[0;32mI (6442) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (6449) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (6458) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (6513) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (6514) esp-tls: create_ssl_handle failed[0m
+[1;31mE (6514) esp-tls: Failed to open new connection[0m
+[1;31mE (6516) transport_base: Failed to open a new connection[0m
+[1;31mE (6523) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (6526) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (6533) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (6541) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (6548) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (6554) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (6617) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (6617) esp-tls: create_ssl_handle failed[0m
+[1;31mE (6617) esp-tls: Failed to open new connection[0m
+[1;31mE (6619) transport_base: Failed to open a new connection[0m
+[1;31mE (6626) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (6629) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (6637) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 4)[0m
+[0;32mI (6644) ERROR_LOGGER: 🔄 Reintentando envío de error: [WIFI_CONNECTED][0m
+[0;32mI (6651) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (6658) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (6667) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (6721) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (6721) esp-tls: create_ssl_handle failed[0m
+[1;31mE (6721) esp-tls: Failed to open new connection[0m
+[1;31mE (6723) transport_base: Failed to open a new connection[0m
+[1;31mE (6730) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (6733) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (6741) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (6749) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (6756) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (6762) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (6822) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (6822) esp-tls: create_ssl_handle failed[0m
+[1;31mE (6822) esp-tls: Failed to open new connection[0m
+[1;31mE (6824) transport_base: Failed to open a new connection[0m
+[1;31mE (6831) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (6834) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (6842) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 5)[0m
+[0;32mI (6849) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (6856) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (6863) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (6869) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (6949) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (6949) esp-tls: create_ssl_handle failed[0m
+[1;31mE (6950) esp-tls: Failed to open new connection[0m
+[1;31mE (6951) transport_base: Failed to open a new connection[0m
+[1;31mE (6958) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (6961) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (6969) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (6977) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (6984) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (6991) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (7147) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (7148) esp-tls: create_ssl_handle failed[0m
+[1;31mE (7148) esp-tls: Failed to open new connection[0m
+[1;31mE (7150) transport_base: Failed to open a new connection[0m
+[1;31mE (7157) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (7160) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (7167) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 6)[0m
+[0;32mI (7175) ERROR_LOGGER: 🔄 Reintentando envío de error: [WIFI_CONNECTED][0m
+[0;32mI (7182) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (7189) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (7197) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (7259) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (7259) esp-tls: create_ssl_handle failed[0m
+[1;31mE (7259) esp-tls: Failed to open new connection[0m
+[1;31mE (7261) transport_base: Failed to open a new connection[0m
+[1;31mE (7268) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (7271) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[1;31mE (11283) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (11284) esp-tls: create_ssl_handle failed[0m
+[1;31mE (11284) esp-tls: Failed to open new connection[0m
+[1;31mE (11286) transport_base: Failed to open a new connection[0m
+[1;31mE (11293) mqtt_client: Error transport connect[0m
+[1;31mE (11296) MQTT: Error MQTT[0m
+[1;31mE (11298) MQTT: Error de transporte TCP reportado[0m
+[0;32mI (11303) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (11308) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (11316) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (11324) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (11331) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (11337) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (11344) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;33mW (11350) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (11354) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (11360) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (11367) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (11375) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (11383) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (11389) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (11397) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;32mI (11403) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (11410) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (11417) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (11424) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (11499) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (11499) esp-tls: create_ssl_handle failed[0m
+[1;31mE (11499) esp-tls: Failed to open new connection[0m
+[1;31mE (11502) transport_base: Failed to open a new connection[0m
+[1;31mE (11508) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (11512) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (11519) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 7)[0m
+[0;32mI (11527) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (11534) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (11541) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (11548) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (11612) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (11613) esp-tls: create_ssl_handle failed[0m
+[1;31mE (11613) esp-tls: Failed to open new connection[0m
+[1;31mE (11615) transport_base: Failed to open a new connection[0m
+[1;31mE (11622) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (11625) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (11633) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (11640) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (11648) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (11654) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (11713) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (11714) esp-tls: create_ssl_handle failed[0m
+[1;31mE (11714) esp-tls: Failed to open new connection[0m
+[1;31mE (11716) transport_base: Failed to open a new connection[0m
+[1;31mE (11723) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (11726) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (11734) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 8)[0m
+[0;32mI (11742) ERROR_LOGGER: 🔄 Reintentando envío de error: [WIFI_CONNECTED][0m
+[0;32mI (11749) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (11756) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (11764) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (11910) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (11910) esp-tls: create_ssl_handle failed[0m
+[1;31mE (11911) esp-tls: Failed to open new connection[0m
+[1;31mE (11913) transport_base: Failed to open a new connection[0m
+[1;31mE (11919) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (11923) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (11930) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (11939) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (11947) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (11952) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (12031) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (12031) esp-tls: create_ssl_handle failed[0m
+[1;31mE (12031) esp-tls: Failed to open new connection[0m
+[1;31mE (12034) transport_base: Failed to open a new connection[0m
+[1;31mE (12040) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (12044) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (12051) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 9)[0m
+[0;32mI (12059) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (12066) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (12073) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (12080) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (12141) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (12142) esp-tls: create_ssl_handle failed[0m
+[1;31mE (12142) esp-tls: Failed to open new connection[0m
+[1;31mE (12145) transport_base: Failed to open a new connection[0m
+[1;31mE (12151) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (12155) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (12162) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (12171) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (12178) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (12184) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (12246) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (12246) esp-tls: create_ssl_handle failed[0m
+[1;31mE (12246) esp-tls: Failed to open new connection[0m
+[1;31mE (12249) transport_base: Failed to open a new connection[0m
+[1;31mE (12255) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (12259) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (12266) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 10)[0m
+[0;32mI (12274) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (12281) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (12288) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (12295) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (12354) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (12355) esp-tls: create_ssl_handle failed[0m
+[1;31mE (12355) esp-tls: Failed to open new connection[0m
+[1;31mE (12357) transport_base: Failed to open a new connection[0m
+[1;31mE (12364) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (12368) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[1;31mE (16813) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (16813) esp-tls: create_ssl_handle failed[0m
+[1;31mE (16813) esp-tls: Failed to open new connection[0m
+[1;31mE (16816) transport_base: Failed to open a new connection[0m
+[1;31mE (16822) mqtt_client: Error transport connect[0m
+[1;31mE (16825) MQTT: Error MQTT[0m
+[1;31mE (16827) MQTT: Error de transporte TCP reportado[0m
+[0;32mI (16832) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (16838) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (16846) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (16853) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (16861) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (16866) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (16874) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;33mW (16879) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (16883) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (16889) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (16897) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (16904) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (16913) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (16918) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (16927) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;32mI (16932) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (16940) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (16947) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (16953) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (17028) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (17028) esp-tls: create_ssl_handle failed[0m
+[1;31mE (17028) esp-tls: Failed to open new connection[0m
+[1;31mE (17031) transport_base: Failed to open a new connection[0m
+[1;31mE (17037) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (17041) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (17048) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 11)[0m
+[0;32mI (17056) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (17063) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (17070) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (17078) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (17136) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (17137) esp-tls: create_ssl_handle failed[0m
+[1;31mE (17137) esp-tls: Failed to open new connection[0m
+[1;31mE (17139) transport_base: Failed to open a new connection[0m
+[1;31mE (17146) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (17149) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (17157) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (17164) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (17171) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (17178) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (17236) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (17237) esp-tls: create_ssl_handle failed[0m
+[1;31mE (17237) esp-tls: Failed to open new connection[0m
+[1;31mE (17239) transport_base: Failed to open a new connection[0m
+[1;31mE (17246) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (17249) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (17257) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 12)[0m
+[0;32mI (17265) ERROR_LOGGER: 🔄 Reintentando envío de error: [WIFI_CONNECTED][0m
+[0;32mI (17272) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (17279) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (17287) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (17356) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (17357) esp-tls: create_ssl_handle failed[0m
+[1;31mE (17357) esp-tls: Failed to open new connection[0m
+[1;31mE (17359) transport_base: Failed to open a new connection[0m
+[1;31mE (17366) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (17369) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (17377) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (17385) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (17392) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (17399) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (17454) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (17454) esp-tls: create_ssl_handle failed[0m
+[1;31mE (17454) esp-tls: Failed to open new connection[0m
+[1;31mE (17457) transport_base: Failed to open a new connection[0m
+[1;31mE (17463) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (17467) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (17474) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 13)[0m
+[0;32mI (17482) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (17489) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (17496) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (17502) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (17592) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (17593) esp-tls: create_ssl_handle failed[0m
+[1;31mE (17593) esp-tls: Failed to open new connection[0m
+[1;31mE (17595) transport_base: Failed to open a new connection[0m
+[1;31mE (17601) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (17605) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (17612) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (17621) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (17628) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (17634) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (17694) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (17694) esp-tls: create_ssl_handle failed[0m
+[1;31mE (17695) esp-tls: Failed to open new connection[0m
+[1;31mE (17697) transport_base: Failed to open a new connection[0m
+[1;31mE (17704) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (17707) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (17714) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 14)[0m
+[0;32mI (17722) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (17730) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (17736) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (17743) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (17801) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (17802) esp-tls: create_ssl_handle failed[0m
+[1;31mE (17802) esp-tls: Failed to open new connection[0m
+[1;31mE (17804) transport_base: Failed to open a new connection[0m
+[1;31mE (17811) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (17814) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[1;31mE (22194) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (22195) esp-tls: create_ssl_handle failed[0m
+[1;31mE (22195) esp-tls: Failed to open new connection[0m
+[1;31mE (22197) transport_base: Failed to open a new connection[0m
+[1;31mE (22204) mqtt_client: Error transport connect[0m
+[1;31mE (22207) MQTT: Error MQTT[0m
+[1;31mE (22209) MQTT: Error de transporte TCP reportado[0m
+[0;32mI (22214) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (22220) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (22227) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (22235) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (22242) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (22248) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (22255) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;33mW (22261) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (22265) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (22271) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (22278) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (22286) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (22294) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (22300) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (22309) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;32mI (22314) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (22321) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (22329) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (22335) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (22395) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (22395) esp-tls: create_ssl_handle failed[0m
+[1;31mE (22396) esp-tls: Failed to open new connection[0m
+[1;31mE (22398) transport_base: Failed to open a new connection[0m
+[1;31mE (22404) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (22408) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (22415) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 15)[0m
+[0;32mI (22423) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (22430) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (22437) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (22443) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (22501) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (22502) esp-tls: create_ssl_handle failed[0m
+[1;31mE (22502) esp-tls: Failed to open new connection[0m
+[1;31mE (22504) transport_base: Failed to open a new connection[0m
+[1;31mE (22511) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (22514) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (22522) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (22529) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (22536) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (22543) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (22600) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (22601) esp-tls: create_ssl_handle failed[0m
+[1;31mE (22601) esp-tls: Failed to open new connection[0m
+[1;31mE (22603) transport_base: Failed to open a new connection[0m
+[1;31mE (22610) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (22613) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (22620) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 16)[0m
+[0;32mI (22628) ERROR_LOGGER: 🔄 Reintentando envío de error: [WIFI_CONNECTED][0m
+[0;32mI (22635) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (22643) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (22651) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (22712) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (22712) esp-tls: create_ssl_handle failed[0m
+[1;31mE (22712) esp-tls: Failed to open new connection[0m
+[1;31mE (22715) transport_base: Failed to open a new connection[0m
+[1;31mE (22721) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (22725) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (22732) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (22741) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (22748) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (22754) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (22814) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (22814) esp-tls: create_ssl_handle failed[0m
+[1;31mE (22814) esp-tls: Failed to open new connection[0m
+[1;31mE (22817) transport_base: Failed to open a new connection[0m
+[1;31mE (22823) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (22827) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (22834) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 17)[0m
+[0;32mI (22842) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (22849) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (22856) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (22863) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (22933) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (22933) esp-tls: create_ssl_handle failed[0m
+[1;31mE (22933) esp-tls: Failed to open new connection[0m
+[1;31mE (22935) transport_base: Failed to open a new connection[0m
+[1;31mE (22942) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (22946) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (22953) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (22962) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (22969) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (22975) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (23034) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (23035) esp-tls: create_ssl_handle failed[0m
+[1;31mE (23035) esp-tls: Failed to open new connection[0m
+[1;31mE (23037) transport_base: Failed to open a new connection[0m
+[1;31mE (23044) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (23047) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (23054) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 18)[0m
+[0;32mI (23062) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (23070) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (23077) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (23083) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (23140) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (23141) esp-tls: create_ssl_handle failed[0m
+[1;31mE (23141) esp-tls: Failed to open new connection[0m
+[1;31mE (23143) transport_base: Failed to open a new connection[0m
+[1;31mE (23150) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (23153) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[1;31mE (27669) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (27670) esp-tls: create_ssl_handle failed[0m
+[1;31mE (27670) esp-tls: Failed to open new connection[0m
+[1;31mE (27672) transport_base: Failed to open a new connection[0m
+[1;31mE (27679) mqtt_client: Error transport connect[0m
+[1;31mE (27681) MQTT: Error MQTT[0m
+[1;31mE (27684) MQTT: Error de transporte TCP reportado[0m
+[0;32mI (27688) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (27694) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (27702) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (27709) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (27717) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (27722) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (27730) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;33mW (27735) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (27739) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (27745) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (27753) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (27761) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (27769) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (27775) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (27783) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;32mI (27789) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (27796) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (27803) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (27810) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (28020) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (28021) esp-tls: create_ssl_handle failed[0m
+[1;31mE (28021) esp-tls: Failed to open new connection[0m
+[1;31mE (28023) transport_base: Failed to open a new connection[0m
+[1;31mE (28030) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (28033) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (28041) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 19)[0m
+[0;32mI (28049) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (28056) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (28063) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (28069) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (28162) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (28163) esp-tls: create_ssl_handle failed[0m
+[1;31mE (28163) esp-tls: Failed to open new connection[0m
+[1;31mE (28165) transport_base: Failed to open a new connection[0m
+[1;31mE (28171) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (28175) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (28183) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (28190) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (28197) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (28204) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (28265) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (28265) esp-tls: create_ssl_handle failed[0m
+[1;31mE (28266) esp-tls: Failed to open new connection[0m
+[1;31mE (28268) transport_base: Failed to open a new connection[0m
+[1;31mE (28274) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (28278) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (28285) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 20)[0m
+[0;32mI (28293) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (28300) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (28307) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (28313) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (28400) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (28400) esp-tls: create_ssl_handle failed[0m
+[1;31mE (28400) esp-tls: Failed to open new connection[0m
+[1;31mE (28403) transport_base: Failed to open a new connection[0m
+[1;31mE (28409) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (28413) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (28420) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (28429) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (28436) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (28442) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (28554) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (28554) esp-tls: create_ssl_handle failed[0m
+[1;31mE (28555) esp-tls: Failed to open new connection[0m
+[1;31mE (28557) transport_base: Failed to open a new connection[0m
+[1;31mE (28563) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (28567) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (28574) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 21)[0m
+[0;32mI (28582) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (28589) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (28596) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (28602) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (28663) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (28664) esp-tls: create_ssl_handle failed[0m
+[1;31mE (28664) esp-tls: Failed to open new connection[0m
+[1;31mE (28666) transport_base: Failed to open a new connection[0m
+[1;31mE (28673) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (28676) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (28683) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (28692) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (28699) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (28705) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (28968) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (28969) esp-tls: create_ssl_handle failed[0m
+[1;31mE (28969) esp-tls: Failed to open new connection[0m
+[1;31mE (28971) transport_base: Failed to open a new connection[0m
+[1;31mE (28978) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (28981) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (28989) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 22)[0m
+[0;32mI (28997) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (29005) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (29011) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (29017) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (29079) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (29080) esp-tls: create_ssl_handle failed[0m
+[1;31mE (29080) esp-tls: Failed to open new connection[0m
+[1;31mE (29082) transport_base: Failed to open a new connection[0m
+[1;31mE (29089) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (29092) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[1;31mE (33197) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (33197) esp-tls: create_ssl_handle failed[0m
+[1;31mE (33198) esp-tls: Failed to open new connection[0m
+[1;31mE (33200) transport_base: Failed to open a new connection[0m
+[1;31mE (33206) mqtt_client: Error transport connect[0m
+[1;31mE (33209) MQTT: Error MQTT[0m
+[1;31mE (33212) MQTT: Error de transporte TCP reportado[0m
+[0;32mI (33216) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (33222) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (33230) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (33237) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (33245) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (33250) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (33258) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;33mW (33263) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (33267) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (33273) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (33281) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (33289) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (33297) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (33303) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (33311) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;32mI (33317) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (33324) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (33331) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (33338) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (33396) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (33396) esp-tls: create_ssl_handle failed[0m
+[1;31mE (33397) esp-tls: Failed to open new connection[0m
+[1;31mE (33399) transport_base: Failed to open a new connection[0m
+[1;31mE (33405) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (33409) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (33416) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 23)[0m
+[0;32mI (33424) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (33431) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (33438) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (33444) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (33506) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (33506) esp-tls: create_ssl_handle failed[0m
+[1;31mE (33507) esp-tls: Failed to open new connection[0m
+[1;31mE (33509) transport_base: Failed to open a new connection[0m
+[1;31mE (33515) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (33519) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (33526) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (33534) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (33541) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (33547) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (33704) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (33705) esp-tls: create_ssl_handle failed[0m
+[1;31mE (33705) esp-tls: Failed to open new connection[0m
+[1;31mE (33707) transport_base: Failed to open a new connection[0m
+[1;31mE (33713) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (33717) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (33724) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 24)[0m
+[0;32mI (33732) ERROR_LOGGER: 🔄 Reintentando envío de error: [WIFI_CONNECTED][0m
+[0;32mI (33739) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (33746) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (33755) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (33820) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (33820) esp-tls: create_ssl_handle failed[0m
+[1;31mE (33820) esp-tls: Failed to open new connection[0m
+[1;31mE (33823) transport_base: Failed to open a new connection[0m
+[1;31mE (33829) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (33833) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (33840) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (33849) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (33856) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (33862) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (33922) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (33923) esp-tls: create_ssl_handle failed[0m
+[1;31mE (33923) esp-tls: Failed to open new connection[0m
+[1;31mE (33925) transport_base: Failed to open a new connection[0m
+[1;31mE (33932) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (33935) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (33942) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 25)[0m
+[0;32mI (33951) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (33958) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (33965) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (33971) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (34034) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (34035) esp-tls: create_ssl_handle failed[0m
+[1;31mE (34035) esp-tls: Failed to open new connection[0m
+[1;31mE (34037) transport_base: Failed to open a new connection[0m
+[1;31mE (34044) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (34047) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (34055) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (34064) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (34070) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (34077) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (34136) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (34137) esp-tls: create_ssl_handle failed[0m
+[1;31mE (34137) esp-tls: Failed to open new connection[0m
+[1;31mE (34139) transport_base: Failed to open a new connection[0m
+[1;31mE (34146) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (34149) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (34157) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 26)[0m
+[0;32mI (34165) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (34171) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (34178) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (34185) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (34242) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (34243) esp-tls: create_ssl_handle failed[0m
+[1;31mE (34243) esp-tls: Failed to open new connection[0m
+[1;31mE (34245) transport_base: Failed to open a new connection[0m
+[1;31mE (34252) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (34255) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (36281) TASK_MAIN: Supervisor activo - Heap libre: 20448 bytes[0m
+[1;31mE (38726) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (38726) esp-tls: create_ssl_handle failed[0m
+[1;31mE (38726) esp-tls: Failed to open new connection[0m
+[1;31mE (38729) transport_base: Failed to open a new connection[0m
+[1;31mE (38735) mqtt_client: Error transport connect[0m
+[1;31mE (38738) MQTT: Error MQTT[0m
+[1;31mE (38740) MQTT: Error de transporte TCP reportado[0m
+[0;32mI (38745) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (38751) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (38759) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (38766) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (38773) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (38779) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (38787) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;33mW (38792) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (38796) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (38802) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (38810) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (38817) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (38826) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (38831) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (38840) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;32mI (38846) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (38853) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (38860) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (38866) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (38926) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (38927) esp-tls: create_ssl_handle failed[0m
+[1;31mE (38927) esp-tls: Failed to open new connection[0m
+[1;31mE (38929) transport_base: Failed to open a new connection[0m
+[1;31mE (38936) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (38939) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (38947) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 27)[0m
+[0;32mI (38955) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (38962) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (38969) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (38975) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (39033) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (39034) esp-tls: create_ssl_handle failed[0m
+[1;31mE (39034) esp-tls: Failed to open new connection[0m
+[1;31mE (39036) transport_base: Failed to open a new connection[0m
+[1;31mE (39043) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (39046) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (39054) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (39061) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (39068) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (39075) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (39134) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (39135) esp-tls: create_ssl_handle failed[0m
+[1;31mE (39135) esp-tls: Failed to open new connection[0m
+[1;31mE (39137) transport_base: Failed to open a new connection[0m
+[1;31mE (39144) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (39147) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (39155) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 28)[0m
+[0;32mI (39163) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (39169) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (39176) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (39184) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (39241) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (39242) esp-tls: create_ssl_handle failed[0m
+[1;31mE (39242) esp-tls: Failed to open new connection[0m
+[1;31mE (39244) transport_base: Failed to open a new connection[0m
+[1;31mE (39251) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (39254) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (39262) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (39270) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (39278) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (39284) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (39459) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (39460) esp-tls: create_ssl_handle failed[0m
+[1;31mE (39460) esp-tls: Failed to open new connection[0m
+[1;31mE (39462) transport_base: Failed to open a new connection[0m
+[1;31mE (39469) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (39472) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (39480) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 29)[0m
+[0;32mI (39488) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (39494) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (39501) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (39508) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (39570) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (39571) esp-tls: create_ssl_handle failed[0m
+[1;31mE (39571) esp-tls: Failed to open new connection[0m
+[1;31mE (39573) transport_base: Failed to open a new connection[0m
+[1;31mE (39580) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (39583) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (39590) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (39599) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (39606) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (39613) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (39670) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (39671) esp-tls: create_ssl_handle failed[0m
+[1;31mE (39671) esp-tls: Failed to open new connection[0m
+[1;31mE (39673) transport_base: Failed to open a new connection[0m
+[1;31mE (39680) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (39683) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (39691) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 30)[0m
+[0;32mI (39699) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (39705) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (39712) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (39719) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (39780) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (39781) esp-tls: create_ssl_handle failed[0m
+[1;31mE (39781) esp-tls: Failed to open new connection[0m
+[1;31mE (39783) transport_base: Failed to open a new connection[0m
+[1;31mE (39790) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (39793) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[1;31mE (44153) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (44154) esp-tls: create_ssl_handle failed[0m
+[1;31mE (44154) esp-tls: Failed to open new connection[0m
+[1;31mE (44156) transport_base: Failed to open a new connection[0m
+[1;31mE (44163) mqtt_client: Error transport connect[0m
+[1;31mE (44166) MQTT: Error MQTT[0m
+[1;31mE (44168) MQTT: Error de transporte TCP reportado[0m
+[0;32mI (44173) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (44179) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (44186) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (44194) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (44201) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (44207) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (44214) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;33mW (44220) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (44224) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (44230) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (44238) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (44245) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (44253) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (44259) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (44268) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;32mI (44273) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (44281) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (44288) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (44294) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (44356) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (44357) esp-tls: create_ssl_handle failed[0m
+[1;31mE (44357) esp-tls: Failed to open new connection[0m
+[1;31mE (44359) transport_base: Failed to open a new connection[0m
+[1;31mE (44366) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (44369) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (44376) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 31)[0m
+[0;32mI (44384) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (44391) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (44398) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (44405) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (44473) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (44474) esp-tls: create_ssl_handle failed[0m
+[1;31mE (44474) esp-tls: Failed to open new connection[0m
+[1;31mE (44476) transport_base: Failed to open a new connection[0m
+[1;31mE (44483) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (44486) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (44494) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (44501) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (44508) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (44515) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (44579) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (44580) esp-tls: create_ssl_handle failed[0m
+[1;31mE (44580) esp-tls: Failed to open new connection[0m
+[1;31mE (44582) transport_base: Failed to open a new connection[0m
+[1;31mE (44589) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (44592) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (44600) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 32)[0m
+[0;32mI (44608) ERROR_LOGGER: 🔄 Reintentando envío de error: [WIFI_CONNECTED][0m
+[0;32mI (44615) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: -1[0m
+[0;33mW (44622) ERROR_LOGGER: ⚠️  id_sensor inválido (-1) - backend lo recibirá como null[0m
+[0;32mI (44630) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	-1,
+	"error_code":	"WIFI_CONNECTED",
+	"severity":	"INFO",
+	"message":	"Conexión WiFi establecida exitosamente",
+	"details":	{
+		"ip":	"10.40.55.167",
+		"ssid":	"Tcl"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (44685) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (44685) esp-tls: create_ssl_handle failed[0m
+[1;31mE (44685) esp-tls: Failed to open new connection[0m
+[1;31mE (44688) transport_base: Failed to open a new connection[0m
+[1;31mE (44694) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (44698) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (44705) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (44714) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (44722) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (44727) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (44796) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (44797) esp-tls: create_ssl_handle failed[0m
+[1;31mE (44797) esp-tls: Failed to open new connection[0m
+[1;31mE (44799) transport_base: Failed to open a new connection[0m
+[1;31mE (44806) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (44809) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (44817) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 33)[0m
+[0;32mI (44825) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (44832) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (44839) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (44845) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (44904) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (44905) esp-tls: create_ssl_handle failed[0m
+[1;31mE (44905) esp-tls: Failed to open new connection[0m
+[1;31mE (44907) transport_base: Failed to open a new connection[0m
+[1;31mE (44914) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (44917) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (44925) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (44933) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (44940) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (44947) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (45104) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (45104) esp-tls: create_ssl_handle failed[0m
+[1;31mE (45104) esp-tls: Failed to open new connection[0m
+[1;31mE (45106) transport_base: Failed to open a new connection[0m
+[1;31mE (45113) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (45117) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (45124) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 34)[0m
+[0;32mI (45132) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (45139) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (45146) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (45153) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (45215) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (45216) esp-tls: create_ssl_handle failed[0m
+[1;31mE (45216) esp-tls: Failed to open new connection[0m
+[1;31mE (45218) transport_base: Failed to open a new connection[0m
+[1;31mE (45225) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (45228) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[1;31mE (49581) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (49581) esp-tls: create_ssl_handle failed[0m
+[1;31mE (49581) esp-tls: Failed to open new connection[0m
+[1;31mE (49584) transport_base: Failed to open a new connection[0m
+[1;31mE (49590) mqtt_client: Error transport connect[0m
+[1;31mE (49593) MQTT: Error MQTT[0m
+[1;31mE (49595) MQTT: Error de transporte TCP reportado[0m
+[0;32mI (49600) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (49606) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (49614) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (49621) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (49629) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (49634) ERROR_LOGGER: 📝 Error registrado: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (49642) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;33mW (49647) MQTT: Desconectado del broker MQTT[0m
+[0;32mI (49651) ERROR_LOGGER: 🔍 Config global - Humedad id=8, Luz id=9[0m
+[0;32mI (49657) ERROR_LOGGER: 🔍 DEBUG - Humedad: id_sensor=8, state=1, device_serial=0x001C[0m
+[0;32mI (49665) ERROR_LOGGER: 🔍 DEBUG - Luz: id_sensor=9, state=1, device_serial=0x001D[0m
+[0;32mI (49672) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (49681) ERROR_LOGGER: ✅ Error humedad encolado (id_sensor=8)[0m
+[0;32mI (49686) ERROR_LOGGER: 📝 Error registrado: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (49695) ERROR_LOGGER: ✅ Error luz encolado (id_sensor=9)[0m
+[0;32mI (49701) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (49708) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (49715) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (49721) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (49895) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (49896) esp-tls: create_ssl_handle failed[0m
+[1;31mE (49896) esp-tls: Failed to open new connection[0m
+[1;31mE (49898) transport_base: Failed to open a new connection[0m
+[1;31mE (49905) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (49909) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (49916) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 35)[0m
+[0;32mI (49924) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (49931) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (49938) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (49945) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (50013) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (50014) esp-tls: create_ssl_handle failed[0m
+[1;31mE (50014) esp-tls: Failed to open new connection[0m
+[1;31mE (50016) transport_base: Failed to open a new connection[0m
+[1;31mE (50023) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (50026) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (50033) ERROR_LOGGER: 📤 Procesando error: [MQTT_ERROR] Error en conexión MQTT[0m
+[0;32mI (50041) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (50048) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (50055) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (50116) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (50117) esp-tls: create_ssl_handle failed[0m
+[1;31mE (50117) esp-tls: Failed to open new connection[0m
+[1;31mE (50119) transport_base: Failed to open a new connection[0m
+[1;31mE (50126) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (50129) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (50137) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 36)[0m
+[0;32mI (50145) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (50152) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (50159) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (50165) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (50226) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (50227) esp-tls: create_ssl_handle failed[0m
+[1;31mE (50227) esp-tls: Failed to open new connection[0m
+[1;31mE (50229) transport_base: Failed to open a new connection[0m
+[1;31mE (50236) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (50239) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (50247) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (50255) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (50263) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (50269) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (50329) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (50329) esp-tls: create_ssl_handle failed[0m
+[1;31mE (50329) esp-tls: Failed to open new connection[0m
+[1;31mE (50332) transport_base: Failed to open a new connection[0m
+[1;31mE (50338) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (50342) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (50349) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 37)[0m
+[0;32mI (50357) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_ERROR][0m
+[0;32mI (50364) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 8[0m
+[0;32mI (50371) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 8[0m
+[0;32mI (50377) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	8,
+	"error_code":	"MQTT_ERROR",
+	"severity":	"ERROR",
+	"message":	"Error en conexión MQTT",
+	"details":	{
+		"error_type":	1,
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001C"
+}
+[1;31mE (50437) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (50438) esp-tls: create_ssl_handle failed[0m
+[1;31mE (50438) esp-tls: Failed to open new connection[0m
+[1;31mE (50440) transport_base: Failed to open a new connection[0m
+[1;31mE (50447) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (50450) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;32mI (50458) ERROR_LOGGER: 📤 Procesando error: [MQTT_DISCONNECTED] Desconectado del broker MQTT[0m
+[0;32mI (50466) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (50473) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (50480) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (50544) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (50545) esp-tls: create_ssl_handle failed[0m
+[1;31mE (50545) esp-tls: Failed to open new connection[0m
+[1;31mE (50547) transport_base: Failed to open a new connection[0m
+[1;31mE (50554) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (50557) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m
+[0;33mW (50565) ERROR_LOGGER: ⚠️ Error al enviar, reintentando más tarde (total fallos: 38)[0m
+[0;32mI (50573) ERROR_LOGGER: 🔄 Reintentando envío de error: [MQTT_DISCONNECTED][0m
+[0;32mI (50580) ERROR_LOGGER: 🔍 Construyendo JSON - source_type: SENSOR, id_sensor: 9[0m
+[0;32mI (50587) ERROR_LOGGER: ✅ id_sensor válido agregado al JSON: 9[0m
+[0;32mI (50594) ERROR_LOGGER: 🚀 Enviando error: {[0m
+	"source_type":	"SENSOR",
+	"id_sensor":	9,
+	"error_code":	"MQTT_DISCONNECTED",
+	"severity":	"WARNING",
+	"message":	"Desconectado del broker MQTT",
+	"details":	{
+		"broker":	"mqtts://7b0acd8e8fb242379eb6c4983fc30401.s1.eu.hivemq.cloud"
+	},
+	"ip_address":	"10.40.55.167",
+	"device_serial":	"0x001D"
+}
+[1;31mE (50650) esp-tls-mbedtls: mbedtls_ssl_setup returned -0x7F00[0m
+[1;31mE (50650) esp-tls: create_ssl_handle failed[0m
+[1;31mE (50650) esp-tls: Failed to open new connection[0m
+[1;31mE (50653) transport_base: Failed to open a new connection[0m
+[1;31mE (50659) HTTP_CLIENT: Connection failed, sock < 0[0m
+[0;33mW (50663) ERROR_LOGGER: ⚠️ Error enviando al backend: ESP_ERR_HTTP_CONNECT (HTTP 0)[0m

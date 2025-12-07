@@ -3,8 +3,10 @@
 
 #include <stdint.h>
 
-#define DEFAULT_WIFI_SSID "TeleCentro-5950"
-#define DEFAULT_WIFI_PASS "12345678"
+#define DEFAULT_WIFI_SSID "Alan-Mikrotik-2.4G"
+#define DEFAULT_WIFI_PASS "Cone#3878"
+
+
 #define WIFI_MAXIMUM_RETRY 5
 
 #define HTTP_SERVER_URL "https://ong-controller.vercel.app/api/v1/process-data"
